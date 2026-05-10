@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compass | KICKSOUL</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body{
+            background:#0b0b0b;
+            color:white;
+            font-family:'Montserrat',sans-serif;
+        }
+
+        .navbar{
+            background:#0b0b0b;
+            border-bottom:1px solid #222;
+        }
+
+        /* --- EFEK HOVER LOGO KICKSOUL --- */
+        .navbar-brand { 
+            font-weight: 800; 
+            letter-spacing: -1.5px; 
+            color: #ffffff !important;
+            font-size: 1.8rem !important;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .navbar-brand:hover{
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(0,210,255,0.6);
+        }
+
+        .navbar-brand:hover .logo-accent{
+            color: white;
+            text-shadow:
+                0 0 15px #00d2ff,
+                0 0 30px #00d2ff;
+        }
+
+        .navbar-brand:hover .mirrored-c{
+            color:#00d2ff;
+        }
+
+        .logo-accent {
+            color: #00d2ff;
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        /* Efek Mirror untuk huruf C */
+        .mirrored-c {
+            display: inline-block;
+            transform: scaleX(-1);
+            margin-right: -2px;
+        }
+
+        .hero{
+            height:60vh;
+            background:
+            linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
+            url('https://chatgpt.com/backend-api/estuary/content?id=file_00000000bc7c71fa8bc2e150c87a209d&ts=494001&p=fs&cid=1&sig=5a104f404fa7c039513e1abc7a1205484b148b711b2409e7c08415a1aba3aaa2&v=0');
+            background-size:cover;
+            background-position:center;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+        }
+
+        .card-product{
+            background:#151515;
+            border:1px solid #222;
+            border-radius:20px;
+            overflow:hidden;
+            transition:.4s;
+        }
+
+        .card-product:hover{
+            transform:translateY(-10px);
+            border-color:#00d2ff;
+        }
+
+        .card-product img{
+            height:250px;
+            object-fit:cover;
+        }
+
+        .text-primary-custom{
+            color:#00d2ff;
+        }
+
+        .btn-custom{
+            background:#00d2ff;
+            border:none;
+            color:black;
+            font-weight:700;
+        }
+
+        #modalImage{
+            width:auto;
+            max-width:100%;
+            height:250px;
+            display:block;
+            margin:auto;
+            object-fit:contain; 
+            object-position:center;
+            padding:20px;
+            background:white;
+        }
+
+        footer{
+            border-top:1px solid #222;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark py-3">
+        <div class="container justify-content-center">
+            <a class="navbar-brand mb-0" href="KickSoul.html">
+                KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <h1 class="display-3 fw-bold">COMPASS</h1>
+            <p class="lead">
+                Local Pride Sneakers From Indonesia
+            </p>
+        </div>
+    </section>
+
+    <!-- DESKRIPSI -->
+    <section class="container py-5 text-center">
+        <h2 class="fw-bold mb-4">About Compass</h2>
+
+        <p class="text-secondary">
+            Compass merupakan brand sepatu lokal Indonesia
+            yang terkenal dengan desain vintage, casual,
+            dan streetwear modern.
+        </p>
+    </section>
+
+    <!-- PRODUK -->
+    <section class="container pb-5">
+        <div class="row g-4">
+
+            <!-- PRODUCT 1 -->
+            <div class="col-md-4">
+                <div class="card-product p-3">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp"
+                    class="w-100 rounded">
+                    <h5 class="mt-3 fw-bold">
+                        Tribune Gum
+                    </h5>
+                    <p class="text-primary-custom fw-bold">
+                        Rp 598.000
+                    </p>    
+                    
+                    <button 
+                        class="btn btn-custom w-100 openModal"
+
+                        data-name="Tribune Navy Gum"
+                        data-price="Rp 573.900"
+                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp"
+
+                        data-bs-toggle="modal"
+                        data-bs-target="#productModal">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 2 -->
+            <div class="col-md-4">
+                <div class="card-product p-3">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rffn-m48aa4g2jblne8@resize_w900_nl.webp"
+                    class="w-100 rounded">
+                    <h5 class="mt-3 fw-bold">
+                        Tribune Away
+                    </h5>
+                    <p class="text-primary-custom fw-bold">
+                        Rp 638.000
+                    </p>
+                    <button 
+                        class="btn btn-custom w-100 openModal"
+
+                        data-name="Tribune Away Maroon"
+                        data-price="Rp 638.000"
+                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rffn-m48aa4g2jblne8@resize_w900_nl.webp"
+
+                        data-bs-toggle="modal"
+                        data-bs-target="#productModal">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 3 -->
+            <div class="col-md-4">
+                <div class="card-product p-3">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rcdh-lsan5zo7xewx7e.webp"
+                    class="w-100 rounded">
+                    <h5 class="mt-3 fw-bold">
+                        Retrograde Low 
+                    </h5>
+                    <p class="text-primary-custom fw-bold">
+                        Rp 538.000
+                    </p>
+                    <button 
+                        class="btn btn-custom w-100 openModal"
+
+                        data-name="Retrograde Low"
+                        data-price="Rp 538.000"
+                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rcdh-lsan5zo7xewx7e.webp"
+
+                        data-bs-toggle="modal"
+                        data-bs-target="#productModal">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- BUTTON BACK -->
+    <div class="text-center pb-5">
+        <a href="KickSoul.html"
+        class="btn btn-outline-light px-4">
+            ← Kembali ke Home
+        </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-4">
+        <p class="text-secondary mb-0">
+            © 2026 KICKSOUL - Compass Collection
+        </p>
+    </footer>
+
+    <!-- MODAL PRODUCT -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold">
+                        Select Product
+                    </h5>
+                    <button 
+                        type="button" 
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- IMAGE -->
+                    <img id="modalImage" class="rounded mb-4 bg-white">
+
+                    <!-- PRODUCT NAME -->
+                    <h4 id="modalTitle" class="fw-bold"></h4>
+
+                    <!-- PRICE -->
+                    <p id="modalPrice" class="text-info fw-bold"></p>
+
+                    <!-- VARIATION -->
+                    <label class="small mb-2">
+                        Color
+                    </label>
+
+                    <select 
+                        id="colorSelect"
+                        class="form-select bg-dark text-white border-secondary mb-3">
+                        <option value="navy">
+                            Tribune Navy Gum
+                        </option>
+
+                        <option value="black">
+                            Tribune Black Gum
+                        </option>
+
+                        <option value="red">
+                            Tribune Red Gum
+                        </option>
+                    </select>
+
+                    <!-- SIZE -->
+                    <label class="small mb-2">
+                        Size
+                    </label>
+
+                    <div class="d-flex gap-2 flex-wrap mb-4">
+                        <button class="btn btn-outline-light btn-sm">
+                            36
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            37
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            38
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            39
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            40
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            41
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            42
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            43
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            44
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            45
+                        </button>
+                        <button class="btn btn-outline-light btn-sm">
+                            46
+                        </button>
+                    </div>
+
+                    <!-- QTY -->
+                    <label class="small mb-2">
+                        Quantity
+                    </label>
+
+                    <input 
+                        type="number"
+                        class="form-control bg-dark text-white border-secondary"
+                        value="1"
+                        min="1">
+                </div>
+
+                <div class="modal-footer border-secondary">
+                    <button 
+                        class="btn btn-outline-light"
+                        data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+
+                    <button class="btn btn-info fw-bold">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT MODAL SCRIPT -->
+    <script>
+        const buttons = document.querySelectorAll('.openModal');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+
+                const name = button.dataset.name;
+                const price = button.dataset.price;
+                const image = button.dataset.image;
+
+                document.getElementById('modalTitle').innerText = name;
+                document.getElementById('modalPrice').innerText = price;
+                document.getElementById('modalImage').src = image;
+
+                const selectColor = document.getElementById('colorSelect');
+
+                // RESET
+                colorSelect.innerHTML = '';
+
+                // ===== PRODUCT 1 =====
+                if(name === 'Tribune Navy Gum') {
+                    colorSelect.innerHTML = `
+                        <option value="navy">Tribune Navy Gum</option>
+                        <option value="black">Tribune Black Gum</option>
+                        <option value="red">Tribune Red Gum</option>
+                    `;
+                }
+
+                // ===== PRODUCT 2 =====
+                else if(name === 'Tribune Away Maroon') {
+                    colorSelect.innerHTML = `
+                        <option value="maroon">Tribune Away Maroon</option>
+                        <option value="ocean">Tribune Away Ocean</option>
+                    `;
+                }
+
+                // ===== PRODUCT 3 =====
+                else if(name === 'Retrograde Low') {
+                    colorSelect.innerHTML = `
+                        <option value="triple_black">Retrograde Low Triple Black</option>
+                        <option value="cream">Retrograde Low Cream</option>
+                        <option value="white_blue">Retrograde Low White Blue</option>
+                        <option value="black_white">Retrograde Black White</option>
+                    `;
+                }
+            });
+        });
+    </script>
+
+        <script>
+            const selectColor = document.getElementById('colorSelect');
+            selectColor.addEventListener('change', function() {
+                const modalImage = document.getElementById('modalImage');
+
+                // ===== NAVY SERIES =====
+                if(this.value === 'navy') {
+                    modalImage.src =
+                    'https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp';
+                }
+                else if(this.value === 'black') {
+                    modalImage.src =
+                    'https://down-id.img.susercontent.com/file/sg-11134201-7rdy5-m0k3zkv8v2ha8d.webp';
+                }
+                else if(this.value === 'red') {
+                    modalImage.src =
+                    'https://down-id.img.susercontent.com/file/sg-11134201-7rdy4-m0k4cmst69ac94@resize_w900_nl.webp';
+                }
+
+                // ===== AWAY SERIES =====
+                else if(this.value === 'maroon') {
+                    modalImage.src =
+                    'https://down-id.img.susercontent.com/file/sg-11134201-7rffn-m48aa4g2jblne8@resize_w900_nl.webp';
+                }
+
+                else if(this.value === 'ocean') {
+                    modalImage.src =
+                    'https://down-id.img.susercontent.com/file/sg-11134201-7ravp-mar6okvanboz8c.webp';
+                }
+
+                // ===== RETROGRADE SERIES =====
+                else if(this.value === 'triple_black') {
+                    modalImage.src =
+                    'https://down-id.img.susercontent.com/file/sg-11134201-7rcdh-lsan5zo7xewx7e.webp';
+                }
+
+                else if(this.value === 'cream') {
+                    modalImage.src =
+                    'https://down-id.img.susercontent.com/file/sg-11134201-7rblf-lo7w0qx80aslf1.webp';
+                }
+                 else if(this.value === 'white_blue') {
+                    modalImage.src =
+                    'https://down-id.img.susercontent.com/file/sg-11134201-7rbm6-lo7vv9v0dtf773.webp';
+                }
+                 else if(this.value === 'black_white') {
+                    modalImage.src =
+                    'https://down-id.img.susercontent.com/file/sg-11134201-7rblx-lo6voeidra2847.webp';
+                }
+            });
+            </script>
+
+</body>
+</html>
