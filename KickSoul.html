@@ -1,1071 +1,2169 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KICKSOUL OFFICIAL STORE</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts: Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0b0b0b;
-            color: #eeeeee;
-            overflow-x: hidden;
-        }
-
-        /* --- NAVBAR CUSTOM --- */
-        .navbar {
-            background-color: #0b0b0b !important;
-            border-bottom: 1px solid #1f1f1f;
-            padding-top: 15px !important;
-            padding-bottom: 15px !important;
-        }
-
-        .navbar-brand { 
-            font-weight: 800; 
-            letter-spacing: -1.5px; 
-            color: #ffffff !important;
-            font-size: 1.8rem !important;
-            margin-right: 0 !important;
-        }
-
-        .logo-accent {
-            color: #00d2ff;
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-        }
-
-        /* Efek Mirror untuk huruf C */
-        .mirrored-c {
-            display: inline-block;
-            transform: scaleX(-1);
-            margin-right: -2px; /* Menyesuaikan kerenggangan akibat flip */
-        }
-
-        /* Custom Aesthetic Hamburger (Kiri) */
-        .hamburger-menu {
-            background: none;
-            border: none;
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-            padding: 10px 0;
-            cursor: pointer;
-            width: 30px;
-            align-items: flex-start;
-        }
-
-        .line {
-            display: block;
-            height: 2px;
-            background-color: #e0e0e0;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-        .line-1 { width: 28px; }
-        .line-2 { width: 16px; }
-
-        .hamburger-menu:hover .line-1, 
-        .hamburger-menu:hover .line-2 {
-            width: 28px;
-            background-color: #00d2ff;
-        }
-
-        /* Action Icons (Kanan) */
-        .text-action {
-            color: #e0e0e0;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-        .text-action:hover {
-            color: #00d2ff;
-            transform: scale(1.1);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
-                url('https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            color: white;
-        }
-        
-        /* --- BRAND LOGO SECTION --- */
-        .brand-logo {
-            color: #555;
-            transition: 0.3s;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        .brand-logo:hover { color: #ffffff; }
-        
-        /* --- BRAND LOGO SLIDER --- */
-        .brand-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 2rem;
-            padding: 20px 0;
-            scrollbar-width: none;
-        }
-
-        .brand-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .brand-item {
-            flex: 0 0 calc(20% - 2rem);
-            scroll-snap-align: center;
-            text-align: center;
-            min-width: 150px;
-        }
-
-        @media (max-width: 992px) {
-            .brand-item { flex: 0 0 calc(33.33% - 2rem); }
-        }
-
-        @media (max-width: 576px) {
-            .brand-item { flex: 0 0 calc(50% - 2rem); }
-        }
-
-        /* --- PRODUCT CARD --- */
-        .card-product {
-            background-color: #161616;
-            border: 1px solid #222;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .card-product:hover {
-            transform: translateY(-10px);
-            border-color: #00d2ff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .card-product h6 { color: #ffffff; font-size: 0.9rem; }
-        .card-product .text-muted { color: #aaaaaa !important; }
-        .card-product .text-primary { color: #00d2ff !important; }
-        
-        .badge-hot {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: #ff4757;
-            font-size: 0.7rem;
-            z-index: 2;
-        }
-
-        .btn-outline-dark {
-            color: #ffffff;
-            border-color: #444;
-        }
-        .btn-outline-dark:hover {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        /* --- OFFCANVAS DARK --- */
-        .offcanvas {
-            background-color: #0b0b0b !important;
-            color: white;
-            border-right: 1px solid #222;
-        }
-        .offcanvas-header { border-bottom: 1px solid #222; }
-        .btn-close { filter: invert(1); }
-        .nav-link { color: white !important; }
-        .nav-link:hover { color: #00d2ff !important; }
-
-        footer { border-top: 1px solid #1f1f1f; }
-
-        .brand-slider-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .slide-btn {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid #333;
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            position: absolute;
-            z-index: 10;
-            transition: 0.3s;
-        }
-
-        .slide-btn:hover {
-            background-color: #00d2ff;
-            color: #000;
-            border-color: #00d2ff;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-        }
-
-        .btn-left { left: -20px; }
-        .btn-right { right: -20px; }
-
-        @media (max-width: 576px) {
-            .slide-btn { display: none; }
-        }
-
-        /* Cari atau tambahkan class ini di dalam tag <style> */
-        footer .text-muted {
-            color: #bbbbbb !important; /* Mengubah warna abu-abu gelap menjadi abu-abu terang */
-            opacity: 0.8; /* Memberikan sedikit kesan transparan yang elegan */
-            letter-spacing: 0.5px; /* Memberikan jarak antar huruf agar lebih mudah dibaca */
-        }
-
-
-        /* --- MENU SIDEBAR ESTETIK --- */
-
-        /* Background Sidebar */
-        .offcanvas {
-            background-color: #0b0b0b !important;
-            width: 350px !important; /* Sedikit lebih lebar agar lega */
-            border-right: 1px solid #222;
-        }
-
-        .offcanvas-header {
-            padding: 30px 25px;
-            border-bottom: 1px solid #1f1f1f;
-        }
-
-        .offcanvas-title {
-            font-size: 1.8rem !important;
-            font-weight: 800 !important;
-            letter-spacing: 1px !important;
-            color: #ffffff !important;
-            text-transform: uppercase;
-            padding-left: 15px;
-            margin-bottom: 10px;
-            display: inline-block;
-            line-height: 1.2;
-        }
-
-
-        /* Judul Menu Utama (Home, Our Brands, Apparels) */
-        /* --- REVISI SIDEBAR MENU ESTETIK & FULL CENTER --- */
-
-        /* Membuat sidebar sedikit lebih lebar dan background elegan */
-        .offcanvas {
-            background-color: #0b0b0b !important;
-            width: 100% !important; /* Gunakan 100% di mobile, atau 400px di desktop */
-            max-width: 450px;
-            border-right: 1px solid #1f1f1f;
-        }
-
-        .offcanvas-header {
-            padding: 40px 30px 20px;
-            border: none;
-        }
-
-        /* Mengatur container menu agar berada di tengah */
-        .offcanvas-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            align-items: flex-start; /* ubah jadi rata kiri */
-            text-align: left; /* ubah jadi rata kiri */
-
-            padding-left: 30px; /* kasih jarak kiri elegan */
-            padding-bottom: 100px;
-        }
-
-        .offcanvas-body .navbar-nav {
-            width: 100%;
-        }
-        .offcanvas-body .nav-item {
-            width: 100%;
-        }
-
-        /* Tulisan Utama (HOME, OUR BRANDS, APPARELS) */
-        .offcanvas-body .nav-link.fw-bold, 
-        .offcanvas-body p.fw-bold {
-            font-size: 2.21.rem !important; /* Ukuran jauh lebih besar */
-            font-weight: 800 !important;
-            letter-spacing: 2px;
-            color: #ffffff !important;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        /* --- HOME MENU ALIGN FIX --- */
-        .home-menu {
-            width: 100%;
-            padding: 0 !important;
-            margin: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Samakan style HOME dengan menu lain */
-        .home-menu p {
-            font-size: 1.4rem !important;
-            font-weight: 800 !important;
-            letter-spacing: -0.5px;
-            color: #ffffff !important;
-            text-transform: uppercase;
-            margin-bottom: 0;
-        }
-
-        /* Efek saat menu utama di-hover */
-        .offcanvas-body .nav-item:hover > .nav-link,
-        .offcanvas-body .nav-item:hover p {
-            color: #00d2ff !important;
-            letter-spacing: 6px; /* Merenggang secara dramatis */
-            transform: scale(1.05);
-        }
-
-        /* Sub-Menu (Daftar Brand & Item) */
-        .offcanvas-body .collapse .nav-link {
-            font-size: 1.1rem !important;
-            font-weight: 400;
-            letter-spacing: 2px;
-            color: #aaaaaa !important;
-            text-transform: uppercase;
-
-            padding: 8px 0 !important; /* biar rata */
-            margin-left: 0 !important;
-
-            display: block;
-            text-align: left;
-        }
-
-        /* Efek saat sub-menu di-hover */
-        .offcanvas-body .collapse .nav-link:hover {
-            color: #ffffff !important;
-            letter-spacing: 8px;
-        }
-
-        /* Menghilangkan icon panah atau membuatnya elegan di bawah teks */
-        .arrow-icon {
-            display: block;
-            margin: 5px auto 0;
-            font-size: 1rem;
-            color: #333 !important;
-        }
-
-        /* Efek Hover Judul Utama */
-        .offcanvas-body .nav-item:hover > .nav-link,
-        .offcanvas-body .nav-item:hover p {
-            color: #00d2ff !important;
-            transform: translateX(5px);
-        }
-
-        /* Sub-Menu (Daftar Brand & Item) */
-        .offcanvas-body .collapse .nav-link {
-            font-size: 1.1rem !important;
-            font-weight: 400;
-            letter-spacing: 3px; /* Jarak huruf lebar ala brand mewah */
-            color: #888888 !important; /* Warna abu-abu elegan */
-            text-transform: uppercase;
-            padding: 12px 20px !important;
-            border-left: 1px solid #222;
-            margin-left: 5px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* Efek Hover Sub-Menu */
-        .offcanvas-body .collapse .nav-link:hover {
-            color: #ffffff !important;
-            letter-spacing: 5px; /* Huruf merenggang saat disentuh */
-            padding-left: 35px !important;
-            background: linear-gradient(90deg, rgba(0, 210, 255, 0.1), transparent);
-            border-left: 2px solid #00d2ff;
-        }
-
-        /* Icon Panah (Chevron) */
-        .arrow-icon {
-            font-size: 1.4rem;
-            color: #00d2ff !important;
-            transition: transform 0.3s ease;
-        }
-
-        /* Putar panah saat menu terbuka */
-        [aria-expanded="true"] .arrow-icon {
-            transform: rotate(180deg);
-        }
-
-        /* --- EFEK HOVER LOGO KICKSOUL --- */
-        .navbar-brand {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            display: inline-block;
-        }
-
-        .navbar-brand:hover {
-            transform: scale(1.05); /* Sedikit membesar saat disorot */
-            text-shadow: 0 0 20px rgba(0, 210, 255, 0.6); /* Efek glow biru */
-        }
-
-        .navbar-brand:hover .logo-accent {
-            color: #ffffff; /* Warna titik/aksen berubah jadi putih saat hover */
-            text-shadow: 0 0 25px #00d2ff, 0 0 45px #00d2ff; /* Glow lebih kuat */
-        }
-
-        .navbar-brand:hover .mirrored-c {
-            color: #00d2ff; /* Huruf C yang terbalik berubah warna jadi biru */
-            transition: 0.3s;
-        }
-
-
-        /* --- EFEK HOVER FOOTER --- */
-        
-        /* Efek pada Ikon Media Sosial */
-        footer .text-action {
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        footer .text-action:hover {
-            color: #00d2ff !important;
-            transform: translateY(-5px) rotate(8deg); /* Ikon naik & sedikit miring */
-            filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.8));
-        }
-
-        /* Efek pada Logo KICKSOUL di Footer */
-        footer h3 {
-            cursor: default;
-            transition: 0.5s;
-        }
-
-        footer h3:hover {
-            letter-spacing: 3px; /* Teks sedikit merenggang saat disorot */
-            color: #ffffff;
-        }
-
-        /* Efek pada Garis Horizontal (HR) */
-        footer hr {
-            transition: 0.8s;
-            opacity: 0.2;
-        }
-
-        footer:hover hr {
-            border-color: #00d2ff; /* Garis berubah biru saat area footer disorot */
-            opacity: 0.5;
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-        }
-
-        /* Efek pada teks Copyright agar lebih hidup */
-        footer .text-muted:hover {
-            color: #00d2ff !important;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        /* --- INNOVATIVE ACTION ICONS --- */
-
-        /* 1. Container pembungkus ikon agar konsisten */
-        .text-action {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 12px;
-            border-radius: 50px; /* Bentuk pill */
-            border: 1px solid transparent;
-            overflow: hidden;
-            max-width: 45px; /* Lebar awal (hanya ikon) */
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        /* 2. Tulisan tersembunyi di samping ikon */
-        .text-action::after {
-            content: attr(data-label); /* Mengambil teks dari atribut data-label */
-            margin-left: 10px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            opacity: 0;
-            white-space: nowrap;
-            transition: opacity 0.3s ease;
-        }
-
-        /* 3. Efek saat disorot (Hover) */
-        .text-action:hover {
-            max-width: 150px; /* Melebar saat hover */
-            background: rgba(0, 210, 255, 0.1);
-            border-color: #00d2ff;
-            color: #00d2ff !important;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-        }
-
-        .text-action:hover::after {
-            opacity: 1; /* Teks muncul */
-        }
-
-        /* Menyesuaikan posisi badge angka di keranjang */
-        .text-action .badge {
-            top: 5px !important;
-            right: 5px !important;
-            transition: 0.3s;
-        }
-        
-        .text-action:hover .badge {
-            transform: translate(20px, -5px); /* Geser badge agar tidak menutupi teks */
-        }
-
-
-        /* --- STYLING MENU SIDEBAR AGAR MENCOLOK --- */
-        
-        /* Warna teks utama menu (Home, Our Brands, Apparels) */
-        .offcanvas-body .nav-link.fw-bold, 
-        .offcanvas-body p.fw-bold {
-            color: #ffffff !important; /* Putih terang */
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Efek glow halus putih */
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-        }
-
-        /* --- PENYESUAIAN MENU SIDEBAR --- */
-
-        /* 1. Memperbesar Font Judul Utama (HOME, OUR BRANDS, APPARELS) */
-        .offcanvas-body .nav-item p.fw-bold, 
-        .offcanvas-body .nav-link.fw-bold {
-            font-size: 1.8rem !important; /* Ukuran diperbesar */
-            font-weight: 800 !important;
-            letter-spacing: 1px;
-            padding-left: 15px; /* Memberi jarak dari pinggir kiri agar agak ke tengah */
-            margin-bottom: 10px;
-            display: inline-block;
-            color: #ffffff !important;
-        }
-
-        /* 2. Memperbesar Font Sub-Menu (Daftar Nama Brand) */
-        .offcanvas-body .collapse .nav-link {
-            font-size: 1.25rem !important; /* Ukuran brand lebih jelas */
-            padding-left: 30px !important; /* Indentasi lebih dalam agar estetik */
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            color: #aaaaaa !important; /* Warna abu-abu elegan */
-        }
-
-        /* 3. Efek Hover agar lebih estetik */
-        .offcanvas-body .nav-link:hover {
-            color: #00d2ff !important;
-            padding-left: 40px !important; /* Efek bergeser saat di-hover */
-            transition: all 0.3s ease;
-        }
-
-        /* 4. Menyesuaikan Spasi antar kelompok menu agar tidak kosong */
-        .offcanvas-body .nav-item {
-            margin-bottom: 25px; /* Jarak antar kategori menu lebih renggang */
-        }
-
-        /* 5. Mengatur Icon Panah agar sejajar dengan font besar */
-        .arrow-icon {
-            font-size: 1.3rem;
-            margin-right: 15px;
-            color: #00d2ff !important;
-        }
-
-        /* Warna teks sub-menu (Nama-nama Brand & Apparels) */
-        .offcanvas-body .collapse .nav-link {
-            color: #00d2ff !important; /* Warna Biru Khas KICKSOUL */
-            font-weight: 500;
-            opacity: 0.8;
-            border-left: 2px solid transparent;
-            padding-left: 10px;
-            transition: all 0.3s ease;
-        }
-
-        /* Efek Hover pada sub-menu */
-        .offcanvas-body .collapse .nav-link:hover {
-            opacity: 1;
-            color: #ffffff !important;
-            border-left: 2px solid #00d2ff; /* Garis indikator biru di samping */
-            background: linear-gradient(90deg, rgba(0, 210, 255, 0.1), transparent);
-            transform: translateX(5px);
-        }
-
-        /* Warna Icon Panah agar lebih terlihat */
-        .arrow-icon {
-            color: #00d2ff !important; /* Panah langsung biru agar mencolok */
-            font-size: 1.1rem;
-            filter: drop-shadow(0 0 5px rgba(0, 210, 255, 0.5));
-        }
-
-        /* Header Menu (Our Brands/Apparels) saat di-hover */
-        [data-bs-toggle="collapse"]:hover p {
-            color: #00d2ff !important;
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
-        }
-
-
-        /* --- STYLING MENU SIDEBAR ESTETIK & ELEGAN --- */
-
-        /* Judul Menu Utama (Home, Our Brands, Apparels) */
-        .offcanvas-body .nav-item p.fw-bold, 
-        .offcanvas-body .nav-link.fw-bold {
-            font-size: 1.4rem !important; /* Ukuran lebih besar */
-            font-weight: 800 !important; /* Sangat tebal agar ikonik */
-            letter-spacing: -0.5px; /* Sedikit rapat khas brand high-end */
-            color: #ffffff !important;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        /* Sub-Menu (Daftar Brand & Item) */
-        .offcanvas-body .collapse .nav-link {
-            font-size: 1.1rem !important; /* Ukuran pas, tidak terlalu kecil */
-            font-weight: 400; /* Tipis agar elegan dan kontras dengan judul */
-            letter-spacing: 2px; /* Jarak huruf lebar untuk kesan "Organic Craft" */
-            color: #aaaaaa !important; /* Abu-abu terang awal */
-            text-transform: uppercase;
-            padding: 8px 15px !important;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* Efek Hover Sub-Menu */
-        .offcanvas-body .collapse .nav-link:hover {
-            color: #00d2ff !important;
-            letter-spacing: 4px;
-
-            padding-left: 0 !important; /* biar ga geser */
-    
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        /* Styling Judul "Our Brands" & "Apparels" saat posisi klik */
-            [data-bs-toggle="collapse"] {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-
-        /* Tanda Panah yang Elegan */
-        .arrow-icon {
-            font-size: 1.2rem;
-            color: #00d2ff !important;
-            opacity: 0.7;
-        }
-
-
-        /* --- PREMIUM PRODUCT CARD --- */
-        
-        /* Memaksa gambar produk sejajar dengan rasio 1:1 (Kotak) */
-        .card-product img {
-            width: 100%;
-            height: 250px; /* Tentukan tinggi tetap agar sejajar */
-            object-fit: cover; /* Gambar akan terpotong rapi tanpa gepeng */
-            border-radius: 12px;
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .card-product {
-            background: linear-gradient(145deg, #1a1a1a, #111111) !important;
-            border: 1px solid rgba(255, 255, 255, 0.05) !important;
-            border-radius: 20px !important;
-            padding: 20px !important;
-            transition: all 0.5s ease;
-        }
-
-        /* Efek Hover Mahal (Glassmorphism & Glow) */
-        .card-product:hover {
-            transform: translateY(-15px);
-            border-color: rgba(0, 210, 255, 0.5) !important;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 
-                        0 0 20px rgba(0, 210, 255, 0.1);
-            background: linear-gradient(145deg, #1f1f1f, #161616) !important;
-        }
-
-        .card-product:hover img {
-            transform: scale(1.08); /* Gambar sedikit nge-zoom saat hover */
-        }
-
-        /* Detail Teks yang Elegan */
-        .card-product h6 {
-            font-size: 1.1rem !important;
-            font-weight: 700;
-            margin-top: 15px;
-            letter-spacing: 0.5px;
-        }
-
-        .card-product .text-primary {
-            font-size: 1rem;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
-        }
-
-        /* Tombol Keranjang yang Minimalis */
-        .btn-buy-premium {
-            background: transparent;
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        .btn-buy-premium:hover {
-            background: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-
-        /* --- HOME MENU EFFECT --- */
-        .home-menu {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            width: 100%;
-            padding: 10px 15px;
-            border-radius: 10px;
-        }
-
-        /* Efek hover tulisan HOME */
-        .home-menu:hover p {
-            color: #00d2ff !important;
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
-            letter-spacing: 4px;
-            transition: all 0.3s ease;
-        }
-
-        /* Efek hover icon HOME */
-        .home-menu:hover .arrow-icon {
-            color: #00d2ff !important;
-            transform: scale(1.15);
-            transition: all 0.3s ease;
-        }
-
-        /* Agar link HOME benar-benar bisa diklik */
-        .home-menu,
-        .home-menu * {
-            pointer-events: auto !important;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KICKSOUL OFFICIAL STORE</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#0b0b0b;
+    --card:#141414;
+    --border:#1f1f1f;
+    --text:#f5f5f5;
+    --muted:#9f9f9f;
+    --accent:#00d2ff;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar{
+    background:rgba(11,11,11,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    padding:18px 0;
+}
+
+.navbar-brand{
+    font-size:1.8rem;
+    font-weight:800;
+    letter-spacing:-1px;
+    color:#fff !important;
+
+    transition:0.4s;
+}
+
+.logo-accent{
+    color:var(--accent);
+    text-shadow:0 0 15px rgba(0,210,255,0.4);
+}
+
+.mirrored-c{
+    display:inline-block;
+    transform:scaleX(-1);
+    margin-right:-2px;
+}
+
+.navbar-brand:hover{
+    transform:scale(1.05);
+    text-shadow:0 0 20px rgba(0,210,255,0.5);
+}
+
+.navbar-brand:hover .logo-accent{
+    color:#fff;
+    text-shadow:
+    0 0 20px var(--accent),
+    0 0 40px var(--accent);
+}
+
+.navbar-brand:hover .mirrored-c{
+    color:var(--accent);
+}
+
+/* =========================================
+   HAMBURGER
+========================================= */
+
+.hamburger-menu{
+    background:none;
+    border:none;
+
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+
+    width:30px;
+
+    cursor:pointer;
+}
+
+.line{
+    height:2px;
+    border-radius:10px;
+    background:#fff;
+
+    transition:0.3s;
+}
+
+.line-1{
+    width:28px;
+}
+
+.line-2{
+    width:16px;
+}
+
+.hamburger-menu:hover .line{
+    width:28px;
+    background:var(--accent);
+}
+
+/* =========================================
+   ACTION ICON
+========================================= */
+
+.text-action{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:46px;
+    height:46px;
+
+    border-radius:50px;
+
+    color:#fff;
+    text-decoration:none;
+
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.05);
+
+    overflow:hidden;
+
+    transition:0.35s;
+}
+
+.text-action i{
+    font-size:1rem;
+    transition:0.3s;
+}
+
+.text-action::after{
+
+    content:attr(data-label);
+
+    font-size:0.72rem;
+    font-weight:600;
+
+    letter-spacing:1px;
+    text-transform:uppercase;
+
+    white-space:nowrap;
+
+    max-width:0;
+    opacity:0;
+
+    overflow:hidden;
+
+    transition:0.3s;
+}
+
+.text-action:hover{
+    width:120px;
+
+    justify-content:flex-start;
+
+    padding-left:16px;
+
+    border-color:rgba(0,210,255,0.3);
+
+    background:rgba(255,255,255,0.06);
+
+    transform:translateY(-2px);
+}
+
+.text-action:hover i{
+    color:var(--accent);
+}
+
+.text-action:hover::after{
+    max-width:80px;
+    opacity:1;
+    margin-left:10px;
+}
+
+/* =========================================
+   ANNOUNCEMENT BAR
+========================================= */
+
+.announcement-bar{
+    background:#050505;
+    border-bottom:1px solid var(--border);
+
+    overflow:hidden;
+    white-space:nowrap;
+
+    padding:10px 0;
+}
+
+.announcement-track{
+    display:flex;
+    gap:80px;
+
+    animation:marquee 18s linear infinite;
+}
+
+.announcement-track span{
+    font-size:0.75rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+@keyframes marquee{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-slide{
+    height:85vh;
+
+    margin:25px;
+
+    border-radius:26px;
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    position:relative;
+
+    transform:scale(0.97);
+
+    transition:0.4s;
+}
+
+.carousel-item.active .hero-slide{
+    transform:scale(1);
+}
+
+.hero-slide::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.7)
+    );
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-content h1{
+    font-size:5rem;
+    font-weight:800;
+    letter-spacing:5px;
+}
+
+.hero-content p{
+    letter-spacing:2px;
+    color:#ddd;
+}
+
+.btn-hero{
+    margin-top:20px;
+
+    background:var(--accent);
+    color:#000;
+
+    padding:14px 35px;
+
+    border-radius:50px;
+
+    font-weight:700;
+    letter-spacing:2px;
+
+    transition:0.3s;
+}
+
+.btn-hero:hover{
+    background:#fff;
+    transform:scale(1.05);
+}
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.category-card{
+    border:none;
+    overflow:hidden;
+    border-radius:24px;
+
+    position:relative;
+}
+
+.category-card img{
+    transition:0.5s;
+}
+
+.category-card:hover img{
+    transform:scale(1.08);
+}
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.card-product{
+    background:linear-gradient(145deg,#191919,#111);
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    border-radius:22px;
+
+    padding:18px;
+
+    overflow:hidden;
+
+    transition:0.4s;
+}
+
+.card-product:hover{
+    transform:translateY(-12px);
+
+    border-color:rgba(0,210,255,0.4);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.7),
+    0 0 20px rgba(0,210,255,0.08);
+}
+
+.card-product img{
+    width:100%;
+    height:250px;
+
+    object-fit:cover;
+
+    border-radius:16px;
+
+    transition:0.5s;
+}
+
+.card-product:hover img{
+    transform:scale(1.08);
+}
+
+.card-product h6{
+    font-weight:700;
+}
+
+.card-product .text-primary{
+    color:var(--accent) !important;
+}
+
+.badge-hot{
+    position:absolute;
+    top:15px;
+    left:15px;
+
+    z-index:2;
+
+    background:#ff4757;
+}
+
+.btn-buy{
+    border:1px solid rgba(255,255,255,0.1);
+
+    background:transparent;
+    color:#fff;
+
+    border-radius:12px;
+
+    padding:10px;
+
+    transition:0.3s;
+}
+
+.btn-buy:hover{
+    background:#fff;
+    color:#000;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.offcanvas{
+    background:#0b0b0b !important;
+    color:#fff;
+
+    border-right:1px solid var(--border);
+}
+
+.offcanvas.offcanvas-start{
+    width:400px;
+}
+
+.offcanvas-header{
+    border-bottom:1px solid var(--border);
+    padding:28px;
+}
+
+.offcanvas-title{
+    font-weight:800;
+    letter-spacing:4px;
+}
+
+.offcanvas-body{
+    padding:25px 28px 80px;
+}
+
+.menu-link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    color:#fff;
+    text-decoration:none;
+
+    font-weight:700;
+    text-transform:uppercase;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    transition:0.3s;
+}
+
+.menu-link:hover{
+    background:rgba(255,255,255,0.04);
+
+    color:var(--accent);
+
+    transform:translateX(5px);
+}
+
+.submenu .nav-link{
+    color:#aaa !important;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    padding:10px 16px !important;
+
+    transition:0.3s;
+}
+
+.submenu .nav-link:hover{
+    color:var(--accent) !important;
+    transform:translateX(6px);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+    border-top:1px solid var(--border);
+}
+
+footer .social-icon{
+    transition:0.3s;
+}
+
+footer .social-icon:hover{
+    color:var(--accent) !important;
+
+    transform:translateY(-4px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:768px){
+
+    .hero-content h1{
+        font-size:3rem;
+    }
+
+    .hero-slide{
+        height:75vh;
+        margin:15px;
+    }
+
+    .offcanvas.offcanvas-start{
+        width:100%;
+    }
+
+}
+
+/* =========================================
+   SEARCH MODAL
+========================================= */
+
+.search-modal{
+    background:rgba(15,15,15,0.95);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:28px;
+    backdrop-filter:blur(20px);
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+
+    background:#111;
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:18px;
+
+    padding:18px 20px;
+}
+
+.search-box i{
+    font-size:1.2rem;
+    color:var(--accent);
+    margin-right:12px;
+}
+
+.search-box input{
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+    color:#fff !important;
+}
+
+.search-box input::placeholder{
+    color:#777;
+}
+
+.search-tag{
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    background:#151515;
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    font-size:0.8rem;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.search-tag:hover{
+    background:var(--accent);
+    color:#000;
+}
+
+/* =========================================
+   MINI PRODUCT
+========================================= */
+
+.mini-product{
+    display:flex;
+    gap:15px;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    background:#111;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    position:relative;
+    align-items:center;
+}
+
+.mini-product img{
+    width:85px;
+    height:85px;
+
+    object-fit:cover;
+
+    border-radius:14px;
+}
+
+/* =========================================
+   CHECKOUT BUTTON
+========================================= */
+
+.checkout-btn{
+    background:var(--accent);
+    color:#000;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    font-weight:700;
+    letter-spacing:1px;
+
+    transition:0.3s;
+}
+
+.checkout-btn:hover{
+    background:#fff;
+    transform:translateY(-2px);
+}
+
+/* =========================================
+   OFFCANVAS RIGHT
+========================================= */
+
+.offcanvas-end{
+    width:420px !important;
+}
+
+/* =========================================
+   CART LAYOUT
+========================================= */
+
+.cart-items{
+    overflow-y:auto;
+}
+
+.cart-footer{
+
+    padding:25px;
+
+    border-top:1px solid rgba(255,255,255,0.08);
+
+    background:#0b0b0b;
+
+    position:sticky;
+    bottom:0;
+}
+
+
+/* =========================================
+   IMPROVED BRAND SECTION
+========================================= */
+
+.brand-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+
+    gap:28px;
+
+    overflow-x:auto;
+
+    scrollbar-width:none;
+
+    padding:15px 0;
+}
+
+.brand-item{
+    position:relative;
+}
+
+.brand-logo{
+    font-size:0.95rem;
+
+    color:#7a7a7a;
+
+    letter-spacing:3px;
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,0.02);
+
+    border:1px solid transparent;
+
+    transition:0.35s;
+}
+
+.brand-logo:hover{
+
+    color:#fff;
+
+    border-color:rgba(0,210,255,0.35);
+
+    background:rgba(255,255,255,0.04);
+
+    box-shadow:
+    0 0 15px rgba(0,210,255,0.15),
+    0 0 30px rgba(0,210,255,0.08);
+
+    transform:translateY(-3px);
+
+}
+
+/* =========================================
+   PRODUCT BRAND NAME
+========================================= */
+
+.card-product .text-muted{
+
+    color:#b8b8b8 !important;
+
+    font-size:0.72rem;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    opacity:0.9;
+}
+
+.brand-section{
+    background:
+    linear-gradient(
+        to right,
+        rgba(255,255,255,0.01),
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.01)
+    );
+}
+
+/* =========================================
+   CATEGORY BUTTON
+========================================= */
+
+.category-btn{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    margin-top:15px;
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    color:#fff;
+
+    font-size:0.8rem;
+    font-weight:700;
+    letter-spacing:2px;
+
+    transition:0.35s;
+}
+
+.category-btn i{
+    transition:0.35s;
+}
+
+.category-btn:hover{
+
+    background:var(--accent);
+
+    color:#000;
+
+    border-color:var(--accent);
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 20px rgba(0,210,255,0.3);
+
+}
+
+.category-btn:hover i{
+    transform:rotate(45deg);
+}
+
+.small-btn{
+    padding:10px 20px;
+    font-size:0.7rem;
+}
+
+/* =========================================
+   WISHLIST BUTTON
+========================================= */
+
+.wishlist-btn{
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#151515;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:0.3s;
+}
+
+.wishlist-btn:hover{
+
+    background:#ff4d6d;
+
+    border-color:#ff4d6d;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 18px rgba(255,77,109,0.35);
+
+}
+
+
+/* =========================================
+   FOOTER LOGO EFFECT
+========================================= */
+
+footer h3{
+
+    cursor:pointer;
+
+    transition:0.4s;
+}
+
+footer h3:hover{
+
+    transform:scale(1.05);
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 0 20px rgba(0,210,255,0.5),
+    0 0 40px rgba(0,210,255,0.25);
+
+}
+
+footer h3:active{
+
+    transform:scale(0.96);
+
+}
+
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+.delete-item{
+    width:40px;
+    height:40px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#181818;
+    color:#999;
+
+    transition:0.3s;
+}
+
+.delete-item:hover{
+    background:#ff4757;
+    color:#fff;
+
+    transform:scale(1.05);
+}
+
+/* =========================================
+   MINI PRODUCT ACTION
+========================================= */
+
+.mini-product-content{
+    flex:1;
+}
+
+/* =========================================
+   RESPONSIVE BUTTON
+========================================= */
+
+@media(max-width:576px){
+
+    .wishlist-btn,
+    .delete-item{
+        width:42px;
+        height:42px;
+    }
+
+    .btn-buy{
+        font-size:0.8rem;
+        padding:10px;
+    }
+
+}
+
+/* =========================================
+   FLY EFFECT
+========================================= */
+
+.fly-product{
+    position:fixed;
+    z-index:9999;
+
+    width:80px;
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    pointer-events:none;
+
+    will-change:transform;
+
+    transition:
+    transform 2.2s cubic-bezier(0.16,1,0.3,1),
+    opacity 2.2s;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+.custom-toast{
+    position:fixed;
+
+    top:100px;
+    right:30px;
+
+    background:#111;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:#fff;
+
+    padding:14px 20px;
+
+    border-radius:16px;
+
+    z-index:99999;
+
+    font-size:0.85rem;
+    letter-spacing:1px;
+
+    opacity:0;
+    transform:translateY(-20px);
+
+    transition:0.4s;
+}
+
+.custom-toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================================
+   ACTIVE CLICK EFFECT
+========================================= */
+
+.wishlist-btn.active{
+    background:#ff4d6d;
+    border-color:#ff4d6d;
+
+    box-shadow:
+    0 0 20px rgba(255,77,109,0.35);
+
+    transform:scale(0.96);
+}
+
+.btn-buy.active-cart{
+    background:var(--accent);
+
+    color:#000;
+
+    border-color:var(--accent);
+
+    box-shadow:
+    0 0 18px rgba(0,210,255,0.35);
+
+    transform:scale(0.97);
+}
+
 </style>
-</head>   
+</head>
+
 <body>
 
-    <!-- BAR PENGUMUMAN -->
-    <div class="bg-dark text-white text-center py-2 small" style="font-size: 0.7rem; letter-spacing: 1px; border-bottom: 1px solid #222;">
-        GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000!
+<!-- =========================================
+     ANNOUNCEMENT
+========================================= -->
+
+<div class="announcement-bar">
+
+    <div class="announcement-track">
+
+        <span>GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000 ✦</span>
+        
+        <span>GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000 ✦</span>
+
+        <span>GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000 ✦</span>
+
+        <span>GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000 ✦</span>
+
     </div>
 
-    <!-- BAR NAVIGASI -->
-    <nav class="navbar navbar-light sticky-top shadow-sm">
-        <div class="container d-flex align-items-center">
-            <!-- KIRI: Hamburger Menu Kustom -->
-            <div style="flex: 1;">
-                <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
-                    <span class="line line-1"></span>
-                    <span class="line line-2"></span>
-                </button>
-            </div>
+</div>
 
-            <!-- TENGAH: Logo (Huruf C Mirror) -->
-            <div class="text-center">
-                <a class="navbar-brand mb-0" href="#">KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span></a>
-            </div>
+<!-- =========================================
+     NAVBAR
+========================================= -->
 
-            <!-- KANAN: Action Icons -->
-            <div class="d-flex align-items-center justify-content-end gap-2" style="flex: 1;">
-                <a href="#" class="text-action" data-label="Search">
-                    <i class="bi bi-search fs-5"></i>
-                </a>
-                <a href="#" class="text-action d-none d-md-flex" data-label="Wishlist">
-                    <i class="bi bi-heart fs-5"></i>
-                </a>
-                <a href="#" class="text-action position-relative" data-label="Cart">
-                    <i class="bi bi-bag fs-5"></i>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
+<nav class="navbar sticky-top">
+
+    <div class="container d-flex align-items-center">
+
+        <!-- LEFT -->
+        <div style="flex:1;">
+
+            <button class="hamburger-menu"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#menuCanvas">
+
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+
+            </button>
+
+        </div>
+
+        <!-- CENTER -->
+        <div class="text-center">
+
+            <a class="navbar-brand" href="#">
+
+                KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span>
+
+            </a>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="d-flex justify-content-end gap-2" style="flex:1;">
+
+            <a href="#"
+                class="text-action"
+                data-label="Search"
+                data-bs-toggle="modal"
+                data-bs-target="#searchModal">
+
+                <i class="bi bi-search"></i>
+            </a>
+
+            <a href="#"
+                class="text-action d-none d-md-flex"
+                data-label="Wishlist"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#wishlistCanvas">
+
+                <i class="bi bi-heart"></i>
+            </a>
+
+            <a href="#"
+                class="text-action"
+                data-label="Cart"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#cartCanvas">
+
+                <i class="bi bi-bag"></i>
             </a>
         </div>
-        </div>
-    </nav>
-
-    <!-- SIDEBAR MENU -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title fw-bold">MENU</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-
-    <!-- Ganti bagian <ul> di dalam <div class="offcanvas-body"> dengan ini -->
-            <ul class="navbar-nav fs-5">
-    
-    <!-- HOME -->
-    <li class="nav-item mb-3">
-    
-        <a href="#home"
-            class="nav-link d-flex justify-content-between align-items-center fw-bold home-menu">
-
-        <p class="text-muted small text-uppercase fw-bold mb-0">
-            Home
-        </p>
-
-        <i class="bi bi-house-door arrow-icon"></i>
-        </a>
-    </li>
-    
-    <!-- 2. OUR BRANDS (Tetap Seperti Semula) -->
-    <li class="nav-item mb-3">
-        <div class="d-flex justify-content-between align-items-center mb-2" 
-             data-bs-toggle="collapse" 
-             data-bs-target="#brandCollapse" 
-             role="button" 
-             aria-expanded="false" 
-             style="cursor: pointer;">
-            <p class="small text-uppercase fw-bold mb-0">Our Brands</p>
-            <i class="bi bi-chevron-down small text-muted arrow-icon"></i>
-        </div>
-
-        <div class="collapse ps-2" id="brandCollapse">
-            <a class="nav-link py-1 fs-6" href="#">Compass</a>
-            <a class="nav-link py-1 fs-6" href="#">Ventela</a>
-            <a class="nav-link py-1 fs-6" href="#">Aerostreet</a>
-            <a class="nav-link py-1 fs-6" href="#">Brick Mansion</a>
-            <a class="nav-link py-1 fs-6" href="#">Patrobas</a>
-            <a class="nav-link py-1 fs-6" href="#">Geoff Max Footwear</a>
-            <a class="nav-link py-1 fs-6" href="#">Johnson Indonesia</a>
-            <a class="nav-link py-1 fs-6" href="#">Imperior Footwear</a>
-            <a class="nav-link py-1 fs-6" href="#">Piero</a>
-            <a class="nav-link py-1 fs-6" href="#">Saint Barkley</a>
-        </div>
-    </li>
-
-    <!-- 3. APPARELS (Mengikuti style Our Brands) -->
-    <li class="nav-item mb-3">
-        <div class="d-flex justify-content-between align-items-center mb-2" 
-             data-bs-toggle="collapse" 
-             data-bs-target="#apparelCollapse" 
-             role="button" 
-             aria-expanded="false" 
-             style="cursor: pointer;">
-            <p class="small text-uppercase fw-bold mb-0">Apparels</p>
-            <i class="bi bi-chevron-down small text-muted arrow-icon"></i>
-        </div>
-
-        <div class="collapse ps-2" id="apparelCollapse">
-            <a class="nav-link py-1 fs-6" href="#">T-Shirts</a>
-            <a class="nav-link py-1 fs-6" href="#">Socks</a>
-            <a class="nav-link py-1 fs-6" href="#">Hoodies</a>
-            <a class="nav-link py-1 fs-6" href="#">Hats / Caps</a>
-        </div>
-    </li>
-    </ul>           
-    </ul>
     </div>
+</nav>
+
+
+<!-- =========================================
+     SIDEBAR
+========================================= -->
+
+<div class="offcanvas offcanvas-start"
+     tabindex="-1"
+     id="menuCanvas">
+
+    <div class="offcanvas-header">
+
+        <h5 class="offcanvas-title">
+            KICKSOUL MENU
+        </h5>
+
+        <button class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas">
+        </button>
+
     </div>
 
-    <!-- HERO SECTION -->
-    <header id="home" class="hero-section text-center" data-aos="fade-down">
-        <div class="container">
-            <h1 class="display-3 fw-bold mb-3">Walk With Soul</h1>
-            <p class="lead mb-4" style="color: #ccc;">Koleksi terkurasi dari brand terbaik Indonesia: Compass, Ventela, Geoff Max, & lainnya.</p>
-            <a href="#shop" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold" style="background-color: #00d2ff; border:none; color:#000;">BELANJA SEKARANG</a>
-        </div>
-    </header>
 
-    <!-- LOGO BRAND SECTION -->
-    <section class="py-5" style="background-color: #0b0b0b; border-bottom: 1px solid #1f1f1f;">
-        <div class="container">
-            <div class="brand-slider-wrapper">
-                <button class="slide-btn btn-left" onclick="slideBrands('left')">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
+    <div class="offcanvas-body">
 
-                <div class="brand-container" id="brandScroll">
+        <ul class="navbar-nav">
+
+            <li class="nav-item mb-2">
+                <a href="#home"
+                    class="menu-link nav-close">
+                    HOME
+                    <i class="bi bi-house"></i>
+                </a>
+            </li>
+
+
+            <li class="nav-item mb-2">
+                <div class="menu-link"
+                     data-bs-toggle="collapse"
+                     data-bs-target="#brandsCollapse">
+
+                    OUR BRANDS
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+
+
+                <div class="collapse submenu" id="brandsCollapse">
                     <a href="compass.html" class="text-decoration-none">
                         <div class="brand-item"><h5 class="brand-logo mb-0">COMPASS</h5></div>
                     </a>
-                    <div class="brand-item"><h5 class="brand-logo mb-0">VENTELA</h5></div>
-                    <div class="brand-item"><h5 class="brand-logo mb-0">AEROSTREET</h5></div>
-                    <div class="brand-item"><h5 class="brand-logo mb-0">BRICK MANSION</h5></div>
-                    <div class="brand-item"><h5 class="brand-logo mb-0">PATROBAS</h5></div>
-                    <div class="brand-item"><h5 class="brand-logo mb-0">GEOFF MAX</h5></div>
-                    <div class="brand-item"><h5 class="brand-logo mb-0">JOHNSON INDONESIA</h5></div>
-                    <div class="brand-item"><h5 class="brand-logo mb-0">IMPERIOR FOOTWEAR</h5></div>
-                    <div class="brand-item"><h5 class="brand-logo mb-0">SAINT BARKLEY</h5></div>
-                    <div class="brand-item"><h5 class="brand-logo mb-0">PIERO</h5></div>
+                    <a class="nav-link" href="#">Ventela</a>
+                    <a class="nav-link" href="#">Aerostreet</a>
+                    <a class="nav-link" href="#">Geoff Max Footwear</a>
+                    <a class="nav-link" href="#">Piero</a>
+
+                </div>
+            </li>
+
+
+            <li class="nav-item mb-2">
+
+                <div class="menu-link"
+                     data-bs-toggle="collapse"
+                     data-bs-target="#apparelCollapse">
+
+                    APPAREL
+                    <i class="bi bi-chevron-down"></i>
+
                 </div>
 
-                <button class="slide-btn btn-right" onclick="slideBrands('right')">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
-            </div>
-            <div class="text-center mt-3 d-md-none">
-                <small class="text-muted"><i class="bi bi-arrow-left-right me-2"></i>Geser untuk brand lainnya</small>
-            </div>
-        </div>
-    </section>
+                <div class="collapse submenu" id="apparelCollapse">
 
-    <!-- CATEGORY GRID -->
-    <section class="container py-5" data-aos="fade-right">
-        <div class="row g-4">
-            <div class="col-md-8">
-                <div class="card bg-dark text-white border-0 overflow-hidden" style="height: 400px; border-radius: 20px;">
-                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=800&q=80" class="card-img h-100 object-fit-cover opacity-50" alt="Sepatu">
-                    <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
-                        <h2 class="fw-bold">THE SNEAKERS</h2>
-                        <p>Koleksi sepatu nongkrong & lari.</p>
-                        <a href="#" class="btn btn-outline-light btn-sm w-25">Cek Koleksi</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-secondary text-white border-0 overflow-hidden mb-4" style="height: 188px; border-radius: 20px;">
-                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r992-lqbdsv7615gu65" class="card-img h-100 object-fit-cover opacity-50" alt="Apparels">
-                    <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-                        <h4 class="fw-bold">APPARELS</h4>
-                        <a href="#" class="text-white small">Lihat Kaos & Kaus Kaki</a>
-                    </div>
-                </div>
-                <div class="card bg-info text-white border-0 overflow-hidden" style="height: 188px; border-radius: 20px;">
-                    <img src="https://cf.shopee.co.id/file/sg-11134201-7ra16-m4wsboygdyoufe" class="card-img h-100 object-fit-cover opacity-50" alt="Slip On">
-                    <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
-                        <h4 class="fw-bold">SLIP ON</h4>
-                        <a href="#" class="text-white small">Sandal & Nyaman</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <a class="nav-link" href="#">T-Shirts</a>
+                    <a class="nav-link" href="#">Slip On</a>
+                    <a class="nav-link" href="#">Socks</a>
+                    
 
-    <!-- PRODUCT DROPS -->
-    <section id="shop" class="container py-5">
-        <div class="d-flex justify-content-between align-items-end mb-4">
-            <div>
-                <h6 class="text-primary fw-bold">PRODUK TERBARU</h6>
-                <h2 class="fw-bold">Hottest Drops</h2>
-            </div>
-            <a href="#" class="text-action text-decoration-none small">Lihat Semua</a>
-        </div>
-        
-        <div class="row g-4"> 
-            <div class="col-6 col-lg-3" data-aos="fade-up">
-                <div class="card card-product p-3">
-                    <span class="badge badge-hot rounded-pill">Best Seller</span>
-                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80" class="card-img-top mb-3" alt="Compass">
-                    <p class="text-muted small mb-1">Compass</p>
-                    <h6 class="fw-bold mb-2">Gazelle Low Blue/White</h6>
-                    <p class="text-primary fw-bold mb-3">Rp 408.000</p>
-                    <button class="btn btn-outline-dark w-100 btn-sm">Tambah ke Keranjang</button>
                 </div>
-            </div>
-            <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                <div class="card card-product p-3">
-                    <img src="https://down-id.img.susercontent.com/file/id-11134211-82251-mkm33t6j2b5zb0@resize_w900_nl.webp" class="card-img-top mb-3" alt="Piero">
-                    <p class="text-muted small mb-1">Piero</p>
-                    <h6 class="fw-bold mb-2">DBR Madeira White/Blue</h6>
-                    <p class="text-primary fw-bold mb-3">Rp 394.800</p>
-                    <button class="btn btn-outline-dark w-100 btn-sm">Tambah ke Keranjang</button>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                <div class="card card-product p-3">
-                    <img src="https://down-id.img.susercontent.com/file/id-11134207-822wi-mnax637slf5wcb.webp" class="card-img-top mb-3" alt="Aerostreet">
-                    <p class="text-muted small mb-1">Aerostreet</p>
-                    <h6 class="fw-bold mb-2">Cherrie Ballerina Shoes</h6>
-                    <p class="text-primary fw-bold mb-3">Rp 162.000</p>
-                    <button class="btn btn-outline-dark w-100 btn-sm">Tambah ke Keranjang</button>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3" data-aos="fade-up">
-                <div class="card card-product">
-            <span class="badge badge-hot rounded-pill">Best Seller</span>
-            <!-- Gambar akan otomatis sejajar karena CSS height & object-fit -->
-            <div class="overflow-hidden" style="border-radius: 12px;">
-            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80" alt="Compass">
-        </div>
-        <p class="text-muted small mb-1 mt-3" style="letter-spacing: 2px; text-transform: uppercase;">Compass</p>
-        <h6 class="mb-2">Gazelle Low Blue</h6>
-        <p class="text-primary fw-bold mb-3">Rp 408.000</p>
-        <button class="btn btn-buy-premium w-100 py-2">Add to Bag</button>
+
+            </li>
+
+            <li class="nav-item mb-2">
+                <a href="#shop"
+                    class="menu-link nav-close">
+                    NEW DROPS
+                    <i class="bi bi-lightning-charge"></i>
+                </a>
+            </li>
+
+            <li class="nav-item mb-2">
+                <a href="#contact"
+                    class="menu-link nav-close">
+                    CONTACT
+                    <i class="bi bi-headset"></i>
+                </a>
+            </li>
+
+        </ul>
+
     </div>
+
 </div>
+
+
+<!-- =========================================
+     SEARCH MODAL
+========================================= -->
+
+<div class="modal fade" id="searchModal" tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <div class="modal-content search-modal">
+
+            <div class="modal-body p-5">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <h3 class="fw-bold mb-0">
+                        SEARCH PRODUCT
+                    </h3>
+
+                    <button class="btn-close btn-close-white"
+                            data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Cari sneakers favorit kamu...">
+
+                </div>
+
+                <div class="mt-4">
+
+                    <p class="text-secondary small mb-3">
+                        POPULAR SEARCH
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2">
+
+                        <span class="search-tag">Compass</span>
+                        <span class="search-tag">Ventela</span>
+                        <span class="search-tag">Aerostreet</span>
+                        <span class="search-tag">Gazelle</span>
+                        <span class="search-tag">Slip On</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="col-6 col-lg-3" data-aos="fade-up">
-    <div class="card card-product">
-        <span class="badge badge-hot rounded-pill">Best Seller</span>
-        
-        <!-- Gambar akan otomatis sejajar karena CSS height & object-fit -->
-        <div class="overflow-hidden" style="border-radius: 12px;">
-            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80" alt="Compass">
-        </div>
-        <p class="text-muted small mb-1 mt-3" style="letter-spacing: 2px; text-transform: uppercase;">Compass</p>
-        <h6 class="mb-2">Gazelle Low Blue</h6>
-        <p class="text-primary fw-bold mb-3">Rp 408.000</p>
-        <button class="btn btn-buy-premium w-100 py-2">Add to Bag</button>
     </div>
+
 </div>
-    </section>
+
+<!-- =========================================
+     WISHLIST
+========================================= -->
+
+<div class="offcanvas offcanvas-end"
+     tabindex="-1"
+     id="wishlistCanvas">
+
+    <div class="offcanvas-header">
+
+        <h5 class="offcanvas-title">
+            MY WISHLIST
+        </h5>
+
+        <button class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas">
+        </button>
+
+    </div>
+
+    <div class="offcanvas-body">
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     CART
+========================================= -->
+
+<div class="offcanvas offcanvas-end"
+     tabindex="-1"
+     id="cartCanvas">
+
+    <div class="offcanvas-header">
+
+        <h5 class="offcanvas-title">
+            SHOPPING CART
+        </h5>
+
+        <button class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas">
+        </button>
+
+    </div>
+
+    <div class="offcanvas-body d-flex flex-column p-0">
+
+    <!-- CART ITEMS -->
+    <div class="cart-items flex-grow-1 p-4">
+
+    </div>
 
     <!-- FOOTER -->
-    <footer class="py-5 mt-5">
-        <div class="container text-center">
-            <!-- Footer Logo (Huruf C Mirror) -->
-            <h3 class="fw-bold mb-4">KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span></h3>
-            <div class="d-flex justify-content-center gap-4 mb-4">
-                <a href="#" class="text-action"><i class="bi bi-instagram fs-4"></i></a>
-                <a href="#" class="text-action"><i class="bi bi-tiktok fs-4"></i></a>
-                <a href="#" class="text-action"><i class="bi bi-whatsapp fs-4"></i></a>
-            </div>
-            <hr style="border-color: #222;">
-            <p class="text-muted small">&copy; 2026 KICKSOUL. Project Semester 2 - Digitalisasi UMKM Lokal.</p>
+    <div class="cart-footer">
+
+        <div class="d-flex justify-content-between mb-3">
+
+            <span>Total</span>
+
+            <strong id="cartTotal">
+                Rp 0
+            </strong>
+
         </div>
-    </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ once:true, duration:1000 });
+        <button class="checkout-btn w-100">
+            Checkout
+        </button>
 
-        function slideBrands(direction) {
-            const container = document.getElementById('brandScroll');
-            const scrollAmount = container.clientWidth / 2; 
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        }
-    </script>
-    <script>
-document.querySelectorAll('.home-menu').forEach(link => {
-    link.addEventListener('click', function() {
+    </div>
 
-        // Tutup sidebar
-        const offcanvasEl = document.getElementById('offcanvasMenu');
-        const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
- 
-        if (bsOffcanvas) {
-            bsOffcanvas.hide();
-        }
+</div>
 
-        // Scroll halus ke home
-        document.querySelector('#home').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+</div>
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section id="home">
+
+    <div id="heroCarousel"
+         class="carousel slide carousel-fade"
+         data-bs-ride="carousel"
+         data-bs-interval="4000">
+
+        <div class="carousel-inner">
+
+            <!-- 1 -->
+            <div class="carousel-item active">
+
+                <div class="hero-slide"
+                     style="background-image:url('https://i.pinimg.com/1200x/46/11/e4/4611e4717a47c47b0af16df8e779bd36.jpg');">
+
+                    <div class="hero-content">
+
+                        <h1>COMPASS</h1>
+
+                        <p>Gazelle Series Collection</p>
+
+                        <a href="#shop" class="btn btn-hero">
+                            SHOP NOW
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 2 -->
+            <div class="carousel-item">
+
+                <div class="hero-slide"
+                     style="background-image:url('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=1500&q=80');">
+
+                    <div class="hero-content">
+
+                        <h1>VENTELA</h1>
+
+                        <p>Daily Oldschool Sneakers</p>
+
+                        <a href="#shop" class="btn btn-hero">
+                            SHOP NOW
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 3 -->
+            <div class="carousel-item">
+
+                <div class="hero-slide"
+                     style="background-image:url('https://images.unsplash.com/photo-1605348532760-6753d2c43329?auto=format&fit=crop&w=1500&q=80');">
+
+                    <div class="hero-content">
+
+                        <h1>AEROSTREET</h1>
+
+                        <p>Streetwear Local Pride</p>
+
+                        <a href="#shop" class="btn btn-hero">
+                            SHOP NOW
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#heroCarousel"
+                data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon"></span>
+
+        </button>
+
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#heroCarousel"
+                data-bs-slide="next">
+
+            <span class="carousel-control-next-icon"></span>
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     BRANDS
+========================================= -->
+
+<section class="brand-section py-4">
+
+    <div class="container">
+
+        <div class="brand-container">
+
+            <a href="compass.html" class="text-decoration-none">
+                        <div class="brand-item"><h5 class="brand-logo mb-0">COMPASS</h5></div>
+            </a>
+            <div class="brand-item"><h5 class="brand-logo">VENTELA</h5></div>
+            <div class="brand-item"><h5 class="brand-logo">AEROSTREET</h5></div>
+            <div class="brand-item"><h5 class="brand-logo">GEOFF MAX FOOTWEAR</h5></div>
+            <div class="brand-item"><h5 class="brand-logo">PIERO</h5></div>
+            
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     CATEGORY
+========================================= -->
+
+<section class="container py-5">
+
+    <div class="row g-4">
+
+        <div class="col-lg-8">
+
+            <div class="card category-card bg-dark text-white">
+
+                <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=1200&q=80"
+                     class="card-img"
+                     style="height:420px; object-fit:cover; opacity:0.55;">
+
+                <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+
+                    <h2 class="fw-bold">
+                        THE SNEAKERS
+                    </h2>
+
+                    <p>
+                        Koleksi sepatu lokal premium.
+                    </p>
+
+                    <a href="#shop"
+   class="category-btn">
+
+    SHOP NOW
+    <i class="bi bi-arrow-up-right"></i>
+
+</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="card category-card bg-dark text-white mb-4">
+
+                <img src="https://down-id.img.susercontent.com/file/id-11134207-7r992-lqbdsv7615gu65"
+                     class="card-img"
+                     style="height:200px; object-fit:cover; opacity:0.55;">
+
+                <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
+
+                    <h4 class="fw-bold">
+                        APPARELS
+                    </h4>
+                    <a href="#shop" class="category-btn small-btn mt-3">
+                         SHOP NOW
+                    <i class="bi bi-arrow-up-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="card category-card bg-dark text-white">
+
+                <img src="https://cf.shopee.co.id/file/sg-11134201-7ra16-m4wsboygdyoufe"
+                     class="card-img"
+                     style="height:200px; object-fit:cover; opacity:0.55;">
+
+                <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
+
+                    <h4 class="fw-bold">
+                        SLIP ON
+                    </h4>
+                    <a href="#shop" class="category-btn small-btn mt-3">
+                        SHOP NOW
+                    <i class="bi bi-arrow-up-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     PRODUCTS
+========================================= -->
+
+<section id="shop" class="container py-5">
+
+    <div class="mb-5">
+
+        <h6 class="text-primary fw-bold">
+            PRODUK TERBARU
+        </h6>
+
+        <h2 class="fw-bold">
+            Hottest Drops
+        </h2>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- PRODUCT -->
+        <div class="col-6 col-lg-3">
+
+            <div class="card-product position-relative">
+
+                <span class="badge badge-hot rounded-pill">
+                    BEST SELLER
+                </span>
+
+                <div class="overflow-hidden rounded-4">
+
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80">
+
+                </div>
+
+                <p class="text-muted small mt-3 mb-1">
+                    Compass
+                </p>
+
+                <h6>
+                    Gazelle Low Blue
+                </h6>
+
+                <p class="text-primary fw-bold">
+                    Rp 408.000
+                </p>
+
+                <div class="d-flex gap-2 mt-3">
+
+    <button class="wishlist-btn">
+        <i class="bi bi-heart"></i>
+    </button>
+
+    <button class="btn-buy w-100 add-cart">
+        Add to Bag
+    </button>
+
+</div>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCT -->
+        <div class="col-6 col-lg-3">
+
+            <div class="card-product">
+
+                <div class="overflow-hidden rounded-4">
+
+                    <img src="https://down-id.img.susercontent.com/file/id-11134211-82251-mkm33t6j2b5zb0@resize_w900_nl.webp">
+
+                </div>
+
+                <p class="text-muted small mt-3 mb-1">
+                    Piero
+                </p>
+
+                <h6>
+                    DBR Madeira White
+                </h6>
+
+                <p class="text-primary fw-bold">
+                    Rp 394.800
+                </p>
+
+                <div class="d-flex gap-2 mt-3">
+
+                <button class="wishlist-btn">
+                    <i class="bi bi-heart"></i>
+                </button>
+
+                <button class="btn-buy w-100 add-cart">
+                    Add to Bag
+                </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCT -->
+        <div class="col-6 col-lg-3">
+
+            <div class="card-product">
+
+                <div class="overflow-hidden rounded-4">
+
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-822wi-mnax637slf5wcb.webp">
+
+                </div>
+
+                <p class="text-muted small mt-3 mb-1">
+                    Aerostreet
+                </p>
+
+                <h6>
+                    Cherrie Ballerina
+                </h6>
+
+                <p class="text-primary fw-bold">
+                    Rp 162.000
+                </p>
+
+                <div class="d-flex gap-2 mt-3">
+
+                <button class="wishlist-btn">
+                     <i class="bi bi-heart"></i>
+                 </button>
+
+                <button class="btn-buy w-100 add-cart">
+                    Add to Bag
+                </button>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PRODUCT -->
+        <div class="col-6 col-lg-3">
+
+            <div class="card-product">
+
+                <div class="overflow-hidden rounded-4">
+
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=500&q=80">
+
+                </div>
+
+                <p class="text-muted small mt-3 mb-1">
+                    Geoff Max
+                </p>
+
+                <h6>
+                    Urban Street Series
+                </h6>
+
+                <p class="text-primary fw-bold">
+                    Rp 299.000
+                </p>
+
+                <div class="d-flex gap-2 mt-3">
+
+                <button class="wishlist-btn">
+                    <i class="bi bi-heart"></i>
+                </button>
+
+                <button class="btn-buy w-100 add-cart">
+                    Add to Bag
+                </button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer id="contact" class="py-5 mt-5">
+
+    <div class="container text-center">
+
+        <h3 class="fw-bold mb-4">
+
+            KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span>
+
+        </h3>
+
+        <div class="d-flex justify-content-center gap-4 mb-4">
+
+            <a href="#" class="text-white social-icon">
+                <i class="bi bi-instagram fs-4"></i>
+            </a>
+
+            <a href="#" class="text-white social-icon">
+                <i class="bi bi-tiktok fs-4"></i>
+            </a>
+
+            <a href="#" class="text-white social-icon">
+                <i class="bi bi-whatsapp fs-4"></i>
+            </a>
+
+        </div>
+
+        <hr style="border-color:#222;">
+
+        <p class="text-secondary small mb-0">
+
+            © 2026 KICKSOUL — Project Semester 2 Digitalisasi UMKM Lokal.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================
+     SCRIPT
+========================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+    once:true,
+    duration:1000
 });
+
+/* SEARCH REALTIME */
+
+const searchInput = document.querySelector('.search-box input');
+
+searchInput.addEventListener('keyup', function(){
+
+    let filter = searchInput.value.toLowerCase();
+
+    let products = document.querySelectorAll('.card-product');
+
+    products.forEach(product => {
+
+        let title = product.innerText.toLowerCase();
+
+        if(title.includes(filter)){
+            product.parentElement.style.display = 'block';
+        } else {
+            product.parentElement.style.display = 'none';
+        }
+
+    });
+
+});
+
+/* AUTO CLOSE SIDEBAR */
+
+const navLinks = document.querySelectorAll('.nav-close');
+
+navLinks.forEach(link => {
+
+    link.addEventListener('click', () => {
+
+        const offcanvasElement =
+        document.getElementById('menuCanvas');
+
+        const bsOffcanvas =
+        bootstrap.Offcanvas.getInstance(offcanvasElement);
+
+        bsOffcanvas.hide();
+
+    });
+
+});
+
+/* =========================================
+   TOAST
+========================================= */
+
+function showToast(message){
+
+    const toast =
+    document.getElementById('customToast');
+
+    toast.innerText = message;
+
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    },2000);
+
+}
+
+/* =========================================
+   FLY EFFECT
+========================================= */
+
+function flyToTarget(imageSrc, startElement, targetElement){
+
+    const img =
+    document.createElement('img');
+
+    img.src = imageSrc;
+
+    img.className = 'fly-product';
+
+    document.body.appendChild(img);
+
+    const start =
+    startElement.getBoundingClientRect();
+
+    const target =
+    targetElement.getBoundingClientRect();
+
+    img.style.left = start.left + 'px';
+    img.style.top = start.top + 'px';
+
+    requestAnimationFrame(() => {
+
+        img.style.transform = `
+    translate(
+        ${target.left - start.left}px,
+        ${target.top - start.top - 120}px
+    )
+    scale(0.15)
+    rotate(4deg)
+`;
+
+        img.style.opacity = '0';
+
+    });
+
+    setTimeout(() => {
+        img.remove();
+    },1600);
+
+}
+
+/* =========================================
+   WISHLIST
+========================================= */
+
+const wishlistButtons =
+document.querySelectorAll('.wishlist-btn');
+
+const wishlistBody =
+document.querySelector('#wishlistCanvas .offcanvas-body');
+
+const wishlistTarget =
+document.querySelector('[data-label="Wishlist"]');
+
+wishlistButtons.forEach(button => {
+
+    button.addEventListener('click', () => {
+
+        const product =
+        button.closest('.card-product');
+
+        const title =
+        product.querySelector('h6').innerText;
+
+        const brand =
+        product.querySelector('.text-muted').innerText;
+
+        const price =
+        product.querySelector('.text-primary').innerText;
+
+        const image =
+        product.querySelector('img').src;
+
+        button.classList.toggle('active');
+
+        if(button.classList.contains('active')){
+
+            wishlistBody.innerHTML += `
+
+            <div class="mini-product mb-3">
+
+                <img src="${image}">
+
+                <div class="mini-product-content">
+
+                    <h6 class="mb-1">${title}</h6>
+
+                    <p class="text-secondary small mb-2">
+                        ${brand}
+                    </p>
+
+                    <span class="text-primary fw-bold">
+                        ${price}
+                    </span>
+
+                </div>
+
+                <button class="delete-item">
+                    <i class="bi bi-trash"></i>
+                </button>
+
+            </div>
+
+            `;
+
+            flyToTarget(
+                image,
+                product.querySelector('img'),
+                wishlistTarget
+            );
+
+            showToast('Added to Wishlist');
+
+        } else {
+
+            [...wishlistBody.querySelectorAll('.mini-product')]
+            .forEach(item => {
+
+                if(item.innerText.includes(title)){
+                    item.remove();
+                }
+
+            });
+
+            showToast('Removed from Wishlist');
+
+        }
+
+    });
+
+});
+
+/* =========================================
+   CART
+========================================= */
+
+const cartButtons =
+document.querySelectorAll('.add-cart');
+
+const cartBody =
+document.querySelector('.cart-items');
+
+const cartTarget =
+document.querySelector('[data-label="Cart"]');
+
+
+let totalPrice = 0;
+
+function updateCartTotal(){
+
+    document.getElementById('cartTotal')
+    .innerText =
+    'Rp ' + totalPrice.toLocaleString('id-ID');
+
+}
+cartButtons.forEach(button => {
+
+    button.addEventListener('click', () => {
+
+        const product =
+        button.closest('.card-product');
+
+        const title =
+        product.querySelector('h6').innerText;
+
+        const brand =
+        product.querySelector('.text-muted').innerText;
+
+        const price =
+        product.querySelector('.text-primary').innerText;
+
+        const image =
+        product.querySelector('img').src;
+
+        const numericPrice =
+        parseInt(price.replace(/[^0-9]/g,''));
+
+        button.classList.toggle('active-cart');
+
+        if(button.classList.contains('active-cart')){
+
+    button.innerText = 'Added';
+
+    totalPrice += numericPrice;
+    updateCartTotal();
+
+    cartBody.innerHTML += `
+
+    <div class="mini-product mb-4">
+
+        <img src="${image}">
+
+        <div class="mini-product-content">
+
+            <h6 class="mb-1">
+                ${title}
+            </h6>
+
+            <p class="text-secondary small mb-2">
+                ${brand}
+            </p>
+
+            <span class="text-primary fw-bold">
+                ${price}
+            </span>
+
+        </div>
+
+        <button class="delete-item">
+            <i class="bi bi-trash"></i>
+        </button>
+
+    </div>
+
+    `;
+            flyToTarget(
+                image,
+                product.querySelector('img'),
+                cartTarget
+            );
+
+            showToast('Added to Cart');
+
+        } else {
+
+    button.innerText = 'Add to Bag';
+
+    totalPrice -= numericPrice;
+
+    if(totalPrice < 0){
+        totalPrice = 0;
+    }
+
+    updateCartTotal();
+
+    [...cartBody.querySelectorAll('.mini-product')]
+    .forEach(item => {
+
+        if(item.innerText.includes(title)){
+            item.remove();
+        }
+
+    });
+
+    showToast('Removed from Cart');
+
+    }
+
+    });
+
+});
+
+/* =========================================
+   DELETE ITEM
+========================================= */
+
+document.addEventListener('click', function(e){
+
+    if(e.target.closest('.delete-item')){
+
+        const item =
+        e.target.closest('.mini-product');
+
+        const priceText =
+        item.querySelector('.text-primary').innerText;
+
+        const numericPrice =
+        parseInt(priceText.replace(/[^0-9]/g,''));
+
+        totalPrice -= numericPrice;
+
+        if(totalPrice < 0){
+            totalPrice = 0;
+        }
+
+        updateCartTotal();
+
+        item.remove();
+
+    }
+
+});
+
 </script>
+<div class="custom-toast" id="customToast"></div>
 </body>
 </html>
