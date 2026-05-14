@@ -1,1661 +1,2007 @@
 <!DOCTYPE html>
-    <html lang="id">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Compass | KICKSOUL</title>
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-        <!-- Bootstrap Icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-        <style>
-            body{
-                background:#0b0b0b;
-                color:white;
-                font-family:'Montserrat',sans-serif;
-            }
-
-            .navbar{
-                background:#0b0b0b;
-                border-bottom:1px solid #222;
-            }
-
-            /* --- MENU SIDEBAR ESTETIK --- */
-            /* Background Sidebar */
-            .offcanvas {
-                background-color: #0b0b0b !important;
-                width: 350px !important; /* Sedikit lebih lebar agar lega */
-                border-right: 1px solid #222;
-            }
-
-            .offcanvas-header {
-                padding: 30px 25px;
-                border-bottom: 1px solid #1f1f1f;
-            }
-
-            .offcanvas-title {
-                font-size: 1.8rem !important;
-                font-weight: 800 !important;
-                letter-spacing: 1px !important;
-                color: #ffffff !important;
-                text-transform: uppercase;
-                padding-left: 15px;
-                margin-bottom: 10px;
-                display: inline-block;
-                line-height: 1.2;
-            }
-
-
-            /* Judul Menu Utama (Home, Our Brands, Apparels) */
-            /* --- REVISI SIDEBAR MENU ESTETIK & FULL CENTER --- */
-
-            /* Membuat sidebar sedikit lebih lebar dan background elegan */
-            .offcanvas {
-                background-color: #0b0b0b !important;
-                width: 100% !important; /* Gunakan 100% di mobile, atau 400px di desktop */
-                max-width: 450px;
-                border-right: 1px solid #1f1f1f;
-            }
-
-            .offcanvas-header {
-                padding: 40px 30px 20px;
-                border: none;
-            }
-
-            /* Mengatur container menu agar berada di tengah */
-            .offcanvas-body {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-
-                align-items: flex-start; /* ubah jadi rata kiri */
-                text-align: left; /* ubah jadi rata kiri */
-
-                padding-left: 30px; /* kasih jarak kiri elegan */
-                padding-bottom: 100px;
-            }
-
-            .offcanvas-body .navbar-nav {
-                width: 100%;
-            }
-            .offcanvas-body .nav-item {
-                width: 100%;
-            }
-
-            /* Tulisan Utama (HOME, OUR BRANDS, APPARELS) */
-            .offcanvas-body .nav-link.fw-bold, 
-            .offcanvas-body p.fw-bold {
-                font-size: 2.21rem !important; /* Ukuran jauh lebih besar */
-                font-weight: 800 !important;
-                letter-spacing: 2px;
-                color: #ffffff !important;
-                text-transform: uppercase;
-                margin-bottom: 15px;
-                transition: all 0.3s ease;
-                cursor: pointer;
-            }
-
-            /* --- HOME MENU ALIGN FIX --- */
-            .home-menu {
-                width: 100%;
-                padding: 0 !important;
-                margin: 0;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            /* Samakan style HOME dengan menu lain */
-            .home-menu p {
-                font-size: 1.4rem !important;
-                font-weight: 800 !important;
-                letter-spacing: -0.5px;
-                color: #ffffff !important;
-                text-transform: uppercase;
-                margin-bottom: 0;
-            }
-
-            /* Efek saat menu utama di-hover */
-            .offcanvas-body .nav-item:hover > .nav-link,
-            .offcanvas-body .nav-item:hover p {
-                color: #00d2ff !important;
-                letter-spacing: 6px; /* Merenggang secara dramatis */
-                transform: scale(1.05);
-            }
-
-            /* Sub-Menu (Daftar Brand & Item) */
-            .offcanvas-body .collapse .nav-link {
-                font-size: 1.1rem !important;
-                font-weight: 400;
-                letter-spacing: 2px;
-                color: #aaaaaa !important;
-                text-transform: uppercase;
-
-                padding: 8px 0 !important; /* biar rata */
-                margin-left: 0 !important;
-
-                display: block;
-                text-align: left;
-            }
-
-            /* Efek saat sub-menu di-hover */
-            .offcanvas-body .collapse .nav-link:hover {
-                color: #ffffff !important;
-                letter-spacing: 8px;
-            }
-
-            /* Menghilangkan icon panah atau membuatnya elegan di bawah teks */
-            .arrow-icon {
-                display: block;
-                margin: 5px auto 0;
-                font-size: 1rem;
-                color: #333 !important;
-            }
-
-            /* Efek Hover Judul Utama */
-            .offcanvas-body .nav-item:hover > .nav-link,
-            .offcanvas-body .nav-item:hover p {
-                color: #00d2ff !important;
-                transform: translateX(5px);
-            }
-
-            /* Sub-Menu (Daftar Brand & Item) */
-            .offcanvas-body .collapse .nav-link {
-                font-size: 1.1rem !important;
-                font-weight: 400;
-                letter-spacing: 3px; /* Jarak huruf lebar ala brand mewah */
-                color: #888888 !important; /* Warna abu-abu elegan */
-                text-transform: uppercase;
-                padding: 12px 20px !important;
-                border-left: 1px solid #222;
-                margin-left: 5px;
-                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            }
-
-            /* Efek Hover Sub-Menu */
-            .offcanvas-body .collapse .nav-link:hover {
-                color: #ffffff !important;
-                letter-spacing: 5px; /* Huruf merenggang saat disentuh */
-                padding-left: 35px !important;
-                background: linear-gradient(90deg, rgba(0, 210, 255, 0.1), transparent);
-                border-left: 2px solid #00d2ff;
-            }
-
-            /* Icon Panah (Chevron) */
-            .arrow-icon {
-                font-size: 1.4rem;
-                color: #00d2ff !important;
-                transition: transform 0.3s ease;
-            }
-
-            /* Putar panah saat menu terbuka */
-            [aria-expanded="true"] .arrow-icon {
-                transform: rotate(180deg);
-            }
-
-            /* --- STYLING MENU SIDEBAR AGAR MENCOLOK --- */
-            /* Warna teks utama menu (Home, Our Brands, Apparels) */
-            .offcanvas-body .nav-link.fw-bold, 
-            .offcanvas-body p.fw-bold {
-                color: #ffffff !important; /* Putih terang */
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Efek glow halus putih */
-                letter-spacing: 1.5px;
-                transition: all 0.3s ease;
-            }
-
-            /* --- PENYESUAIAN MENU SIDEBAR --- */
-            /* 1. Memperbesar Font Judul Utama (HOME, OUR BRANDS, APPARELS) */
-            .offcanvas-body .nav-item p.fw-bold, 
-            .offcanvas-body .nav-link.fw-bold {
-                font-size: 1.8rem !important; /* Ukuran diperbesar */
-                font-weight: 800 !important;
-                letter-spacing: 1px;
-                padding-left: 15px; /* Memberi jarak dari pinggir kiri agar agak ke tengah */
-                margin-bottom: 10px;
-                display: inline-block;
-                color: #ffffff !important;
-            }
-
-            /* 2. Memperbesar Font Sub-Menu (Daftar Nama Brand) */
-            .offcanvas-body .collapse .nav-link {
-                font-size: 1.25rem !important; /* Ukuran brand lebih jelas */
-                padding-left: 30px !important; /* Indentasi lebih dalam agar estetik */
-                letter-spacing: 2px;
-                margin-bottom: 5px;
-                color: #aaaaaa !important; /* Warna abu-abu elegan */
-            }
-
-            /* 3. Efek Hover agar lebih estetik */
-            .offcanvas-body .nav-link:hover {
-                color: #00d2ff !important;
-                padding-left: 40px !important; /* Efek bergeser saat di-hover */
-                transition: all 0.3s ease;
-            }
-
-            /* 4. Menyesuaikan Spasi antar kelompok menu agar tidak kosong */
-            .offcanvas-body .nav-item {
-                margin-bottom: 25px; /* Jarak antar kategori menu lebih renggang */
-            }
-
-            /* 5. Mengatur Icon Panah agar sejajar dengan font besar */
-            .arrow-icon {
-                font-size: 1.3rem;
-                margin-right: 15px;
-                color: #00d2ff !important;
-            }
-
-            /* Warna teks sub-menu (Nama-nama Brand & Apparels) */
-            .offcanvas-body .collapse .nav-link {
-                color: #00d2ff !important; /* Warna Biru Khas KICKSOUL */
-                font-weight: 500;
-                opacity: 0.8;
-                border-left: 2px solid transparent;
-                padding-left: 10px;
-                transition: all 0.3s ease;
-            }
-
-            /* Efek Hover pada sub-menu */
-            .offcanvas-body .collapse .nav-link:hover {
-                opacity: 1;
-                color: #ffffff !important;
-                border-left: 2px solid #00d2ff; /* Garis indikator biru di samping */
-                background: linear-gradient(90deg, rgba(0, 210, 255, 0.1), transparent);
-                transform: translateX(5px);
-            }
-
-            /* Warna Icon Panah agar lebih terlihat */
-            .arrow-icon {
-                color: #00d2ff !important; /* Panah langsung biru agar mencolok */
-                font-size: 1.1rem;
-                filter: drop-shadow(0 0 5px rgba(0, 210, 255, 0.5));
-            }
-
-            /* Header Menu (Our Brands/Apparels) saat di-hover */
-            [data-bs-toggle="collapse"]:hover p {
-                color: #00d2ff !important;
-                text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
-            }
-
-
-            /* --- STYLING MENU SIDEBAR ESTETIK & ELEGAN --- */
-            /* Judul Menu Utama (Home, Our Brands, Apparels) */
-            .offcanvas-body .nav-item p.fw-bold, 
-            .offcanvas-body .nav-link.fw-bold {
-                font-size: 1.4rem !important; /* Ukuran lebih besar */
-                font-weight: 800 !important; /* Sangat tebal agar ikonik */
-                letter-spacing: -0.5px; /* Sedikit rapat khas brand high-end */
-                color: #ffffff !important;
-                text-transform: uppercase;
-                transition: all 0.3s ease;
-            }
-
-            /* Sub-Menu (Daftar Brand & Item) */
-            .offcanvas-body .collapse .nav-link {
-                font-size: 1.1rem !important; /* Ukuran pas, tidak terlalu kecil */
-                font-weight: 400; /* Tipis agar elegan dan kontras dengan judul */
-                letter-spacing: 2px; /* Jarak huruf lebar untuk kesan "Organic Craft" */
-                color: #aaaaaa !important; /* Abu-abu terang awal */
-                text-transform: uppercase;
-                padding: 8px 15px !important;
-                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            }
-
-            /* Efek Hover Sub-Menu */
-            .offcanvas-body .collapse .nav-link:hover {
-                color: #00d2ff !important;
-                letter-spacing: 4px;
-                padding-left: 0 !important; /* biar ga geser */
-                background: rgba(255, 255, 255, 0.03);
-            }
-
-            /* Styling Judul "Our Brands" & "Apparels" saat posisi klik */
-                [data-bs-toggle="collapse"] {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                padding-bottom: 10px;
-                margin-bottom: 15px;
-            }
-
-            /* Tanda Panah yang Elegan */
-            .arrow-icon {
-                font-size: 1.2rem;
-                color: #00d2ff !important;
-                opacity: 0.7;
-            }
-
-            /* --- HOME MENU EFFECT --- */
-            .home-menu {
-                transition: all 0.3s ease;
-                cursor: pointer;
-                text-decoration: none;
-                width: 100%;
-                padding: 10px 15px;
-                border-radius: 10px;
-            }
-
-            /* Efek hover tulisan HOME */
-            .home-menu:hover p {
-                color: #00d2ff !important;
-                text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
-                letter-spacing: 4px;
-                transition: all 0.3s ease;
-            }
-
-            /* Efek hover icon HOME */
-            .home-menu:hover .arrow-icon {
-                color: #00d2ff !important;
-                transform: scale(1.15);
-                transition: all 0.3s ease;
-            }
-
-            /* Agar link HOME benar-benar bisa diklik */
-            .home-menu,
-            .home-menu * {
-                pointer-events: auto !important;
-            }
-
-            /* --- EFEK HOVER LOGO KICKSOUL --- */
-            .navbar-brand { 
-                font-weight: 800; 
-                letter-spacing: -1.5px; 
-                color: #ffffff !important;
-                font-size: 1.8rem !important;
-                text-decoration: none;
-                transition: all 0.4s ease;
-            }
-
-            .navbar-brand:hover{
-                transform: scale(1.05);
-                text-shadow: 0 0 20px rgba(0,210,255,0.6);
-            }
-
-            .navbar-brand:hover .logo-accent{
-                color: white;
-                text-shadow:
-                    0 0 15px #00d2ff,
-                    0 0 30px #00d2ff;
-            }
-
-            .navbar-brand:hover .mirrored-c{
-                color:#00d2ff;
-            }
-
-            .logo-accent {
-                color: #00d2ff;
-                text-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-            }
-
-            /* Efek Mirror untuk huruf C */
-            .mirrored-c {
-                display: inline-block;
-                transform: scaleX(-1);
-                margin-right: -2px;
-            }
-
-            .hero{
-                height:60vh;
-                background:
-                linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
-                url('https://down-bs-id.img.susercontent.com/id-11134210-822wp-mns7gxwty1aad9.webp');
-                background-size:cover;
-                background-position:center;
-
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                text-align:center;
-            }
-
-            .card-product{
-                background:#151515;
-                border:1px solid #222;
-                border-radius:20px;
-                overflow:hidden;
-                transition:.4s;
-            }
-
-            .card-product:hover{
-                transform:translateY(-10px);
-                border-color:#00d2ff;
-            }
-
-            .card-product img{
-                height:250px;
-                object-fit:cover;
-            }
-
-            .text-primary-custom{
-                color:#00d2ff;
-            }
-
-            .btn-custom{
-                background:#00d2ff;
-                border:none;
-                color:black;
-                font-weight:700;
-            }
-
-            /* Custom Aesthetic Hamburger (Kiri) */
-            .hamburger-menu {
-                background: none;
-                border: none;
-                display: flex;
-                flex-direction: column;
-                gap: 7px;
-                padding: 10px 0;
-                cursor: pointer;
-                width: 30px;
-                align-items: flex-start;
-            }
-
-            .line {
-                display: block;
-                height: 2px;
-                background-color: #e0e0e0;
-                border-radius: 2px;
-                transition: all 0.3s ease;
-            }
-            .line-1 { width: 28px; }
-            .line-2 { width: 16px; }
-
-            .hamburger-menu:hover .line-1, 
-            .hamburger-menu:hover .line-2 {
-                width: 28px;
-                background-color: #00d2ff;
-            }
-
-
-            /* Action Icons (Kanan) */
-            .text-action {
-                color: #e0e0e0;
-                transition: 0.3s;
-                text-decoration: none;
-            }
-
-            .text-action:hover {
-                color: #00d2ff;
-                transform: scale(1.1);
-            }
-
-            /* --- INNOVATIVE ACTION ICONS --- */
-            /* Container ikon */
-            .text-action {
-                display: flex;
-                align-items: center;
-                background: rgba(255, 255, 255, 0.05);
-                padding: 8px 12px;
-                border-radius: 50px;
-                border: 1px solid transparent;
-                overflow: hidden;
-                max-width: 45px;
-                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                position: relative;
-            }
-
-            /* Tulisan muncul saat hover */
-            .text-action::after {
-                content: attr(data-label);
-                margin-left: 10px;
-                font-size: 0.75rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                opacity: 0;
-                white-space: nowrap;
-                transition: opacity 0.3s ease;
-            }
-
-            /* Hover effect */
-            .text-action:hover {
-                max-width: 150px;
-                background: rgba(0, 210, 255, 0.1);
-                border-color: #00d2ff;
-                color: #00d2ff !important;
-                transform: scale(1.05);
-                box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-            }
-
-            /* Teks muncul */
-            .text-action:hover::after {
-                opacity: 1;
-            }
-
-            /* Badge angka keranjang */
-            .text-action .badge {
-                top: 5px !important;
-                right: 5px !important;
-                transition: 0.3s;
-            }
-
-            .text-action:hover .badge {
-                transform: translate(20px, -5px);
-            }
-
-            /* --- OFFCANVAS DARK --- */
-            .offcanvas {
-                background-color: #0b0b0b !important;
-                color: white;
-                border-right: 1px solid #222;
-            }
-            .offcanvas-header { border-bottom: 1px solid #222; }
-            .btn-close { filter: invert(1); }
-            .nav-link { color: white !important; }
-            .nav-link:hover { color: #00d2ff !important; }
-
-            footer { border-top: 1px solid #1f1f1f; }
-
-            .brand-slider-wrapper {
-                position: relative;
-                display: flex;
-                align-items: center;
-            }
-
-            .slide-btn {
-                background-color: rgba(255, 255, 255, 0.05);
-                border: 1px solid #333;
-                color: #fff;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                position: absolute;
-                z-index: 10;
-                transition: 0.3s;
-            }
-
-            .slide-btn:hover {
-                background-color: #00d2ff;
-                color: #000;
-                border-color: #00d2ff;
-                box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-            }
-
-            .btn-left { left: -20px; }
-            .btn-right { right: -20px; }
-
-            @media (max-width: 576px) {
-                .slide-btn { display: none; }
-            }
-
-            #modalImage{
-                width:auto;
-                max-width:100%;
-                height:250px;
-                display:block;
-                margin:auto;
-                object-fit:contain; 
-                object-position:center;
-                padding:20px;
-                background:white;
-            }
-
-            footer{
-                border-top:1px solid #222;
-            }
-
-            .size-btn.active {
-                background-color: #00d2ff !important;
-                color: #000 !important;
-                border-color: #00d2ff !important;
-            }
-
-            /* WISHLIST */
-            .card-product{
-                position: relative;
-            }
-
-            /* WISHLIST INLINE */
-            .wishlist-btn{
-                width: 52px;
-                min-width: 52px;
-                height: 45px;
-                border-radius: 12px;
-                border: 1px solid #333;
-                background: #151515;
-                color: white;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                transition:.3s;
-            }
-
-            .wishlist-btn:hover{
-                background:#ff4757;
-                border-color:#ff4757;
-                transform:translateY(-2px);
-                box-shadow:0 0 15px rgba(255,71,87,.4);
-            }
-
-            .wishlist-btn.active{
-                background:#ff4757;
-                border-color:#ff4757;
-                color:white;
-            }
-
-            /* WISHLIST INLINE */
-            .wishlist-btn-inline{
-                width: 52px;
-                min-width: 52px;
-                border-radius: 14px;
-                border: 1px solid #333;
-                background: #151515;
-                color: white;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                transition:.3s;
-            }
-
-            .wishlist-btn-inline:hover{
-                background:#ff4757;
-                border-color:#ff4757;
-                transform:translateY(-2px);
-                box-shadow:0 0 15px rgba(255,71,87,.4);
-            }
-
-            .wishlist-btn-inline.active{
-                background:#ff4757;
-                border-color:#ff4757;
-                color:white;
-            }
-
-            /* SEARCH BOX */
-            .search-box{
-                display:flex;
-                align-items:center;
-                background: rgba(255,255,255,0.05);
-                border:1px solid transparent;
-                border-radius:50px;
-                padding:8px 12px;
-                width:45px;
-                overflow:hidden;
-                transition:all .4s ease;
-                position:relative;
-            }
-
-            /* ICON */
-            .search-icon{
-                color:#e0e0e0;
-                min-width:20px;
-                transition:.3s;
-            }
-
-            /* INPUT */
-            .search-box input{
-                background:transparent;
-                border:none;
-                outline:none;
-                color:white;
-                margin-left:10px;
-                width:0;
-                opacity:0;
-                transition:.3s;
-                font-size:.8rem;
-                font-weight:600;
-            }
-
-            /* PLACEHOLDER */
-            .search-box input::placeholder{
-                color:#aaa;
-            }
-
-            /* HOVER EFFECT */
-            .search-box:hover{
-                width:180px;
-                background: rgba(0,210,255,0.1);
-                border-color:#00d2ff;
-                box-shadow:0 0 15px rgba(0,210,255,.2);
-            }
-
-            /* INPUT MUNCUL */
-            .search-box:hover input,
-            .search-box input:focus{
-                width:120px;
-                opacity:1;
-            }
-
-            /* ICON EFFECT */
-            .search-box:hover .search-icon{
-                color:#00d2ff;
-            }
-        </style>
-    </head>
-
-    <body>
-
-        <!-- BAR PENGUMUMAN -->
-        <div class="bg-dark text-white text-center py-2 small" style="font-size: 0.7rem; letter-spacing: 1px; border-bottom: 1px solid #222;">
-            GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000!
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KICKSOUL OFFICIAL STORE</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#0b0b0b;
+    --card:#141414;
+    --border:#1f1f1f;
+    --text:#f5f5f5;
+    --muted:#9f9f9f;
+    --accent:#00d2ff;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar{
+    background:rgba(11,11,11,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    padding:18px 0;
+}
+
+.navbar-brand{
+    font-size:1.8rem;
+    font-weight:800;
+    letter-spacing:-1px;
+    color:#fff !important;
+
+    transition:0.4s;
+}
+
+.logo-accent{
+    color:var(--accent);
+    text-shadow:0 0 15px rgba(0,210,255,0.4);
+}
+
+.mirrored-c{
+    display:inline-block;
+    transform:scaleX(-1);
+    margin-right:-2px;
+}
+
+.navbar-brand:hover{
+    transform:scale(1.05);
+    text-shadow:0 0 20px rgba(0,210,255,0.5);
+}
+
+.navbar-brand:hover .logo-accent{
+    color:#fff;
+    text-shadow:
+    0 0 20px var(--accent),
+    0 0 40px var(--accent);
+}
+
+.navbar-brand:hover .mirrored-c{
+    color:var(--accent);
+}
+
+/* =========================================
+   HAMBURGER
+========================================= */
+
+.hamburger-menu{
+    background:none;
+    border:none;
+
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+
+    width:30px;
+
+    cursor:pointer;
+}
+
+.line{
+    height:2px;
+    border-radius:10px;
+    background:#fff;
+
+    transition:0.3s;
+}
+
+.line-1{
+    width:28px;
+}
+
+.line-2{
+    width:16px;
+}
+
+.hamburger-menu:hover .line{
+    width:28px;
+    background:var(--accent);
+}
+
+/* =========================================
+   ACTION ICON
+========================================= */
+
+.text-action{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:46px;
+    height:46px;
+
+    border-radius:50px;
+
+    color:#fff;
+    text-decoration:none;
+
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.05);
+
+    overflow:hidden;
+
+    transition:0.35s;
+}
+
+.text-action i{
+    font-size:1rem;
+    transition:0.3s;
+}
+
+.text-action::after{
+
+    content:attr(data-label);
+
+    font-size:0.72rem;
+    font-weight:600;
+
+    letter-spacing:1px;
+    text-transform:uppercase;
+
+    white-space:nowrap;
+
+    max-width:0;
+    opacity:0;
+
+    overflow:hidden;
+
+    transition:0.3s;
+}
+
+/* =========================================
+   MOBILE WISHLIST
+========================================= */
+
+.wishlist-mobile{
+    position:relative;
+}
+
+.wishlist-mobile::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border-radius:50px;
+
+    background:
+    radial-gradient(
+        rgba(255,77,109,0.25),
+        transparent 70%
+    );
+
+    opacity:0;
+
+    transition:0.35s;
+}
+
+.wishlist-mobile:hover::before{
+    opacity:1;
+}
+
+@media(max-width:768px){
+
+    .wishlist-mobile{
+
+        width:44px;
+        height:44px;
+
+        background:
+        rgba(255,77,109,0.08);
+
+        border:
+        1px solid rgba(255,77,109,0.18);
+
+        box-shadow:
+        0 0 15px rgba(255,77,109,0.12);
+
+    }
+
+    .wishlist-mobile i{
+        color:#ff4d6d;
+    }
+
+}
+
+.text-action:hover{
+    width:120px;
+
+    justify-content:flex-start;
+
+    padding-left:16px;
+
+    border-color:rgba(0,210,255,0.3);
+
+    background:rgba(255,255,255,0.06);
+
+    transform:translateY(-2px);
+}
+
+.text-action:hover i{
+    color:var(--accent);
+}
+
+.text-action:hover::after{
+    max-width:80px;
+    opacity:1;
+    margin-left:10px;
+}
+
+/* =========================================
+   ANNOUNCEMENT BAR
+========================================= */
+
+.announcement-bar{
+    background:#050505;
+    border-bottom:1px solid var(--border);
+
+    overflow:hidden;
+    white-space:nowrap;
+
+    padding:10px 0;
+}
+
+.announcement-track{
+    display:flex;
+    gap:80px;
+
+    animation:marquee 18s linear infinite;
+}
+
+.announcement-track span{
+    font-size:0.75rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+@keyframes marquee{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================================
+   HERO
+========================================= */
+.hero{
+    height:60vh;
+    background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
+    url('https://down-bs-id.img.susercontent.com/id-11134210-822wp-mns7gxwty1aad9.webp');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.category-card{
+    border:none;
+    overflow:hidden;
+    border-radius:24px;
+
+    position:relative;
+}
+
+.category-card img{
+    transition:0.5s;
+}
+
+.category-card:hover img{
+    transform:scale(1.08);
+}
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.card-product{
+    background:linear-gradient(145deg,#191919,#111);
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    border-radius:22px;
+
+    padding:18px;
+
+    overflow:hidden;
+
+    transition:0.4s;
+}
+
+.card-product:hover{
+    transform:translateY(-12px);
+
+    border-color:rgba(0,210,255,0.4);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.7),
+    0 0 20px rgba(0,210,255,0.08);
+}
+
+.card-product img{
+    width:100%;
+    height:250px;
+
+    object-fit:cover;
+
+    border-radius:16px;
+
+    transition:0.5s;
+}
+
+.card-product:hover img{
+    transform:scale(1.08);
+}
+
+.card-product h6{
+    font-weight:700;
+}
+
+.card-product .text-primary{
+    color:var(--accent) !important;
+}
+
+.badge-hot{
+    position:absolute;
+    top:15px;
+    left:15px;
+
+    z-index:2;
+
+    background:#ff4757;
+}
+
+.btn-buy{
+    border:1px solid rgba(255,255,255,0.1);
+
+    background:transparent;
+    color:#fff;
+
+    border-radius:12px;
+
+    padding:10px;
+
+    transition:0.3s;
+}
+
+.btn-buy:hover{
+    background:#fff;
+    color:#000;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.offcanvas{
+    background:#0b0b0b !important;
+    color:#fff;
+
+    border-right:1px solid var(--border);
+}
+
+.offcanvas.offcanvas-start{
+    width:400px;
+}
+
+.offcanvas-header{
+    border-bottom:1px solid var(--border);
+    padding:28px;
+}
+
+.offcanvas-title{
+    font-weight:800;
+    letter-spacing:4px;
+}
+
+.offcanvas-body{
+    padding:25px 28px 80px;
+}
+
+.menu-link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    color:#fff;
+    text-decoration:none;
+
+    font-weight:700;
+    text-transform:uppercase;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    transition:0.3s;
+}
+
+.menu-link:hover{
+    background:rgba(255,255,255,0.04);
+
+    color:var(--accent);
+
+    transform:translateX(5px);
+}
+
+.submenu .nav-link{
+    color:#aaa !important;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    padding:10px 16px !important;
+
+    transition:0.3s;
+}
+
+.submenu .nav-link:hover{
+    color:var(--accent) !important;
+    transform:translateX(6px);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+    border-top:1px solid var(--border);
+}
+
+footer .social-icon{
+    transition:0.3s;
+}
+
+footer .social-icon:hover{
+    color:var(--accent) !important;
+
+    transform:translateY(-4px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:768px){
+
+    .hero-content h1{
+        font-size:3rem;
+    }
+
+    .hero-slide{
+        height:75vh;
+        margin:15px;
+    }
+
+    .offcanvas.offcanvas-start{
+        width:100%;
+    }
+
+}
+
+/* =========================================
+   SEARCH MODAL
+========================================= */
+
+.search-modal{
+    background:rgba(15,15,15,0.95);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:28px;
+    backdrop-filter:blur(20px);
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+
+    background:#111;
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:18px;
+
+    padding:18px 20px;
+}
+
+.search-box i{
+    font-size:1.2rem;
+    color:var(--accent);
+    margin-right:12px;
+}
+
+.search-box input{
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+    color:#fff !important;
+}
+
+.search-box input::placeholder{
+    color:#777;
+}
+
+.search-tag{
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    background:#151515;
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    font-size:0.8rem;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.search-tag:hover{
+    background:var(--accent);
+    color:#000;
+}
+
+/* =========================================
+   MINI PRODUCT
+========================================= */
+
+.mini-product{
+    display:flex;
+    gap:15px;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    background:#111;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    position:relative;
+    align-items:center;
+}
+
+.mini-product img{
+    width:85px;
+    height:85px;
+
+    object-fit:cover;
+
+    border-radius:14px;
+}
+
+/* =========================================
+   CHECKOUT BUTTON
+========================================= */
+
+.checkout-btn{
+    background:var(--accent);
+    color:#000;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    font-weight:700;
+    letter-spacing:1px;
+
+    transition:0.3s;
+}
+
+.checkout-btn:hover{
+    background:#fff;
+    transform:translateY(-2px);
+}
+
+/* =========================================
+   OFFCANVAS RIGHT
+========================================= */
+
+.offcanvas-end{
+    width:420px !important;
+}
+
+/* =========================================
+   CART LAYOUT
+========================================= */
+
+.cart-items{
+    overflow-y:auto;
+}
+
+.cart-footer{
+
+    padding:25px;
+
+    border-top:1px solid rgba(255,255,255,0.08);
+
+    background:#0b0b0b;
+
+    position:sticky;
+    bottom:0;
+}
+
+
+/* =========================================
+   IMPROVED BRAND SECTION
+========================================= */
+
+.brand-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+
+    gap:28px;
+
+    overflow-x:auto;
+
+    scrollbar-width:none;
+
+    padding:15px 0;
+}
+
+.brand-item{
+    position:relative;
+}
+
+.brand-logo{
+    font-size:0.95rem;
+
+    color:#7a7a7a;
+
+    letter-spacing:3px;
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,0.02);
+
+    border:1px solid transparent;
+
+    transition:0.35s;
+}
+
+.brand-logo:hover{
+
+    color:#fff;
+
+    border-color:rgba(0,210,255,0.35);
+
+    background:rgba(255,255,255,0.04);
+
+    box-shadow:
+    0 0 15px rgba(0,210,255,0.15),
+    0 0 30px rgba(0,210,255,0.08);
+
+    transform:translateY(-3px);
+
+}
+
+/* =========================================
+   PRODUCT BRAND NAME
+========================================= */
+
+.card-product .text-muted{
+
+    color:#b8b8b8 !important;
+
+    font-size:0.72rem;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    opacity:0.9;
+}
+
+.brand-section{
+    background:
+    linear-gradient(
+        to right,
+        rgba(255,255,255,0.01),
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.01)
+    );
+}
+
+/* =========================================
+   CATEGORY BUTTON
+========================================= */
+
+.category-btn{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    margin-top:15px;
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    color:#fff;
+
+    font-size:0.8rem;
+    font-weight:700;
+    letter-spacing:2px;
+
+    transition:0.35s;
+}
+
+.category-btn i{
+    transition:0.35s;
+}
+
+.category-btn:hover{
+
+    background:var(--accent);
+
+    color:#000;
+
+    border-color:var(--accent);
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 20px rgba(0,210,255,0.3);
+
+}
+
+.category-btn:hover i{
+    transform:rotate(45deg);
+}
+
+.small-btn{
+    padding:10px 20px;
+    font-size:0.7rem;
+}
+
+/* =========================================
+   WISHLIST BUTTON
+========================================= */
+
+.wishlist-btn{
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#151515;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:0.3s;
+}
+
+.wishlist-btn:hover{
+
+    background:#ff4d6d;
+
+    border-color:#ff4d6d;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 18px rgba(255,77,109,0.35);
+
+}
+
+
+/* =========================================
+   FOOTER LOGO EFFECT
+========================================= */
+
+footer h3{
+
+    cursor:pointer;
+
+    transition:0.4s;
+}
+
+footer h3:hover{
+
+    transform:scale(1.05);
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 0 20px rgba(0,210,255,0.5),
+    0 0 40px rgba(0,210,255,0.25);
+
+}
+
+footer h3:active{
+
+    transform:scale(0.96);
+
+}
+
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+.delete-item{
+    width:40px;
+    height:40px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#181818;
+    color:#999;
+
+    transition:0.3s;
+}
+
+.delete-item:hover{
+    background:#ff4757;
+    color:#fff;
+
+    transform:scale(1.05);
+}
+
+/* =========================================
+   MINI PRODUCT ACTION
+========================================= */
+
+.mini-product-content{
+    flex:1;
+}
+
+/* =========================================
+   RESPONSIVE BUTTON
+========================================= */
+
+@media(max-width:576px){
+
+    .wishlist-btn,
+    .delete-item{
+        width:42px;
+        height:42px;
+    }
+
+    .btn-buy{
+        font-size:0.8rem;
+        padding:10px;
+    }
+
+}
+
+/* =========================================
+   FLY EFFECT
+========================================= */
+
+.fly-product{
+    position:fixed;
+    z-index:9999;
+
+    width:80px;
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    pointer-events:none;
+
+    will-change:transform;
+
+    transition:
+    transform 1s cubic-bezier(0.16,1,0.3,1),
+    opacity 1s;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+.custom-toast{
+    position:fixed;
+
+    top:100px;
+    right:30px;
+
+    background:#111;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:#fff;
+
+    padding:14px 20px;
+
+    border-radius:16px;
+
+    z-index:99999;
+
+    font-size:0.85rem;
+    letter-spacing:1px;
+
+    opacity:0;
+    transform:translateY(-20px);
+
+    transition:0.4s;
+}
+
+.custom-toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================================
+   ACTIVE CLICK EFFECT
+========================================= */
+
+.wishlist-btn.active{
+    background:#ff4d6d;
+    border-color:#ff4d6d;
+
+    box-shadow:
+    0 0 20px rgba(255,77,109,0.35);
+
+    transform:scale(0.96);
+}
+
+.btn-buy.active-cart{
+    background:var(--accent);
+
+    color:#000;
+
+    border-color:var(--accent);
+
+    box-shadow:
+    0 0 18px rgba(0,210,255,0.35);
+
+    transform:scale(0.97);
+}
+
+/* =========================================
+   SIZE MODAL
+========================================= */
+
+.option-btn{
+    border:1px solid rgba(255,255,255,0.1);
+    background:#151515;
+    color:#fff;
+
+    padding:12px 18px;
+    border-radius:12px;
+
+    transition:0.3s;
+}
+
+.option-btn:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.option-btn.active{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
+}
+
+.product-option-img{
+    width:100%;
+    border-radius:18px;
+    height:260px;
+    object-fit:cover;
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================
+     ANNOUNCEMENT
+========================================= -->
+
+<div class="announcement-bar">
+
+    <div class="announcement-track">
+
+        <span>GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000 ✦</span>
+        
+        <span>GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000 ✦</span>
+
+        <span>GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000 ✦</span>
+
+        <span>GRATIS ONGKIR SELURUH INDONESIA MINIMAL BELANJA RP 500.000 ✦</span>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<nav class="navbar sticky-top">
+
+    <div class="container d-flex align-items-center">
+
+        <!-- LEFT -->
+        <div style="flex:1;">
+
+            <button class="hamburger-menu"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#menuCanvas">
+
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+
+            </button>
+
         </div>
 
-        <!-- NAVBAR -->
-        <nav class="navbar navbar-light sticky-top shadow-sm">
-            <div class="container d-flex align-items-center">
+        <!-- CENTER -->
+        <div class="text-center">
 
-                <!-- KIRI: Hamburger Menu Kustom -->
-                <div style="flex: 1;">
-                    <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
-                        <span class="line line-1"></span>
-                        <span class="line line-2"></span>
+            <a class="navbar-brand" href="#">
+
+                KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span>
+
+            </a>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="d-flex justify-content-end gap-2" style="flex:1;">
+
+            <a href="#"
+                class="text-action"
+                data-label="Search"
+                data-bs-toggle="modal"
+                data-bs-target="#searchModal">
+
+                <i class="bi bi-search"></i>
+            </a>
+
+            <a href="#"
+                class="text-action wishlist-mobile"
+                data-label="Wishlist"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#wishlistCanvas">
+
+                <i class="bi bi-heart"></i>
+            </a>
+
+            <a href="#"
+                class="text-action"
+                data-label="Cart"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#cartCanvas">
+
+                <i class="bi bi-bag"></i>
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- =========================================
+     SIDEBAR
+========================================= -->
+
+<div class="offcanvas offcanvas-start"
+     tabindex="-1"
+     id="menuCanvas">
+
+    <div class="offcanvas-header">
+
+        <h5 class="offcanvas-title">
+            KICKSOUL MENU
+        </h5>
+
+        <button class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas">
+        </button>
+
+    </div>
+
+
+    <div class="offcanvas-body">
+
+        <ul class="navbar-nav">
+
+            <li class="nav-item mb-2">
+                <a href="#home"
+                    class="menu-link nav-close">
+                    HOME
+                    <i class="bi bi-house"></i>
+                </a>
+            </li>
+
+
+            <li class="nav-item mb-2">
+                <div class="menu-link"
+                     data-bs-toggle="collapse"
+                     data-bs-target="#brandsCollapse">
+
+                    OUR BRANDS
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+
+
+                <div class="collapse submenu" id="brandsCollapse">
+                    <a class="nav-link" href="#">Compass</a>
+                    <a class="nav-link" href="#">Ventela</a>
+                    <a class="nav-link" href="#">Aerostreet</a>
+                    <a class="nav-link" href="#">Geoff Max Footwear</a>
+                    <a class="nav-link" href="#">Piero</a>
+
+                </div>
+            </li>
+
+
+            <li class="nav-item mb-2">
+
+                <div class="menu-link"
+                     data-bs-toggle="collapse"
+                     data-bs-target="#apparelCollapse">
+
+                    APPAREL
+                    <i class="bi bi-chevron-down"></i>
+
+                </div>
+
+                <div class="collapse submenu" id="apparelCollapse">
+
+                    <a class="nav-link" href="#">T-Shirts</a>
+                    <a class="nav-link" href="#">Slip On</a>
+                    <a class="nav-link" href="#">Socks</a>
+                    
+
+                </div>
+
+            </li>
+
+            <li class="nav-item mb-2">
+                <a href="#shop"
+                    class="menu-link nav-close">
+                    NEW DROPS
+                    <i class="bi bi-lightning-charge"></i>
+                </a>
+            </li>
+
+            <li class="nav-item mb-2">
+                <a href="#contact"
+                    class="menu-link nav-close">
+                    CONTACT
+                    <i class="bi bi-headset"></i>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     SEARCH MODAL
+========================================= -->
+
+<div class="modal fade" id="searchModal" tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <div class="modal-content search-modal">
+
+            <div class="modal-body p-5">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <h3 class="fw-bold mb-0">
+                        SEARCH PRODUCT
+                    </h3>
+
+                    <button class="btn-close btn-close-white"
+                            data-bs-dismiss="modal">
                     </button>
+
                 </div>
 
-                <!-- TENGAH: LOGO -->
-                <div class="text-center">
-                    <a class="navbar-brand mb-0" href="KickSoul.html">
-                        KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span>
-                    </a>
-                </div>
-
-                <!-- KANAN: ACTION ICONS -->
-                <div class="d-flex align-items-center justify-content-end gap-2" style="flex: 1;">
-
-                <!-- SEARCH -->
                 <div class="search-box">
 
-                    <i class="bi bi-search fs-5 search-icon"></i>
+                    <i class="bi bi-search"></i>
 
-                    <input 
-                    type="text"
-                    id="navbarSearch"
-                    placeholder="Search..."
-                    autocomplete="off">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Cari sneakers favorit kamu...">
 
                 </div>
 
-                    <!-- WISHLIST -->
-                    <a href="#"
-                    class="text-action d-none d-md-flex"
-                    data-label="Wishlist"
+                <div class="mt-4">
 
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#wishlistCanvas">
+                    <p class="text-secondary small mb-3">
+                        POPULAR SEARCH
+                    </p>
 
-                        <i class="bi bi-heart fs-5"></i>
+                    <div class="d-flex flex-wrap gap-2">
 
-                        <span id="wishlistBadge"
-                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                        style="font-size: 0.6rem;">
-                            0
-                        </span>
-                    </a>
+                        <span class="search-tag">Compass</span>
+                        <span class="search-tag">Ventela</span>
+                        <span class="search-tag">Aerostreet</span>
+                        <span class="search-tag">Gazelle</span>
+                        <span class="search-tag">Slip On</span>
 
-                <!-- CART -->
-                <a href="#"
-                    class="text-action position-relative"
-                    data-label="Cart"
+                    </div>
 
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#cartCanvas">
-
-                    <i class="bi bi-bag fs-5"></i>
-
-                    <span id="cartBadge"
-                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                    style="font-size: 0.6rem;">
-                        0
-                    </span>
-                </a>
                 </div>
+
             </div>
-        </nav>
 
-        <!-- SIDEBAR MENU -->
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title fw-bold">MENU</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     WISHLIST
+========================================= -->
+
+<div class="offcanvas offcanvas-end"
+     tabindex="-1"
+     id="wishlistCanvas">
+
+    <div class="offcanvas-header">
+
+        <h5 class="offcanvas-title">
+            MY WISHLIST
+        </h5>
+
+        <button class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas">
+        </button>
+
+    </div>
+
+    <div class="offcanvas-body">
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     CART
+========================================= -->
+
+<div class="offcanvas offcanvas-end"
+     tabindex="-1"
+     id="cartCanvas">
+
+    <div class="offcanvas-header">
+
+        <h5 class="offcanvas-title">
+            SHOPPING CART
+        </h5>
+
+        <button class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas">
+        </button>
+
+    </div>
+
+    <div class="offcanvas-body d-flex flex-column p-0">
+
+    <!-- CART ITEMS -->
+    <div class="cart-items flex-grow-1 p-4">
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="cart-footer">
+
+        <div class="d-flex justify-content-between mb-3">
+
+            <span>Total</span>
+
+            <strong id="cartTotal">
+                Rp 0
+            </strong>
+
+        </div>
+
+        <a href="checkout.html" class="checkout-btn w-100 d-block text-center text-decoration-none">
+            Checkout
+        </a>
+        
+    </div>
+
+</div>
+
+</div>
+
+<!-- =========================================
+     PRODUCT OPTION MODAL
+========================================= -->
+<div class="modal fade" id="productOptionModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content search-modal">
+            <div class="modal-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="fw-bold mb-0">
+                        Select Option
+                    </h4>
+                    <button class="btn-close btn-close-white"
+                            data-bs-dismiss="modal">
+                    </button>
                 </div>
-
-            <!-- Ganti bagian <ul> di dalam <div class="offcanvas-body"> dengan ini -->
-                    <ul class="navbar-nav fs-5">
-            
-            <!-- HOME -->
-            <li class="nav-item mb-3">
-            
-                <a href="#home"
-                    class="nav-link d-flex justify-content-between align-items-center fw-bold home-menu">
-
-                <p class="text-muted small text-uppercase fw-bold mb-0">
-                    Home
+                <img id="optionImage"
+                     class="product-option-img mb-4"
+                     src="">
+                <h5 id="optionTitle" class="fw-bold"></h5>
+                <p id="optionPrice"
+                   class="text-primary fw-bold mb-4">
                 </p>
 
-                <i class="bi bi-house-door arrow-icon"></i>
-                </a>
-            </li>
-            
-            <!-- 2. OUR BRANDS (Tetap Seperti Semula) -->
-            <li class="nav-item mb-3">
-                <div class="d-flex justify-content-between align-items-center mb-2" 
-                    data-bs-toggle="collapse" 
-                    data-bs-target="#brandCollapse" 
-                    role="button" 
-                    aria-expanded="false" 
-                    style="cursor: pointer;">
-                    <p class="small text-uppercase fw-bold mb-0">Our Brands</p>
-                    <i class="bi bi-chevron-down small text-muted arrow-icon"></i>
+                <!-- SIZE -->
+                <div class="mb-4">
+                    <p class="small text-secondary mb-2">
+                        SELECT SIZE
+                    </p>
+                    <div id="sizeOptions"
+                         class="d-flex flex-wrap gap-2">
+                    </div>
                 </div>
 
-                <div class="collapse ps-2" id="brandCollapse">
-                    <a class="nav-link py-1 fs-6" href="#">Compass</a>
-                    <a class="nav-link py-1 fs-6" href="#">Ventela</a>
-                    <a class="nav-link py-1 fs-6" href="#">Aerostreet</a>
-                    <a class="nav-link py-1 fs-6" href="#">Brick Mansion</a>
-                    <a class="nav-link py-1 fs-6" href="#">Patrobas</a>
-                    <a class="nav-link py-1 fs-6" href="#">Geoff Max Footwear</a>
-                    <a class="nav-link py-1 fs-6" href="#">Johnson Indonesia</a>
-                    <a class="nav-link py-1 fs-6" href="#">Imperior Footwear</a>
-                    <a class="nav-link py-1 fs-6" href="#">Piero</a>
-                    <a class="nav-link py-1 fs-6" href="#">Saint Barkley</a>
-                </div>
-            </li>
-
-            <!-- 3. APPARELS (Mengikuti style Our Brands) -->
-            <li class="nav-item mb-3">
-                <div class="d-flex justify-content-between align-items-center mb-2" 
-                    data-bs-toggle="collapse" 
-                    data-bs-target="#apparelCollapse" 
-                    role="button" 
-                    aria-expanded="false" 
-                    style="cursor: pointer;">
-                    <p class="small text-uppercase fw-bold mb-0">Apparels</p>
-                    <i class="bi bi-chevron-down small text-muted arrow-icon"></i>
+                <!-- VARIANT -->
+                <div class="mb-4">
+                    <p class="small text-secondary mb-2">
+                        SELECT VARIANT
+                    </p>
+                    <div id="variantOptions"
+                         class="d-flex flex-wrap gap-2">
+                    </div>
                 </div>
 
-                <div class="collapse ps-2" id="apparelCollapse">
-                    <a class="nav-link py-1 fs-6" href="#">T-Shirts</a>
-                    <a class="nav-link py-1 fs-6" href="#">Socks</a>
-                    <a class="nav-link py-1 fs-6" href="#">Hoodies</a>
-                    <a class="nav-link py-1 fs-6" href="#">Hats / Caps</a>
-                </div>
-            </li>
-            </ul>               
+                <button class="checkout-btn w-100"
+                        id="confirmAddCart">
+                    Add to Cart
+                </button>
             </div>
-            
-        <!-- HERO -->
-        <section class="hero">
-            <div>
-                <h1 class="display-3 fw-bold">COMPASS</h1>
-                <p class="lead">
+        </div>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1 class="display-3 fw-bold">COMPASS</h1>
+            <p class="lead">
                     Local Pride Sneakers From Indonesia
-                </p>
-            </div>
-        </section>
-
-        <!-- DESKRIPSI -->
-        <section class="container py-5 text-center">
-            <h2 class="fw-bold mb-4">About Compass</h2>
-
-            <p class="text-secondary">
-                Compass merupakan brand sepatu lokal Indonesia
-                yang terkenal dengan desain vintage, casual,
-                dan streetwear modern.
             </p>
-        </section>
+        </div>
+</section>
 
-        <!-- PRODUK -->
-        <section class="container pb-5">
-            <div class="row g-4">
+<!-- DESKRIPSI -->
+<section class="container py-5 text-center">
+    <h2 class="fw-bold mb-4">About Compass</h2>
+        <p class="text-secondary">
+            Compass merupakan brand sepatu lokal Indonesia
+            yang terkenal dengan desain vintage, casual,
+            dan streetwear modern.
+        </p>
+    </section>
 
-                <!-- PRODUCT 1 -->
-                <div class="col-md-4 product-item"
-                data-product="tribune gum">
-                    <div class="card-product p-3">
-                        <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp"
-                        class="w-100 rounded">
-                        <h5 class="mt-3 fw-bold">
-                            Tribune Gum
-                        </h5>
-                        <p class="text-primary-custom fw-bold">
-                            Rp 598.000
-                        </p>    
-                        
-                    <div class="d-flex gap-2 mt-3">
+<!-- =========================================
+     BRANDS
+========================================= -->
 
-                        <button 
-                            class="btn btn-custom flex-grow-1 openModal"
+<section class="brand-section py-4">
 
-                            data-name="Tribune Navy Gum"
-                            data-price="Rp 573.900"
-                            data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp"
+    <div class="container">
 
-                            data-bs-toggle="modal"
-                            data-bs-target="#productModal">
+        <div class="brand-container">
 
-                            Add to Cart
+            <div class="brand-item"><h5 class="brand-logo">COMPASS</h5></div>
+            <div class="brand-item"><h5 class="brand-logo">VENTELA</h5></div>
+            <div class="brand-item"><h5 class="brand-logo">AEROSTREET</h5></div>
+            <div class="brand-item"><h5 class="brand-logo">GEOFF MAX FOOTWEAR</h5></div>
+            <div class="brand-item"><h5 class="brand-logo">PIERO</h5></div>
+            
 
-                        </button>
+        </div>
 
-                        <button class="wishlist-btn"
-                            data-name="Tribune Navy Gum"
-                            data-price="Rp 573.900"
-                            data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp">
+    </div>
 
-                            <i class="bi bi-heart"></i>
-                        </button>
+</section>
 
-                    </div>
-
-                    </div>
+<!-- PRODUK -->
+<section class="container pb-5">
+    <div class="row g-4">
+        <!-- PRODUCT 1 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp">
                 </div>
 
-                <!-- PRODUCT 2 -->
-                <div class="col-md-4 product-item"
-                data-product="tribune away">
-                    <div class="card-product p-3">
-                        <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rffn-m48aa4g2jblne8@resize_w900_nl.webp"
-                        class="w-100 rounded">
-                        <h5 class="mt-3 fw-bold">
-                            Tribune Away
-                        </h5>
-                        <p class="text-primary-custom fw-bold">
-                            Rp 638.000
-                        </p>
-                        <div class="d-flex gap-2 mt-3">
-                            <button 
-                                class="btn btn-custom flex-grow-1 openModal"
-
-                                data-name="Tribune Away Maroon"
-                                data-price="Rp 638.000"
-                                data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rffn-m48aa4g2jblne8@resize_w900_nl.webp"
-
-                                data-bs-toggle="modal"
-                                data-bs-target="#productModal">
-                                Add to Cart
-                            </button>
-
-                            <!-- WISHLIST -->
-                            <button class="wishlist-btn"
-
-                                data-name="Tribune Away Maroon"
-                                data-price="Rp 638.000"
-                                data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rffn-m48aa4g2jblne8@resize_w900_nl.webp">
-
-                                <i class="bi bi-heart"></i>
-
-                            </button>
-                        </div>    
-                    </div>
-                </div>
-
-                <!-- PRODUCT 3 -->
-                <div class="col-md-4 product-item"
-                data-product="retrograde low">
-                    <div class="card-product p-3">
-                        <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rcdh-lsan5zo7xewx7e.webp"
-                        class="w-100 rounded">
-                        <h5 class="mt-3 fw-bold">
-                            Retrograde Low 
-                        </h5>
-                        <p class="text-primary-custom fw-bold">
-                            Rp 538.000
-                        </p>
-                        <div class="d-flex gap-2 mt-3">
-                            <button 
-                                class="btn btn-custom flex-grow-1 openModal"
-
-                                data-name="Retrograde Low"
-                                data-price="Rp 538.000"
-                                data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rcdh-lsan5zo7xewx7e.webp"
-
-                                data-bs-toggle="modal"
-                                data-bs-target="#productModal">
-                                Add to Cart
-                            </button>
-
-                            <!-- WISHLIST -->
-                            <button class="wishlist-btn"
-                                data-name="Retrograde Low"
-                                data-price="Rp 538.000"
-                                data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rcdh-lsan5zo7xewx7e.webp">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                        </div>
-                    </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Compass
+                </p>
+                <h6>
+                    Tribune Gum
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 573.900
+                </p>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Tribune Gum"
+                        data-brand="Compass"
+                        data-price="573900"
+                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp"
+                        data-sizes="36,37,38,39,40,41,42,43,44,45,46"
+                        data-variants="
+                        Tribune Navy Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp|
+                        Tribune Red Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rdy4-m0k4cmst69ac94.webp|
+                        Tribune Black Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rdy5-m0k3zkv8v2ha8d.webp
+                        ">
+                        Add to Bag
+                    </button>
                 </div>
             </div>
+        </div>
 
-        </section>
+        <!-- PRODUCT 2 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rffn-m48aa4g2jblne8@resize_w900_nl.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Compass
+                </p>
+                <h6>
+                    Tribune Away
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 638.000
+                </p>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Tribune Gum"
+                        data-brand="Compass"
+                        data-price="573900"
+                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp"
+                        data-sizes="36,37,38,39,40,41,42,43,44,45,46"
+                        data-variants="
+                        Tribune Away Maroon,https://down-id.img.susercontent.com/file/sg-11134201-7rfgx-m48aa5puppoye4.webp|
+                        Tribune Away Ocean,https://down-id.img.susercontent.com/file/sg-11134201-7ravp-mar6okvanboz8c.webp
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
 
-        <!-- BUTTON BACK -->
-        <div class="text-center pb-5">
-            <a href="KickSoul.html"
+        <!-- PRODUCT 3 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rcdh-lsan5zo7xewx7e.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Compass
+                </p>
+                <h6>
+                    Retrograde Low
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 538.000
+                </p>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Tribune Gum"
+                        data-brand="Compass"
+                        data-price="573900"
+                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp"
+                        data-sizes="36,37,38,39,40,41,42,43,44,45,46"
+                        data-variants="
+                        Retrograde Low Triple Black,https://down-id.img.susercontent.com/file/sg-11134201-7rcdh-lsan5zo7xewx7e.webp|
+                        Retrograde Low White Blue,https://down-id.img.susercontent.com/file/sg-11134201-7rbm6-lo7vv9v0dtf773.webp|
+                        Retrograde Low Cream,https://down-id.img.susercontent.com/file/sg-11134201-7rblf-lo7w0qx80aslf1.webp|
+                        Retrograde Low Black White,https://down-id.img.susercontent.com/file/sg-11134201-7rblf-lo7w0qx80aslf1.webp|
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>      
+</section>
+
+<!-- BUTTON BACK -->
+    <div class="text-center pb-5">
+        <a href="KickSoul.html"
             class="btn btn-outline-light px-4">
-                ← Kembali ke Home
+            ← Kembali ke Home
+        </a>
+    </div>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+<footer id="contact" class="py-5 mt-5">
+    <div class="container text-center">
+        <h3 class="fw-bold mb-4">
+            KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span>
+        </h3>
+
+        <div class="d-flex justify-content-center gap-4 mb-4">
+            <a href="#" class="text-white social-icon">
+                <i class="bi bi-instagram fs-4"></i>
+            </a>
+            <a href="#" class="text-white social-icon">
+                <i class="bi bi-tiktok fs-4"></i>
+            </a>
+            <a href="#" class="text-white social-icon">
+                <i class="bi bi-whatsapp fs-4"></i>
             </a>
         </div>
 
-        <!-- FOOTER -->
-        <footer class="text-center py-4">
-            <p class="text-secondary mb-0">
-                © 2026 KICKSOUL - Compass Collection
-            </p>
-        </footer>
+        <hr style="border-color:#222;">
+        <p class="text-secondary small mb-0">
+            © 2026 KICKSOUL - Compass Collection
+        </p>
+    </div>
+</footer>
 
-        <!-- MODAL PRODUCT -->
-        <div class="modal fade" id="productModal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content bg-dark text-white border border-secondary">
-                    <div class="modal-header border-secondary">
-                        <h5 class="modal-title fw-bold">
-                            Select Product
-                        </h5>
-                        <button 
-                            type="button" 
-                            class="btn-close btn-close-white"
-                            data-bs-dismiss="modal">
-                        </button>
-                    </div>
+<!-- =========================================
+     SCRIPT
+========================================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
 
-                    <div class="modal-body">
-                        <!-- IMAGE -->
-                        <img id="modalImage" class="rounded mb-4 bg-white">
+AOS.init({
+    once:true,
+    duration:1000
+});
 
-                        <!-- PRODUCT NAME -->
-                        <h4 id="modalTitle" class="fw-bold"></h4>
+/* SEARCH REALTIME */
+const searchInput = document.querySelector('.search-box input');
+searchInput.addEventListener('keyup', function(){
+    let filter = searchInput.value.toLowerCase();
+    let products = document.querySelectorAll('.card-product');
+    products.forEach(product => {
+        let title = product.innerText.toLowerCase();
+        if(title.includes(filter)){
+            product.parentElement.style.display = 'block';
+        } else {
+            product.parentElement.style.display = 'none';
+        }
+    });
+});
 
-                        <!-- PRICE -->
-                        <p id="modalPrice" class="text-info fw-bold"></p>
+/* AUTO CLOSE SIDEBAR */
+const navLinks = document.querySelectorAll('.nav-close');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        const offcanvasElement =
+        document.getElementById('menuCanvas');
+        const bsOffcanvas =
+        bootstrap.Offcanvas.getInstance(offcanvasElement);
+        bsOffcanvas.hide();
+    });
+});
 
-                        <!-- VARIATION -->
-                        <label class="small mb-2">
-                            Color
-                        </label>
+/* =========================================
+   TOAST
+========================================= */
+function showToast(message){
+    const toast =
+    document.getElementById('customToast');
+    toast.innerText = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    },2000);
+}
 
-                        <select 
-                            id="colorSelect"
-                            class="form-select bg-dark text-white border-secondary mb-3">
-                            <option value="navy">
-                                Tribune Navy Gum
-                            </option>
+/* =========================================
+   FLY EFFECT
+========================================= */
+function flyToTarget(imageSrc, startElement, targetElement){
+    const img =
+    document.createElement('img');
+    img.src = imageSrc;
+    img.className = 'fly-product';
+    document.body.appendChild(img);
+    const start =
+    startElement.getBoundingClientRect();
+    const target =
+    targetElement.getBoundingClientRect();
+    img.style.left = start.left + 'px';
+    img.style.top = start.top + 'px';
+    requestAnimationFrame(() => {
+        img.style.transform = `
+    translate(
+        ${target.left - start.left}px,
+        ${target.top - start.top - 120}px
+    )
+    scale(0.15)
+    rotate(4deg)
+`;
+        img.style.opacity = '0';
+    });
+    setTimeout(() => {
+        img.remove();
+    },1600);
+}
 
-                            <option value="black">
-                                Tribune Black Gum
-                            </option>
+/* =========================================
+   WISHLIST
+========================================= */
+const wishlistButtons =
+document.querySelectorAll('.wishlist-btn');
+const wishlistBody =
+document.querySelector('#wishlistCanvas .offcanvas-body');
+const wishlistTarget =
+document.querySelector('[data-label="Wishlist"]');
+wishlistButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const product =
+        button.closest('.card-product');
+        const title =
+        product.querySelector('h6').innerText;
+        const brand =
+        product.querySelector('.text-muted').innerText;
+        const price =
+        product.querySelector('.text-primary').innerText;
+        const image =
+        product.querySelector('img').src;
+        button.classList.toggle('active');
 
-                            <option value="red">
-                                Tribune Red Gum
-                            </option>
-                        </select>
-
-                        <!-- SIZE -->
-                        <label class="small mb-2">
-                            Size
-                        </label>
-
-                        <div class="d-flex gap-2 flex-wrap mb-4" id="sizeContainer">
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                36
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                37
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                38
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                39
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                40
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                41
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                42
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                43
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                44
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                45
-                            </button>
-                            <button class="btn btn-outline-light btn-sm size-btn">
-                                46
-                            </button>
-                        </div>
-
-                        <!-- QTY -->
-                        <label class="small mb-2">
-                            Quantity
-                        </label>
-
-                        <input 
-                            type="number"
-                            class="form-control bg-dark text-white border-secondary"
-                            value="1"
-                            min="1">
-                    </div>
-
-                    <div class="modal-footer border-secondary">
-                        <button 
-                            class="btn btn-outline-light"
-                            data-bs-dismiss="modal">
-                            Cancel
-                        </button>
-
-                        <button class="btn btn-info fw-bold">
-                            Add to Cart
-                        </button>
-                    </div>
+        if(button.classList.contains('active')){
+            wishlistBody.innerHTML += `
+            <div class="mini-product mb-3">
+                <img src="${image}">
+                <div class="mini-product-content">
+                    <h6 class="mb-1">${title}</h6>
+                    <p class="text-secondary small mb-2">
+                        ${brand}
+                    </p>
+                    <span class="text-primary fw-bold">
+                        ${price}
+                    </span>
                 </div>
-            </div>
-        </div>
-
-        <!-- CART SIDEBAR -->
-        <div class="offcanvas offcanvas-end text-bg-dark"
-            tabindex="-1"
-            id="cartCanvas">
-
-            <div class="offcanvas-header border-bottom border-secondary">
-                <h5 class="offcanvas-title fw-bold">
-                    Your Cart
-                </h5>
-
-                <button type="button"
-                    class="btn-close btn-close-white"
-                    data-bs-dismiss="offcanvas">
+                <button class="delete-item">
+                    <i class="bi bi-trash"></i>
                 </button>
             </div>
-
-            <div class="offcanvas-body">
-
-                <!-- LIST PRODUCT -->
-                <div id="cartItems"></div>
-
-                <!-- EMPTY TEXT -->
-                <p id="emptyCart" class="text-secondary">
-                    Cart is empty
-                </p>
-
-            </div>
-        </div>
-
-        <!-- WISHLIST SIDEBAR -->
-        <div class="offcanvas offcanvas-end text-bg-dark"
-            tabindex="-1"
-            id="wishlistCanvas">
-
-            <div class="offcanvas-header border-bottom border-secondary">
-                <h5 class="offcanvas-title fw-bold">
-                    Your Wishlist
-                </h5>
-
-                <button type="button"
-                    class="btn-close btn-close-white"
-                    data-bs-dismiss="offcanvas">
-                </button>
-            </div>
-
-            <div class="offcanvas-body">
-
-                <!-- LIST WISHLIST -->
-                <div id="wishlistItems"></div>
-
-                <!-- EMPTY TEXT -->
-                <p id="emptyWishlist" class="text-secondary">
-                    Wishlist is empty
-                </p>
-
-            </div>
-        </div>
-
-            <!-- PRODUCT MODAL SCRIPT -->
-        <script>
-            const buttons = document.querySelectorAll('.openModal');
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-
-                    const name = button.dataset.name;
-                    const price = button.dataset.price;
-                    const image = button.dataset.image;
-
-                    document.getElementById('modalTitle').innerText = name;
-                    document.getElementById('modalPrice').innerText = price;
-                    document.getElementById('modalImage').src = image;
-
-                    const colorSelect = document.getElementById('colorSelect');
-
-                    // RESET
-                    colorSelect.innerHTML = '';
-
-                    // ===== PRODUCT 1 =====
-                    if(name === 'Tribune Navy Gum') {
-                        colorSelect.innerHTML = `
-                            <option value="navy">Tribune Navy Gum</option>
-                            <option value="black">Tribune Black Gum</option>
-                            <option value="red">Tribune Red Gum</option>
-                        `;
-                    }
-
-                    // ===== PRODUCT 2 =====
-                    else if(name === 'Tribune Away Maroon') {
-                        colorSelect.innerHTML = `
-                            <option value="maroon">Tribune Away Maroon</option>
-                            <option value="ocean">Tribune Away Ocean</option>
-                        `;
-                    }
-
-                    // ===== PRODUCT 3 =====
-                    else if(name === 'Retrograde Low') {
-                        colorSelect.innerHTML = `
-                            <option value="triple_black">Retrograde Low Triple Black</option>
-                            <option value="cream">Retrograde Low Cream</option>
-                            <option value="white_blue">Retrograde Low White Blue</option>
-                            <option value="black_white">Retrograde Black White</option>
-                        `;
-                    }
-                });
-            });
-        </script>
-
-            <script>
-                const colorSelect = document.getElementById('colorSelect');
-                colorSelect.addEventListener('change', function() {
-                    const modalImage = document.getElementById('modalImage');
-
-                    // ===== NAVY SERIES =====
-                    if(this.value === 'navy') {
-                        modalImage.src =
-                        'https://down-id.img.susercontent.com/file/sg-11134201-7rffe-m3qhvanaoq887d@resize_w900_nl.webp';
-                    }
-                    else if(this.value === 'black') {
-                        modalImage.src =
-                        'https://down-id.img.susercontent.com/file/sg-11134201-7rdy5-m0k3zkv8v2ha8d.webp';
-                    }
-                    else if(this.value === 'red') {
-                        modalImage.src =
-                        'https://down-id.img.susercontent.com/file/sg-11134201-7rdy4-m0k4cmst69ac94@resize_w900_nl.webp';
-                    }
-
-                    // ===== AWAY SERIES =====
-                    else if(this.value === 'maroon') {
-                        modalImage.src =
-                        'https://down-id.img.susercontent.com/file/sg-11134201-7rffn-m48aa4g2jblne8@resize_w900_nl.webp';
-                    }
-
-                    else if(this.value === 'ocean') {
-                        modalImage.src =
-                        'https://down-id.img.susercontent.com/file/sg-11134201-7ravp-mar6okvanboz8c.webp';
-                    }
-
-                    // ===== RETROGRADE SERIES =====
-                    else if(this.value === 'triple_black') {
-                        modalImage.src =
-                        'https://down-id.img.susercontent.com/file/sg-11134201-7rcdh-lsan5zo7xewx7e.webp';
-                    }
-
-                    else if(this.value === 'cream') {
-                        modalImage.src =
-                        'https://down-id.img.susercontent.com/file/sg-11134201-7rblf-lo7w0qx80aslf1.webp';
-                    }
-                    else if(this.value === 'white_blue') {
-                        modalImage.src =
-                        'https://down-id.img.susercontent.com/file/sg-11134201-7rbm6-lo7vv9v0dtf773.webp';
-                    }
-                    else if(this.value === 'black_white') {
-                        modalImage.src =
-                        'https://down-id.img.susercontent.com/file/sg-11134201-7rblx-lo6voeidra2847.webp';
-                    }
-                });
-                </script>
-
-                <script>
-                    // =========================
-                    // CART SYSTEM
-                    // =========================
-
-                    let cart = [];
-                    let selectedSize = "";
-
-                    // pilih size
-                    const sizeButtons = document.querySelectorAll(".size-btn");
-
-                    sizeButtons.forEach(button => {
-                        button.addEventListener("click", () => {
-                            sizeButtons.forEach(btn => {
-                                btn.classList.remove("active");
-                            });
-
-                            button.classList.add("active");
-                            selectedSize = button.innerText;
-                        });
-                    });
-
-                    // tombol add to cart
-                    const addCartButton =
-                        document.querySelector(".modal-footer .btn-info");
-
-                    addCartButton.addEventListener("click", () => {
-
-                        // validasi size
-                        if(selectedSize === "") {
-                            alert("Please select size first!");
-                            return;
-                        }
-
-                        // ambil data produk
-                        const productName =
-                            document.getElementById("modalTitle").innerText;
-
-                        const productPrice =
-                            document.getElementById("modalPrice").innerText;
-
-                        const productImage =
-                            document.getElementById("modalImage").src;
-
-                        const productColor =
-                            document.getElementById("colorSelect").value;
-
-                        const quantity =
-                            document.querySelector('input[type="number"]').value;
-
-                        // simpan ke cart
-                        cart.push({
-                            name: productName,
-                            price: productPrice,
-                            image: productImage,
-                            color: productColor,
-                            size: selectedSize,
-                            qty: quantity
-                        });
-
-                        // update badge
-                        document.getElementById("cartBadge").innerText = cart.length;
-
-                        // render isi cart
-                        renderCart();
-
-                        // tutup modal
-                        const modal = bootstrap.Modal.getInstance(
-                            document.getElementById('productModal')
-                        );
-
-                        modal.hide();
-
-                        // notif
-                        alert(productName + " added to cart!");
-
-                        console.log(cart);
-
-                        // render cart
-                        function renderCart() {
-
-                            const cartItems =
-                                document.getElementById("cartItems");
-
-                            const emptyCart =
-                                document.getElementById("emptyCart");
-
-                            cartItems.innerHTML = "";
-
-                            // kalau kosong
-                            if(cart.length === 0) {
-                                emptyCart.style.display = "block";
-                                return;
-                            }
-
-                            emptyCart.style.display = "none";
-
-                            cart.forEach(item => {
-
-                                cartItems.innerHTML += `
-
-                                    <div class="d-flex gap-3 mb-4 border-bottom border-secondary pb-3">
-
-                                        <img src="${item.image}"
-                                            width="80"
-                                            height="80"
-                                            style="object-fit:cover;"
-                                            class="rounded bg-white p-1">
-
-                                        <div>
-
-                                            <h6 class="fw-bold mb-1">
-                                                ${item.name}
-                                            </h6>
-
-                                            <p class="small text-info mb-1">
-                                                ${item.price}
-                                            </p>
-
-                                            <p class="small text-secondary mb-1">
-                                                Color: ${item.color}
-                                            </p>
-
-                                            <p class="small text-secondary mb-0">
-                                                Size: ${item.size} | Qty: ${item.qty}
-                                            </p>
-
-                                        </div>
-
-                                    </div>
-
-                                `;
-                            });
-                        }
-                    });
-                </script>
-
-            <script>
-
-                // =========================
-                // WISHLIST SYSTEM
-                // =========================
-
-                let wishlist = [];
-
-                const wishlistButtons =
-                    document.querySelectorAll('.wishlist-btn');
-
-                wishlistButtons.forEach(button => {
-
-                    button.addEventListener('click', function () {
-
-                        const icon = this.querySelector('i');
-
-                        const product = {
-                            name: this.dataset.name,
-                            price: this.dataset.price,
-                            image: this.dataset.image
-                        };
-
-                        // cek apakah sudah ada
-                        const existing =
-                            wishlist.find(item => item.name === product.name);
-
-                        // =====================
-                        // TAMBAH WISHLIST
-                        // =====================
-
-                        if(!existing){
-
-                            wishlist.push(product);
-
-                            this.classList.add('active');
-
-                            icon.classList.remove('bi-heart');
-                            icon.classList.add('bi-heart-fill');
-
-                        }
-
-                        // =====================
-                        // HAPUS WISHLIST
-                        // =====================
-
-                        else{
-
-                            wishlist =
-                                wishlist.filter(item =>
-                                    item.name !== product.name
-                                );
-
-                            this.classList.remove('active');
-
-                            icon.classList.remove('bi-heart-fill');
-                            icon.classList.add('bi-heart');
-
-                        }
-
-                        // update badge
-                        document.getElementById('wishlistBadge')
-                            .innerText = wishlist.length;
-
-                        renderWishlist();
-
-                    });
-
-                });
-
-                // =========================
-                // RENDER WISHLIST
-                // =========================
-
-                function renderWishlist(){
-
-                    const wishlistItems =
-                        document.getElementById('wishlistItems');
-
-                    const emptyWishlist =
-                        document.getElementById('emptyWishlist');
-
-                    wishlistItems.innerHTML = '';
-
-                    // kosong
-                    if(wishlist.length === 0){
-
-                        emptyWishlist.style.display = 'block';
-
-                        return;
-                    }
-
-                    emptyWishlist.style.display = 'none';
-
-                    wishlist.forEach(item => {
-
-                        wishlistItems.innerHTML += `
-
-                            <div class="d-flex gap-3 mb-4 border-bottom border-secondary pb-3">
-
-                                <img src="${item.image}"
-                                    width="80"
-                                    height="80"
-                                    class="rounded bg-white p-1"
-                                    style="object-fit:cover;">
-
-                                <div>
-
-                                    <h6 class="fw-bold mb-1">
-                                        ${item.name}
-                                    </h6>
-
-                                    <p class="small text-info mb-0">
-                                        ${item.price}
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        `;
-                    });
+            `;
+
+            flyToTarget(
+                image,
+                product.querySelector('img'),
+                wishlistTarget
+            );
+            showToast('Added to Wishlist');
+
+        } else {
+            [...wishlistBody.querySelectorAll('.mini-product')]
+            .forEach(item => {
+                if(item.querySelector('h6').innerText === title){
+                    item.remove();
                 }
+            });
+            showToast('Removed from Wishlist');
+        }
+    });
+});
 
-            </script>
+/* =========================================
+   CART WITH SIZE & VARIANT
+========================================= */
+const cartButtons =
+document.querySelectorAll('.add-cart');
+const cartBody =
+document.querySelector('.cart-items');
+const cartTarget =
+document.querySelector('[data-label="Cart"]');
+const optionModal =
+new bootstrap.Modal(
+    document.getElementById('productOptionModal')
+);
 
-            <!-- SEARCH MODAL -->
-            <div class="modal fade" id="searchModal" tabindex="-1">
+let selectedProduct = null;
+let selectedSize = '';
+let selectedVariant = '';
+let totalPrice = 0;
+function updateCartTotal(){
+    document.getElementById('cartTotal')
+    .innerText =
+    'Rp ' + totalPrice.toLocaleString('id-ID');
+}
 
-                <div class="modal-dialog modal-dialog-centered">
+/* OPEN MODAL */
+cartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        selectedProduct = button;
+        const title =
+        button.dataset.title;
+        const brand =
+        button.dataset.brand;
+        const price =
+        Number(button.dataset.price);
+        const image =
+        button.dataset.image;
+        const sizes =
+        button.dataset.sizes.split(',');
+        const variants =
+        button.dataset.variants.split('|');
+        document.getElementById('optionTitle')
+        .innerText = title;
+        document.getElementById('optionPrice')
+        .innerText =
+        'Rp ' + price.toLocaleString('id-ID');
+        document.getElementById('optionImage')
+        .src = image;
 
-                    <div class="modal-content bg-dark text-white border border-secondary">
+        /* SIZE */
+        const sizeContainer =
+        document.getElementById('sizeOptions');
+        sizeContainer.innerHTML = '';
+        sizes.forEach(size => {
+            sizeContainer.innerHTML += `
+                <button class="option-btn size-btn">
+                    ${size}
+                </button>
+            `;
+        });
 
-                        <div class="modal-header border-secondary">
+        /* VARIANT */
+        const variantContainer =
+        document.getElementById('variantOptions');
+        variantContainer.innerHTML = '';
+        variants.forEach(item => {
+        const data = item.split(',');
+        const variantName = data[0];
+        const variantImage = data[1];
+            variantContainer.innerHTML += `
+                <button
+                    class="option-btn variant-btn"
+                    data-image="${variantImage}">
+                    ${variantName}
+                </button>
+            `;
+        });
 
-                            <h5 class="modal-title fw-bold">
-                                Search Product
-                            </h5>
+        /* VARIANT CLICK */
+        document.querySelectorAll('.variant-btn')
+        .forEach(btn => {
+            btn.addEventListener('click', () => {
+                document
+                .querySelectorAll('.variant-btn')
+                .forEach(x =>
+                    x.classList.remove('active')
+                );
+                btn.classList.add('active');
+                selectedVariant =
+                btn.innerText;
 
-                            <button type="button"
-                                class="btn-close btn-close-white"
-                                data-bs-dismiss="modal">
-                            </button>
+                /* CHANGE IMAGE */
+                document.getElementById('optionImage')
+                .src =
+                btn.dataset.image;
+            });
+        });
 
-                        </div>
+        /* SIZE CLICK */
+        document.querySelectorAll('.size-btn')
+        .forEach(btn => {
+            btn.addEventListener('click', () => {
+                document
+                .querySelectorAll('.size-btn')
+                .forEach(x =>
+                    x.classList.remove('active')
+                );
+                btn.classList.add('active');
+                selectedSize =
+                btn.innerText;
+            });
+        });
 
-                        <div class="modal-body">
+        /* VARIANT CLICK */
+        document.querySelectorAll('.variant-btn')
+        .forEach(btn => {
+            btn.addEventListener('click', () => {
+                document
+                .querySelectorAll('.variant-btn')
+                .forEach(x =>
+                    x.classList.remove('active')
+                );
+                btn.classList.add('active');
+                selectedVariant =
+                btn.innerText;
+            });
+        });
+        optionModal.show();
+    });
+});
 
-                            <input
-                            type="text"
-                            id="searchInput"
-                            class="form-control bg-dark text-white border-secondary"
-                            placeholder="Search product...">
+/* CONFIRM ADD CART */
+document.getElementById('confirmAddCart')
+.addEventListener('click', () => {
+    if(selectedSize === ''){
+        showToast('Select Size First');
+        return;
+    }
 
-                        </div>
+    if(selectedVariant === ''){
+        showToast('Select Variant First');
+        return;
+    }
 
-                    </div>
+    const button = selectedProduct;
+    const title =
+    button.dataset.title;
+    const brand =
+    button.dataset.brand;
+    const price =
+    Number(button.dataset.price);
+    const image =
+    button.dataset.image;
+    totalPrice += price;
+    updateCartTotal();
+    cartBody.innerHTML += `
+    <div class="mini-product mb-4">
+        <img src="${image}">
+        <div class="mini-product-content">
+            <h6 class="mb-1">
+                ${title}
+            </h6>
+            <p class="text-secondary small mb-1">
+                ${brand}
+            </p>
+            <p class="small mb-1">
+                Size : ${selectedSize}
+            </p>
+            <p class="small mb-2">
+                Variant : ${selectedVariant}
+            </p>
+            <span class="text-primary fw-bold">
+                Rp ${price.toLocaleString('id-ID')}
+            </span>
+        </div>
 
-                </div>
+        <button class="delete-item">
+            <i class="bi bi-trash"></i>
+        </button>
+    </div>
+    `;
 
-            </div>
+    flyToTarget(
+        image,
+        button,
+        cartTarget
+    );
 
-            <script>
+    showToast('Added to Cart');
+    optionModal.hide();
+    selectedSize = '';
+    selectedVariant = '';
+});
 
-            function searchProducts(keyword){
-
-                keyword = keyword.toLowerCase();
-
-                const products =
-                    document.querySelectorAll('.product-item');
-
-                products.forEach(product => {
-
-                    const productName =
-                        product.dataset.product.toLowerCase();
-
-                    if(productName.includes(keyword)){
-
-                        product.style.display = '';
-
-                    }
-
-                    else{
-
-                        product.style.display = 'none';
-
-                    }
-
-                });
-
+/* =========================================
+   DELETE ITEM
+========================================= */
+document.addEventListener('click', function(e){
+    if(e.target.closest('.delete-item')){
+        const item =
+        e.target.closest('.mini-product');
+        const title =
+        item.querySelector('h6').innerText;
+        /* KHUSUS CART */
+        if(item.closest('.cart-items')){
+            const priceText =
+            item.querySelector('.text-primary').innerText;
+            const numericPrice =
+            parseInt(priceText.replace(/[^0-9]/g,''));
+            totalPrice -= numericPrice;
+            if(totalPrice < 0){
+                totalPrice = 0;
             }
+            updateCartTotal();
+        }
 
-            // SEARCH NAVBAR
-            document.getElementById('navbarSearch')
-            .addEventListener('keyup', function(){
+        /* RESET BUTTON */
+        document.querySelectorAll('.card-product')
+        .forEach(product => {
+            const productTitle =
+            product.querySelector('h6').innerText;
+            if(productTitle === title){
+                const cartBtn =
+                product.querySelector('.add-cart');
+                cartBtn.classList.remove('active-cart');
+                cartBtn.innerText = 'Add to Bag';
+                const wishBtn =
+                product.querySelector('.wishlist-btn');
+                wishBtn.classList.remove('active');
+            }
+        });
+        item.remove();
+    }
+});
+</script>
 
-                searchProducts(this.value);
+<div class="custom-toast" id="customToast"></div>
 
-            });
-
-            // SEARCH MODAL
-            document.getElementById('searchInput')
-            .addEventListener('keyup', function(){
-
-                searchProducts(this.value);
-
-            });
-
-            </script>
-
-    </body>
-    </html>
+</body>
+</html>

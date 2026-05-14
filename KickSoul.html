@@ -177,6 +177,60 @@ body{
     transition:0.3s;
 }
 
+/* =========================================
+   MOBILE WISHLIST
+========================================= */
+
+.wishlist-mobile{
+    position:relative;
+}
+
+.wishlist-mobile::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border-radius:50px;
+
+    background:
+    radial-gradient(
+        rgba(255,77,109,0.25),
+        transparent 70%
+    );
+
+    opacity:0;
+
+    transition:0.35s;
+}
+
+.wishlist-mobile:hover::before{
+    opacity:1;
+}
+
+@media(max-width:768px){
+
+    .wishlist-mobile{
+
+        width:44px;
+        height:44px;
+
+        background:
+        rgba(255,77,109,0.08);
+
+        border:
+        1px solid rgba(255,77,109,0.18);
+
+        box-shadow:
+        0 0 15px rgba(255,77,109,0.12);
+
+    }
+
+    .wishlist-mobile i{
+        color:#ff4d6d;
+    }
+
+}
+
 .text-action:hover{
     width:120px;
 
@@ -955,8 +1009,8 @@ footer h3:active{
     will-change:transform;
 
     transition:
-    transform 2.2s cubic-bezier(0.16,1,0.3,1),
-    opacity 2.2s;
+    transform 1s cubic-bezier(0.16,1,0.3,1),
+    opacity 1s;
 
     box-shadow:
     0 10px 30px rgba(0,0,0,0.4);
@@ -1097,7 +1151,7 @@ footer h3:active{
             </a>
 
             <a href="#"
-                class="text-action d-none d-md-flex"
+                class="text-action wishlist-mobile"
                 data-label="Wishlist"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#wishlistCanvas">
@@ -1164,7 +1218,7 @@ footer h3:active{
 
                 <div class="collapse submenu" id="brandsCollapse">
                     <a href="compass.html" class="text-decoration-none">
-                        <div class="brand-item"><h5 class="brand-logo mb-0">COMPASS</h5></div>
+                        <div class="brand-item"><h5 class="brand-logo mb-0">Compass</h5></div>
                     </a>
                     <a class="nav-link" href="#">Ventela</a>
                     <a class="nav-link" href="#">Aerostreet</a>
@@ -1346,10 +1400,10 @@ footer h3:active{
 
         </div>
 
-        <button class="checkout-btn w-100">
+        <a href="checkout.html" class="checkout-btn w-100 d-block text-center text-decoration-none">
             Checkout
-        </button>
-
+        </a>
+        
     </div>
 
 </div>
@@ -1471,7 +1525,7 @@ footer h3:active{
         <div class="brand-container">
 
             <a href="compass.html" class="text-decoration-none">
-                        <div class="brand-item"><h5 class="brand-logo mb-0">COMPASS</h5></div>
+                <div class="brand-item"><h5 class="brand-logo mb-0">COMPASS</h5></div>
             </a>
             <div class="brand-item"><h5 class="brand-logo">VENTELA</h5></div>
             <div class="brand-item"><h5 class="brand-logo">AEROSTREET</h5></div>
@@ -1998,7 +2052,7 @@ wishlistButtons.forEach(button => {
             [...wishlistBody.querySelectorAll('.mini-product')]
             .forEach(item => {
 
-                if(item.innerText.includes(title)){
+                if(item.querySelector('h6').innerText === title){
                     item.remove();
                 }
 
@@ -2118,10 +2172,9 @@ cartButtons.forEach(button => {
     [...cartBody.querySelectorAll('.mini-product')]
     .forEach(item => {
 
-        if(item.innerText.includes(title)){
+        if(item.querySelector('h6').innerText === title){
             item.remove();
         }
-
     });
 
     showToast('Removed from Cart');
@@ -2143,25 +2196,59 @@ document.addEventListener('click', function(e){
         const item =
         e.target.closest('.mini-product');
 
-        const priceText =
-        item.querySelector('.text-primary').innerText;
+        const title =
+        item.querySelector('h6').innerText;
 
-        const numericPrice =
-        parseInt(priceText.replace(/[^0-9]/g,''));
+        /* KHUSUS CART */
+        if(item.closest('.cart-items')){
 
-        totalPrice -= numericPrice;
+            const priceText =
+            item.querySelector('.text-primary').innerText;
 
-        if(totalPrice < 0){
-            totalPrice = 0;
+            const numericPrice =
+            parseInt(priceText.replace(/[^0-9]/g,''));
+
+            totalPrice -= numericPrice;
+
+            if(totalPrice < 0){
+                totalPrice = 0;
+            }
+
+            updateCartTotal();
+
         }
 
-        updateCartTotal();
+        /* RESET BUTTON */
+        document.querySelectorAll('.card-product')
+        .forEach(product => {
+
+            const productTitle =
+            product.querySelector('h6').innerText;
+
+            if(productTitle === title){
+
+                const cartBtn =
+                product.querySelector('.add-cart');
+
+                cartBtn.classList.remove('active-cart');
+
+                cartBtn.innerText = 'Add to Bag';
+
+                const wishBtn =
+                product.querySelector('.wishlist-btn');
+
+                wishBtn.classList.remove('active');
+
+            }
+
+        });
 
         item.remove();
 
     }
 
 });
+
 
 </script>
 <div class="custom-toast" id="customToast"></div>
