@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout | KICKSOUL</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================
+   ROOT
+========================================= */
+
+:root{
+    --bg:#070707;
+    --card:#101010;
+    --card2:#151515;
+    --border:rgba(255,255,255,0.06);
+
+    --text:#f5f5f5;
+    --muted:#8e8e8e;
+
+    --accent:#00d2ff;
+    --accent-soft:rgba(0,210,255,0.12);
+
+    --white-soft:#f9f9f9;
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+body{
+    background:
+    radial-gradient(circle at top left,
+    rgba(0,210,255,0.08),
+    transparent 30%),
+
+    radial-gradient(circle at bottom right,
+    rgba(255,255,255,0.04),
+    transparent 25%),
+
+    var(--bg);
+
+    color:var(--text);
+
+    font-family:'Montserrat',sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:120px 20px 50px;
+
+    overflow-x:hidden;
+}
+
+/* =========================================
+   TOP BRAND
+========================================= */
+
+.top-brand{
+    position:absolute;
+
+    top:45px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:20;
+}
+
+.navbar-brand{
+    font-size:2.2rem;
+    font-weight:800;
+
+    letter-spacing:-2px;
+
+    color:#fff !important;
+
+    text-decoration:none;
+
+    position:relative;
+
+    transition:0.4s ease;
+}
+
+.logo-accent{
+    color:var(--accent);
+
+    text-shadow:
+    0 0 12px rgba(0,210,255,0.5),
+    0 0 30px rgba(0,210,255,0.15);
+}
+
+.mirrored-c{
+    display:inline-block;
+
+    transform:scaleX(-1);
+
+    margin-right:-2px;
+}
+
+.navbar-brand::after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    bottom:-8px;
+
+    width:0%;
+    height:2px;
+
+    background:var(--accent);
+
+    transform:translateX(-50%);
+
+    transition:0.4s;
+}
+
+.navbar-brand:hover{
+    transform:translateX(0) scale(1.04);
+}
+
+.navbar-brand:hover::after{
+    width:100%;
+}
+
+/* =========================================
+   CHECKOUT BOX
+========================================= */
+
+.checkout-box{
+    position:relative;
+
+    overflow:hidden;
+
+    width:100%;
+    max-width:760px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(20,20,20,0.96),
+        rgba(10,10,10,0.96)
+    );
+
+    border:1px solid var(--border);
+
+    border-radius:34px;
+
+    padding:45px;
+
+    backdrop-filter:blur(24px);
+
+    box-shadow:
+    0 30px 60px rgba(0,0,0,0.75),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+
+    transition:0.4s;
+}
+
+.checkout-box:hover{
+    border-color:rgba(0,210,255,0.12);
+
+    box-shadow:
+    0 35px 70px rgba(0,0,0,0.8),
+    0 0 40px rgba(0,210,255,0.06);
+}
+
+/* GLOW EFFECT */
+
+.checkout-box::before{
+    content:"";
+
+    position:absolute;
+
+    top:-180px;
+    right:-180px;
+
+    width:380px;
+    height:380px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        rgba(0,210,255,0.14),
+        transparent 70%
+    );
+
+    pointer-events:none;
+}
+
+.checkout-box::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-180px;
+    left:-180px;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        rgba(255,255,255,0.04),
+        transparent 70%
+    );
+
+    pointer-events:none;
+}
+
+/* =========================================
+   CHECKOUT TOP
+========================================= */
+
+.checkout-top{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+
+    margin-bottom:20px;
+}
+
+.minimal-back{
+    display:inline-flex;
+    align-items:center;
+
+    gap:8px;
+
+    text-decoration:none;
+
+    color:#8b8b8b;
+
+    font-size:0.82rem;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    transition:0.3s;
+}
+
+.minimal-back span{
+    transition:0.3s;
+}
+
+.minimal-back:hover{
+    color:var(--accent);
+}
+
+.minimal-back:hover span{
+    transform:translateX(-5px);
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.checkout-title{
+    font-size:2.4rem;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+
+    margin-bottom:12px;
+
+    line-height:1.1;
+}
+
+.checkout-subtitle{
+    color:var(--muted);
+
+    font-size:0.95rem;
+
+    margin-bottom:40px;
+
+    line-height:1.7;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-label{
+    font-weight:600;
+
+    margin-bottom:12px;
+
+    color:#e8e8e8;
+
+    font-size:0.92rem;
+}
+
+.form-control,
+.form-select{
+    background:
+    linear-gradient(
+        145deg,
+        #101010,
+        #151515
+    ) !important;
+
+    border:1px solid rgba(255,255,255,0.05) !important;
+
+    color:#fff !important;
+
+    border-radius:18px;
+
+    padding:16px 18px;
+
+    transition:0.35s ease;
+
+    font-size:0.95rem;
+}
+
+.form-control:hover,
+.form-select:hover{
+    border-color:rgba(0,210,255,0.18) !important;
+
+    background:#151515 !important;
+}
+
+.form-control:focus,
+.form-select:focus{
+    border-color:var(--accent) !important;
+
+    box-shadow:
+    0 0 0 4px rgba(0,210,255,0.08) !important;
+}
+
+.form-control::placeholder,
+textarea::placeholder{
+    color:#666 !important;
+}
+
+/* SELECT */
+
+.form-select{
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+
+    color-scheme:dark;
+
+    background-image:
+    linear-gradient(45deg, transparent 50%, #888 50%),
+    linear-gradient(135deg, #888 50%, transparent 50%);
+
+    background-position:
+    calc(100% - 18px) 55%,
+    calc(100% - 13px) 55%;
+
+    background-size:5px 5px;
+
+    background-repeat:no-repeat;
+
+    padding-right:48px;
+}
+
+.form-select option{
+    background:#101010;
+    color:#fff;
+}
+
+/* =========================================
+   PAYMENT OPTIONS
+========================================= */
+
+.payment-options{
+    display:none;
+
+    margin-top:24px;
+
+    animation:fadeIn 0.35s ease;
+}
+
+.payment-title{
+    font-size:0.78rem;
+
+    letter-spacing:2px;
+
+    color:#7d7d7d;
+
+    margin-bottom:16px;
+
+    text-transform:uppercase;
+}
+
+.payment-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+}
+
+.payment-card{
+    position:relative;
+
+    background:
+    linear-gradient(
+        145deg,
+        #ffffff,
+        #f3f3f3
+    );
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:22px;
+
+    padding:22px;
+
+    min-height:95px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:0.35s ease;
+
+    overflow:hidden;
+}
+
+.payment-card::before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.5),
+        transparent
+    );
+
+    transform:translateX(-120%);
+
+    transition:0.7s;
+}
+
+.payment-card:hover::before{
+    transform:translateX(120%);
+}
+
+.payment-card img{
+    width:85px;
+
+    object-fit:contain;
+
+    transition:0.3s;
+}
+
+.payment-card:hover{
+    transform:translateY(-5px);
+
+    border-color:rgba(0,210,255,0.3);
+
+    box-shadow:
+    0 15px 30px rgba(0,0,0,0.2),
+    0 0 20px rgba(0,210,255,0.08);
+}
+
+.payment-card:hover img{
+    transform:scale(1.05);
+}
+
+.payment-card.active{
+    border-color:var(--accent);
+
+    box-shadow:
+    0 0 25px rgba(0,210,255,0.2);
+
+    transform:translateY(-4px);
+}
+
+/* =========================================
+   SELECTED PAYMENT TEXT
+========================================= */
+
+#selectedPaymentText{
+    color:var(--accent) !important;
+
+    font-size:0.92rem;
+
+    letter-spacing:0.5px;
+}
+
+/* =========================================
+   ORDER SUMMARY
+========================================= */
+
+.order-summary{
+    background:
+    linear-gradient(
+        145deg,
+        rgba(16,16,16,0.95),
+        rgba(12,12,12,0.95)
+    );
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    border-radius:26px;
+
+    padding:28px;
+
+    margin-top:15px;
+}
+
+.summary-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:22px;
+}
+
+.summary-header h5{
+    margin:0;
+
+    font-weight:700;
+
+    font-size:1rem;
+}
+
+.summary-header span{
+    color:#7c7c7c;
+
+    font-size:0.82rem;
+
+    letter-spacing:1px;
+}
+
+.summary-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    gap:20px;
+
+    padding:16px 0;
+
+    border-bottom:1px solid rgba(255,255,255,0.04);
+}
+
+.item-name{
+    margin-bottom:3px;
+
+    font-weight:600;
+
+    font-size:0.95rem;
+}
+
+.summary-item small{
+    color:#767676;
+}
+
+.summary-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-top:26px;
+
+    padding-top:5px;
+
+    font-size:1.05rem;
+
+    font-weight:700;
+}
+
+.summary-total strong{
+    color:var(--accent);
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.checkout-btn{
+    width:100%;
+
+    border:none;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00d2ff,
+        #6ae7ff
+    );
+
+    color:#000;
+
+    padding:17px;
+
+    border-radius:18px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-top:12px;
+
+    transition:0.35s ease;
+
+    box-shadow:
+    0 10px 30px rgba(0,210,255,0.2);
+}
+
+.checkout-btn:hover{
+    background:
+    linear-gradient(
+        135deg,
+        #ffffff,
+        #dffaff
+    );
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 16px 35px rgba(0,210,255,0.18);
+}
+
+.checkout-btn:active{
+    transform:scale(0.98);
+}
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* =========================================
+   SUCCESS MODAL
+========================================= */
+
+.success-overlay{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.72);
+
+    backdrop-filter:blur(12px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:0.4s ease;
+}
+
+.success-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.success-box{
+    width:90%;
+    max-width:420px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #151515,
+        #0f0f0f
+    );
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    border-radius:30px;
+
+    padding:42px 32px;
+
+    text-align:center;
+
+    transform:translateY(20px) scale(0.95);
+
+    transition:0.4s ease;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.6),
+    0 0 30px rgba(0,210,255,0.08);
+}
+
+.success-overlay.show .success-box{
+    transform:translateY(0) scale(1);
+}
+
+.success-icon{
+    width:90px;
+    height:90px;
+
+    margin:auto auto 24px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00d2ff,
+        #6ae7ff
+    );
+
+    color:#000;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:2rem;
+    font-weight:800;
+
+    box-shadow:
+    0 0 30px rgba(0,210,255,0.25);
+}
+
+.success-box h2{
+    font-size:1.8rem;
+
+    font-weight:800;
+
+    margin-bottom:14px;
+}
+
+.success-box p{
+    color:#9a9a9a;
+
+    line-height:1.7;
+
+    font-size:0.95rem;
+
+    margin-bottom:28px;
+}
+
+.success-box button{
+    border:none;
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00d2ff,
+        #6ae7ff
+    );
+
+    transition:0.3s;
+}
+
+.success-box button:hover{
+    transform:translateY(-2px);
+
+    background:#fff;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:768px){
+
+    body{
+        padding-top:130px;
+    }
+
+    .checkout-box{
+        padding:32px 24px;
+        border-radius:28px;
+    }
+
+    .checkout-title{
+        font-size:1.9rem;
+    }
+
+    .navbar-brand{
+        font-size:1.8rem;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .payment-grid{
+        grid-template-columns:1fr;
+    }
+
+    .checkout-title{
+        font-size:1.7rem;
+    }
+
+    .checkout-box{
+        padding:28px 20px;
+    }
+
+}
+
+/* =========================================
+   CHECKOUT PROGRESS
+========================================= */
+
+.checkout-progress{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:20px;
+
+    font-size:0.8rem;
+    letter-spacing:1px;
+
+    color:#666;
+}
+
+.checkout-progress span{
+    white-space:nowrap;
+}
+
+.active-step{
+    color:var(--accent);
+    font-weight:700;
+}
+
+.progress-line{
+    width:25px;
+    height:1px;
+
+    background:rgba(255,255,255,0.15);
+}
+
+/* =========================================
+   EXTRA INFO
+========================================= */
+
+.checkout-info{
+    margin-top:22px;
+
+    padding-top:18px;
+
+    border-top:
+    1px solid rgba(255,255,255,0.04);
+}
+
+.checkout-info p{
+    margin-bottom:8px;
+
+    font-size:0.82rem;
+
+    color:#8f8f8f;
+
+    letter-spacing:0.3px;
+}
+
+/* =========================================
+   INPUT VALIDATION
+========================================= */
+
+.input-error{
+    display:block;
+
+    margin-top:8px;
+
+    font-size:0.78rem;
+
+    color:#ff6b6b;
+
+    min-height:16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================
+     TOP BRAND
+========================================= -->
+
+<div class="top-brand text-center">
+
+    <a class="navbar-brand" href="index.html">
+        KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span>
+    </a>
+
+</div>
+
+<!-- =========================================
+     CHECKOUT BOX
+========================================= -->
+
+<div class="checkout-box">
+
+    <div class="checkout-top mb-4">
+
+        <a href="index.html" class="minimal-back">
+            <span>←</span> Back
+        </a>
+
+    </div>
+
+    <div class="checkout-progress">
+
+    <span class="active-step">Cart</span>
+
+    <span class="progress-line"></span>
+
+    <span class="active-step">Checkout</span>
+
+    <span class="progress-line"></span>
+
+    <span>Payment</span>
+
+</div>
+
+    <p class="checkout-subtitle">
+        Complete your information to continue your order.
+    </p>
+
+    <form>
+
+        <!-- FULL NAME -->
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="fullName"
+                placeholder="Enter your full name"
+            >
+
+        </div>
+
+        <!-- EMAIL -->
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Email
+            </label>
+
+            <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter your email"
+            >
+            <small id="emailError" class="input-error"></small>
+        </div>
+
+        <!-- PHONE -->
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Phone Number
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="phone"
+                placeholder="08xxxxxxxxxx"
+            >
+            <small id="phoneError" class="input-error"></small>
+
+        </div>
+
+        <!-- ADDRESS -->
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Full Address
+            </label>
+
+            <textarea
+                class="form-control"
+                id="address"
+                rows="4"
+                placeholder="Enter your full address"
+            ></textarea>
+
+        </div>
+
+        <!-- PAYMENT -->
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Payment Method
+            </label>
+
+            <select class="form-select" id="paymentMethod">
+
+    <option value="" selected disabled>
+        Select Payment Method
+    </option>
+
+    <option value="cod">
+        COD
+    </option>
+
+    <option value="va">
+        Virtual Account
+    </option>
+
+    <option value="ewallet">
+        E-Wallet
+    </option>
+
+</select>
+
+            <!-- VIRTUAL ACCOUNT -->
+
+            <div class="payment-options" id="vaOptions">
+
+                <p class="payment-title">
+                    Choose Bank
+                </p>
+
+                <div class="payment-grid">
+
+                    <div class="payment-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg">
+                    </div>
+
+                    <div class="payment-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- EWALLET -->
+
+            <div class="payment-options" id="ewalletOptions">
+
+                <p class="payment-title">
+                    Choose E-Wallet
+                </p>
+
+                <div class="payment-grid">
+
+                    <div class="payment-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg">
+                    </div>
+
+                    <div class="payment-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg">
+                    </div>
+
+                    <div class="payment-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg">
+                    </div>
+
+                    <div class="payment-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Shopee.svg">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p id="selectedPaymentText" class="mt-3 text-info fw-bold"></p>
+
+        </div>
+
+        <!-- ORDER SUMMARY -->
+
+        <div class="order-summary mb-4" id="orderSummary">
+
+            <div class="summary-header">
+
+                <h5>
+                    Order Summary
+                </h5>
+
+                <span id="itemCount">
+                    0 Items
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button type="submit" class="checkout-btn">
+            Place Order
+        </button>
+
+    </form>
+
+</div>
+
+<!-- =========================================
+     ORDER SUCCESS MODAL
+========================================= -->
+
+<div class="success-overlay" id="successOverlay">
+
+    <div class="success-box">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Order Confirmed
+        </h2>
+
+        <p>
+            Your order has been successfully placed.<br>
+            Thank you for shopping with KICKSOUL.
+        </p>
+
+        <button id="continueBtn">
+            Continue Shopping
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+/* =========================================
+   PAYMENT METHOD
+========================================= */
+
+const paymentMethod =
+document.getElementById('paymentMethod');
+
+const vaOptions =
+document.getElementById('vaOptions');
+
+const ewalletOptions =
+document.getElementById('ewalletOptions');
+
+paymentMethod.addEventListener('change', function(){
+
+    vaOptions.style.display = 'none';
+    ewalletOptions.style.display = 'none';
+
+    /* RESET ACTIVE CARD */
+    paymentCards.forEach(card => {
+        card.classList.remove('active');
+    });
+
+    if(this.value === 'cod'){
+
+        selectedPaymentText.innerText =
+        'Selected Payment: COD';
+
+    }
+
+    if(this.value === 'va'){
+
+        vaOptions.style.display = 'block';
+
+        selectedPaymentText.innerText =
+        'Select your bank';
+
+    }
+
+    if(this.value === 'ewallet'){
+
+        ewalletOptions.style.display = 'block';
+
+        selectedPaymentText.innerText =
+        'Select your e-wallet';
+
+    }
+
+});
+
+/* =========================================
+   PAYMENT CARD ACTIVE
+========================================= */
+
+const paymentCards =
+document.querySelectorAll('.payment-card');
+
+const selectedPaymentText =
+document.getElementById('selectedPaymentText');
+
+paymentCards.forEach(card => {
+
+    card.addEventListener('click', function(){
+
+        const parent =
+        this.parentElement;
+
+        parent.querySelectorAll('.payment-card')
+        .forEach(item => {
+            item.classList.remove('active');
+        });
+
+        this.classList.add('active');
+
+        const paymentName =
+        this.querySelector('img').src;
+
+        if(paymentName.includes('dana')){
+
+            selectedPaymentText.innerText =
+            'Selected Payment: DANA';
+
+        }
+
+        else if(paymentName.includes('ovo')){
+
+            selectedPaymentText.innerText =
+            'Selected Payment: OVO';
+
+        }
+
+        else if(paymentName.toLowerCase().includes('gopay')){
+
+            selectedPaymentText.innerText =
+            'Selected Payment: GOPAY';
+
+        }
+
+        else if(paymentName.toLowerCase().includes('shopee')){
+
+            selectedPaymentText.innerText =
+            'Selected Payment: SHOPEEPAY';
+
+        }
+
+        else if(paymentName.includes('Central')){
+
+            selectedPaymentText.innerText =
+            'Selected Payment: BCA';
+
+        }
+
+        else{
+
+            selectedPaymentText.innerText =
+            'Selected Payment: MANDIRI';
+
+        }
+
+    });
+
+});
+
+/* =========================================
+   ORDER SUMMARY
+========================================= */
+
+const orderSummary =
+document.getElementById('orderSummary');
+
+const cartItems =
+JSON.parse(localStorage.getItem('cartItems')) || [];
+
+let total = 0;
+
+let summaryHTML = '';
+
+cartItems.forEach(item => {
+
+    const qty = item.qty || 1;
+
+    total += item.price * qty;
+
+    summaryHTML += `
+    
+    <div class="summary-item">
+
+        <div>
+
+            <p class="item-name">
+                ${item.name}
+            </p>
+
+            <small>
+                ${item.brand} • Qty: ${qty}
+            </small>
+        </div>
+
+        <strong>
+            Rp ${(item.price * qty).toLocaleString('id-ID')}
+        </strong>
+    </div>
+
+    `;
+
+});
+
+/* TAMPILKAN ITEM */
+
+orderSummary.innerHTML += summaryHTML;
+
+/* UPDATE JUMLAH ITEM */
+
+document.getElementById('itemCount').innerText =
+`${cartItems.length} Items`;
+
+/* TOTAL */
+
+orderSummary.innerHTML += `
+
+<div class="summary-total">
+
+    <span>Total</span>
+
+    <strong>
+        Rp ${total.toLocaleString('id-ID')}
+    </strong>
+
+</div>
+
+`;
+
+orderSummary.innerHTML += `
+
+<div class="checkout-info">
+
+    <p>✓ Free Shipping</p>
+
+    <p>✓ Estimated arrival: 2–4 days</p>
+
+    <p>🔒 Secure Checkout</p>
+
+</div>
+
+`;
+
+/* =========================================
+   SAVE USER DATA
+========================================= */
+
+const fullName =
+document.getElementById('fullName');
+
+const email =
+document.getElementById('email');
+
+const phone =
+document.getElementById('phone');
+
+const address =
+document.getElementById('address');
+
+/* LOAD DATA */
+
+window.addEventListener('DOMContentLoaded', () => {
+
+    fullName.value =
+    localStorage.getItem('checkoutFullName') || '';
+
+    email.value =
+    localStorage.getItem('checkoutEmail') || '';
+
+    phone.value =
+    localStorage.getItem('checkoutPhone') || '';
+
+    address.value =
+    localStorage.getItem('checkoutAddress') || '';
+
+});
+
+/* SAVE DATA */
+
+fullName.addEventListener('input', () => {
+
+    localStorage.setItem(
+        'checkoutFullName',
+        fullName.value
+    );
+
+});
+
+email.addEventListener('input', () => {
+
+    localStorage.setItem(
+        'checkoutEmail',
+        email.value
+    );
+
+});
+
+phone.addEventListener('input', () => {
+
+    localStorage.setItem(
+        'checkoutPhone',
+        phone.value
+    );
+
+});
+
+address.addEventListener('input', () => {
+
+    localStorage.setItem(
+        'checkoutAddress',
+        address.value
+    );
+
+});
+
+/* =========================================
+   PLACE ORDER
+========================================= */
+
+const checkoutForm =
+document.querySelector('form');
+
+const checkoutBtn =
+document.querySelector('.checkout-btn');
+
+const successOverlay =
+document.getElementById('successOverlay');
+
+const continueBtn =
+document.getElementById('continueBtn');
+
+let loadingInterval;
+checkoutForm.addEventListener('submit', function(e){
+
+    e.preventDefault();
+
+    /* VALIDASI SIMPLE */
+
+    if(
+        fullName.value.trim() === '' ||
+        email.value.trim() === '' ||
+        phone.value.trim() === '' ||
+        address.value.trim() === ''
+    ){
+
+        alert('Please complete your checkout details.');
+
+        return;
+    }
+
+    /* LOADING BUTTON */
+
+    let dots = 0;
+
+checkoutBtn.innerHTML =
+'⏳ Securing Payment';
+
+loadingInterval = setInterval(() => {
+
+    dots++;
+
+    if(dots > 3){
+        dots = 0;
+    }
+
+    checkoutBtn.innerHTML =
+    '⏳ Securing Payment' + '.'.repeat(dots);
+
+}, 400);
+
+    checkoutBtn.disabled = true;
+
+    /* SIMULASI PROCESS */
+
+    setTimeout(() => {
+
+        /* TAMPILKAN MODAL */
+
+        clearInterval(loadingInterval);
+        successOverlay.classList.add('show');
+
+/* PLAY SUCCESS SOUND */
+const successSound =
+document.getElementById('successSound');
+
+successSound.currentTime = 0;
+successSound.play();
+
+        /* RESET BUTTON */
+
+        checkoutBtn.innerHTML =
+        'PLACE ORDER';
+
+        checkoutBtn.disabled = false;
+
+        /* HAPUS CART */
+
+        localStorage.removeItem('cartItems');
+
+    }, 2000);
+
+});
+
+/* CONTINUE SHOPPING */
+
+continueBtn.addEventListener('click', () => {
+
+    window.location.href =
+    'index.html';
+
+});
+
+/* =========================================
+   LIVE VALIDATION
+========================================= */
+
+const emailError =
+document.getElementById('emailError');
+
+const phoneError =
+document.getElementById('phoneError');
+
+/* EMAIL */
+
+email.addEventListener('input', () => {
+
+    const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(
+        email.value.trim() !== '' &&
+        !emailPattern.test(email.value)
+    ){
+
+        emailError.innerText =
+        'Invalid email format';
+
+    }
+
+    else{
+
+        emailError.innerText = '';
+
+    }
+
+});
+
+/* PHONE */
+
+phone.addEventListener('input', () => {
+
+    const phonePattern =
+    /^[0-9]{10,13}$/;
+
+    if(
+        phone.value.trim() !== '' &&
+        !phonePattern.test(phone.value)
+    ){
+
+        phoneError.innerText =
+        'Phone number must be 10–13 digits';
+
+    }
+
+    else{
+
+        phoneError.innerText = '';
+
+    }
+
+});
+
+</script>
+
+<!-- SUCCESS SOUND -->
+<audio id="successSound" preload="auto">
+    <source src="sound.html/notifikasi.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>                                                                                                                                                                 
+
+
+

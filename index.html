@@ -332,9 +332,10 @@ body{
     inset:0;
 
     background:linear-gradient(
-        rgba(0,0,0,0.45),
-        rgba(0,0,0,0.7)
-    );
+    to top,
+    rgba(0,0,0,0.45),
+    rgba(0,0,0,0.05)
+  );
 }
 
 .hero-content{
@@ -344,13 +345,47 @@ body{
 
 .hero-content h1{
     font-size:5rem;
-    font-weight:800;
-    letter-spacing:5px;
+    font-weight:900;
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    color:#fff;
+
+    text-shadow:
+        0 4px 20px rgba(0,0,0,0.8),
+        0 0 25px rgba(0,210,255,0.25);
+
+    margin-bottom:15px;
+
+    animation:heroTextUp 1.2s ease;
 }
 
 .hero-content p{
-    letter-spacing:2px;
-    color:#ddd;
+    font-size:1.1rem;
+    font-weight:500;
+
+    letter-spacing:3px;
+
+    color:#f5f5f5;
+
+    text-shadow:
+        0 2px 12px rgba(0,0,0,0.8);
+
+    margin-bottom:10px;
+
+    animation:heroTextUp 1.5s ease;
+}
+
+@keyframes heroTextUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .btn-hero{
@@ -369,29 +404,164 @@ body{
     transition:0.3s;
 }
 
-.btn-hero:hover{
+.btn-hero:hover,
+.btn-hero:focus,
+.btn-hero:active{
     background:#fff;
+    color:#000 !important;
     transform:scale(1.05);
 }
 
 /* =========================================
-   CATEGORY
+   CATEGORY (UPGRADED)
 ========================================= */
 
 .category-card{
     border:none;
     overflow:hidden;
     border-radius:24px;
-
     position:relative;
+    cursor:pointer;
 }
 
 .category-card img{
-    transition:0.5s;
+    transition:0.7s ease;
+
+    /* gambar lebih terang & tajam */
+    filter:
+    brightness(1.05)
+    contrast(1.08)
+    saturate(1.1);
 }
 
+/* overlay gradient agar teks lebih hidup */
+.category-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.15)
+    );
+
+    transition:0.4s;
+}
+
+/* hover image */
 .category-card:hover img{
     transform:scale(1.08);
+    filter:brightness(0.9);
+}
+
+/* hover overlay */
+.category-card:hover::before{
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.9),
+        rgba(0,210,255,0.08)
+    );
+}
+
+/* semua isi card */
+.category-card .card-img-overlay{
+    position:relative;
+    z-index:2;
+}
+
+/* title */
+.category-card h2,
+.category-card h4{
+    font-weight:800;
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:8px;
+
+    transition:0.4s;
+
+    text-shadow:
+    0 3px 10px rgba(0,0,0,0.6);
+}
+
+/* desc */
+.category-card p{
+    color:#d6d6d6;
+    letter-spacing:1px;
+    transition:0.4s;
+}
+
+/* hover title */
+.category-card:hover h2,
+.category-card:hover h4{
+    transform:translateY(-4px);
+
+    text-shadow:
+    0 0 15px rgba(0,210,255,0.3),
+    0 0 30px rgba(0,210,255,0.12);
+}
+
+/* =========================================
+   CATEGORY BUTTON
+========================================= */
+
+.category-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    margin-top:15px;
+
+    padding:13px 26px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:2px;
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    background:rgba(255,255,255,0.06);
+
+    backdrop-filter:blur(12px);
+
+    transition:0.4s ease;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,0.25);
+}
+
+.category-btn i{
+    transition:0.4s;
+}
+
+/* hover tombol */
+.category-btn:hover{
+    background:var(--accent);
+
+    color:#000;
+
+    border-color:var(--accent);
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 20px rgba(0,210,255,0.35),
+    0 0 35px rgba(0,210,255,0.15);
+}
+
+.category-btn:hover i{
+    transform:
+    translateX(4px)
+    rotate(45deg);
 }
 
 /* =========================================
@@ -1080,6 +1250,224 @@ footer h3:active{
     transform:scale(0.97);
 }
 
+/* =========================================
+   HOTTEST DROPS SLIDER
+========================================= */
+
+.product-slider-wrapper{
+    position:relative;
+}
+
+.product-slider{
+    display:flex;
+    gap:32px;
+
+    overflow-x:auto;
+    scroll-behavior:smooth;
+
+    padding:10px 20px 30px;
+}
+
+.product-slider::-webkit-scrollbar{
+    display:none;
+}
+
+.product-slider .product-item{
+    min-width:340px;
+    flex:0 0 auto;
+}
+
+/* =========================================
+   HOTTEST DROPS BUTTON UPGRADE
+========================================= */
+
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:56px;
+    height:56px;
+
+    border:none;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    z-index:20;
+    cursor:pointer;
+
+    /* glass effect */
+    background:rgba(20,20,20,0.55);
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.35);
+
+    transition:all 0.4s ease;
+}
+
+.slider-btn i{
+    font-size:1.2rem;
+    transition:0.35s;
+}
+
+/* hover */
+.slider-btn:hover{
+    background:rgba(0,210,255,0.18);
+
+    border-color:rgba(0,210,255,0.45);
+
+    box-shadow:
+        0 0 20px rgba(0,210,255,0.25),
+        0 0 35px rgba(0,210,255,0.12);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+.slider-btn:hover i{
+    color:var(--accent);
+}
+
+/* click */
+.slider-btn:active{
+    transform:
+        translateY(-50%)
+        scale(0.94);
+}
+
+/* posisi tombol */
+.slider-prev{
+    left:8px;
+}
+
+.slider-next{
+    right:8px;
+}
+
+
+.slider-btn{
+    width:45px;
+    height:45px;
+}
+
+
+    .empty-state{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    height:100%;
+
+    opacity:0.7;
+
+    padding:40px 20px;
+}
+
+.empty-state i{
+    font-size:4rem;
+
+    color:var(--accent);
+
+    margin-bottom:20px;
+
+    animation:floatIcon 2.5s ease-in-out infinite;
+}
+
+.empty-state h6{
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.empty-state p{
+    color:#888;
+    font-size:0.9rem;
+}
+
+@keyframes floatIcon{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+@media(max-width:768px){
+
+    .slider-btn{
+        width:42px;
+        height:42px;
+    }
+
+    .slider-btn i{
+        font-size:1rem;
+    }
+
+    .slider-prev{
+        left:5px;
+    }
+
+    .slider-next{
+        right:5px;
+    }
+
+}
+
+.glow {
+    animation: glowEffect 0.6s ease-in-out;
+}
+
+@keyframes glowEffect {
+    0% {
+        transform: scale(0.98);
+        box-shadow: 0 0 0 rgba(0,0,0,0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        opacity: 1;
+    }
+}
+
+.cart-items {
+    position: relative;
+    z-index: 1;
+}
+
+.cart-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    background: #111; /* sesuaikan tema kamu */
+}
+
+.delete-item {
+    position: relative;
+    z-index: 999;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
 </style>
 </head>
 
@@ -1217,9 +1605,7 @@ footer h3:active{
 
 
                 <div class="collapse submenu" id="brandsCollapse">
-                    <a href="compass.html" class="text-decoration-none">
-                        <div class="brand-item"><h5 class="brand-logo mb-0">Compass</h5></div>
-                    </a>
+                    <a class="nav-link" href="compass.html">Compass</a>
                     <a class="nav-link" href="#">Ventela</a>
                     <a class="nav-link" href="#">Aerostreet</a>
                     <a class="nav-link" href="#">Geoff Max Footwear</a>
@@ -1316,7 +1702,9 @@ footer h3:active{
 
                     <div class="d-flex flex-wrap gap-2">
 
-                        <span class="search-tag">Compass</span>
+                        <a href="compass.html" class="search-tag text-decoration-none text-white">
+                            Compass
+                        </a>
                         <span class="search-tag">Ventela</span>
                         <span class="search-tag">Aerostreet</span>
                         <span class="search-tag">Gazelle</span>
@@ -1342,19 +1730,44 @@ footer h3:active{
      tabindex="-1"
      id="wishlistCanvas">
 
-    <div class="offcanvas-header">
+        <div class="offcanvas-header">
 
-        <h5 class="offcanvas-title">
-            MY WISHLIST
-        </h5>
+            <h5 class="offcanvas-title">
+                MY WISHLIST
+            </h5>
 
-        <button class="btn-close btn-close-white"
-                data-bs-dismiss="offcanvas">
-        </button>
+            <div class="d-flex gap-2">
 
-    </div>
+                <button class="btn btn-sm btn-danger"
+                        id="clearWishlistBtn">
+                    Clear All
+                </button>
 
-    <div class="offcanvas-body">
+                <button class="btn-close btn-close-white"
+                        data-bs-dismiss="offcanvas">
+                </button>
+
+            </div>
+
+        </div>
+        <div class="offcanvas-body">
+
+        <div class="search-box mb-4">
+            <i class="bi bi-search"></i>
+            <input type="text"
+                class="form-control"
+                id="wishlistSearch"
+                placeholder="Search wishlist...">
+        </div>
+
+        <!-- 🔥 TAMBAHAN -->
+        <div id="wishlistItems"></div>
+
+        <div class="empty-state wishlist-empty">
+            <i class="bi bi-heart"></i>
+            <h6>Your Wishlist is Empty</h6>
+            <p>Save your favorite sneakers here.</p>
+        </div>
 
     </div>
 
@@ -1368,22 +1781,56 @@ footer h3:active{
      tabindex="-1"
      id="cartCanvas">
 
-    <div class="offcanvas-header">
+        <div class="offcanvas-header">
 
-        <h5 class="offcanvas-title">
-            SHOPPING CART
-        </h5>
+            <h5 class="offcanvas-title">
+                SHOPPING CART
+            </h5>
 
-        <button class="btn-close btn-close-white"
-                data-bs-dismiss="offcanvas">
-        </button>
+            <div class="d-flex gap-2">
 
-    </div>
+                <button class="btn btn-sm btn-danger"
+                        id="clearCartBtn">
+                    Clear All
+                </button>
+
+                <button class="btn-close btn-close-white"
+                        data-bs-dismiss="offcanvas">
+                </button>
+
+            </div>
+
+        </div>
 
     <div class="offcanvas-body d-flex flex-column p-0">
 
     <!-- CART ITEMS -->
     <div class="cart-items flex-grow-1 p-4">
+
+        <div class="search-box mb-4">
+            <i class="bi bi-search"></i>
+            <input type="text"
+                class="form-control"
+                id="cartSearch"
+                placeholder="Search cart...">
+        </div>
+
+        <!-- TAMBAHAN INI -->
+        <div id="cartItems"></div>
+
+        <div class="empty-state cart-empty">
+
+            <i class="bi bi-bag"></i>
+
+            <h6>
+                Your Cart is Empty
+            </h6>
+
+            <p>
+                Start shopping your favorite sneakers.
+            </p>
+
+        </div>
 
     </div>
 
@@ -1427,13 +1874,13 @@ footer h3:active{
             <div class="carousel-item active">
 
                 <div class="hero-slide"
-                     style="background-image:url('https://i.pinimg.com/1200x/46/11/e4/4611e4717a47c47b0af16df8e779bd36.jpg');">
+                     style="background-image:url('https://down-id.img.susercontent.com/file/sg-11134201-7rfft-m9okpk7q7ykg7e.webp');">
 
                     <div class="hero-content">
 
                         <h1>COMPASS</h1>
 
-                        <p>Gazelle Series Collection</p>
+                        <p>Retrograde Camp Low Camel</p>
 
                         <a href="#shop" class="btn btn-hero">
                             SHOP NOW
@@ -1449,13 +1896,13 @@ footer h3:active{
             <div class="carousel-item">
 
                 <div class="hero-slide"
-                     style="background-image:url('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=1500&q=80');">
+                     style="background-image:url('https://down-id.img.susercontent.com/file/id-11134207-7qul7-lhu2us9q6iqc49.webp');">
 
                     <div class="hero-content">
 
                         <h1>VENTELA</h1>
 
-                        <p>Daily Oldschool Sneakers</p>
+                        <p>Reborn Low Reflective</p>
 
                         <a href="#shop" class="btn btn-hero">
                             SHOP NOW
@@ -1471,13 +1918,13 @@ footer h3:active{
             <div class="carousel-item">
 
                 <div class="hero-slide"
-                     style="background-image:url('https://images.unsplash.com/photo-1605348532760-6753d2c43329?auto=format&fit=crop&w=1500&q=80');">
+                     style="background-image:url('https://down-id.img.susercontent.com/file/id-11134207-822wr-mny9jiw1coi011.webp');">
 
                     <div class="hero-content">
 
-                        <h1>AEROSTREET</h1>
+                        <h1>GEOFF MAX</h1>
 
-                        <p>Streetwear Local Pride</p>
+                        <p>Dublin All Black </p>
 
                         <a href="#shop" class="btn btn-hero">
                             SHOP NOW
@@ -1545,15 +1992,16 @@ footer h3:active{
 
 <section class="container py-5">
 
-    <div class="row g-4">
+    <div class="row g-4 align-items-stretch">
 
+        <!-- LEFT -->
         <div class="col-lg-8">
 
-            <div class="card category-card bg-dark text-white">
+            <div class="card category-card bg-dark text-white h-100">
 
-                <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=1200&q=80"
+                <img src="https://down-id.img.susercontent.com/file/id-11134207-822wo-mnbfba51f5s445.webp"
                      class="card-img"
-                     style="height:420px; object-fit:cover; opacity:0.55;">
+                     style="height:420px; object-fit:cover; opacity:0.9;">
 
                 <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
 
@@ -1565,13 +2013,10 @@ footer h3:active{
                         Koleksi sepatu lokal premium.
                     </p>
 
-                    <a href="#shop"
-   class="category-btn">
-
-    SHOP NOW
-    <i class="bi bi-arrow-up-right"></i>
-
-</a>
+                    <a href="#shop" class="category-btn">
+                        SHOP NOW
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
 
                 </div>
 
@@ -1579,42 +2024,45 @@ footer h3:active{
 
         </div>
 
-        <div class="col-lg-4">
+        <!-- RIGHT -->
+        <div class="col-lg-4 d-flex flex-column gap-4">
 
-            <div class="card category-card bg-dark text-white mb-4">
+            <div class="card category-card bg-dark text-white flex-fill">
 
                 <img src="https://down-id.img.susercontent.com/file/id-11134207-7r992-lqbdsv7615gu65"
                      class="card-img"
-                     style="height:200px; object-fit:cover; opacity:0.55;">
+                     style="height:200px; object-fit:cover; opacity:0.9;">
 
                 <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
 
                     <h4 class="fw-bold">
-                        APPARELS
+                        APPAREL
                     </h4>
+
                     <a href="#shop" class="category-btn small-btn mt-3">
-                         SHOP NOW
-                    <i class="bi bi-arrow-up-right"></i>
+                        SHOP NOW
+                        <i class="bi bi-arrow-up-right"></i>
                     </a>
 
                 </div>
 
             </div>
 
-            <div class="card category-card bg-dark text-white">
+            <div class="card category-card bg-dark text-white flex-fill">
 
                 <img src="https://cf.shopee.co.id/file/sg-11134201-7ra16-m4wsboygdyoufe"
                      class="card-img"
-                     style="height:200px; object-fit:cover; opacity:0.55;">
+                     style="height:200px; object-fit:cover; opacity:0.9;">
 
                 <div class="card-img-overlay d-flex flex-column justify-content-end text-center">
 
                     <h4 class="fw-bold">
                         SLIP ON
                     </h4>
+
                     <a href="#shop" class="category-btn small-btn mt-3">
                         SHOP NOW
-                    <i class="bi bi-arrow-up-right"></i>
+                        <i class="bi bi-arrow-up-right"></i>
                     </a>
 
                 </div>
@@ -1645,10 +2093,23 @@ footer h3:active{
 
     </div>
 
-    <div class="row g-4">
+    <div class="product-slider-wrapper">
+
+    <!-- BUTTON LEFT -->
+    <button class="slider-btn slider-prev" id="hotPrev">
+        <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <!-- BUTTON RIGHT -->
+    <button class="slider-btn slider-next" id="hotNext">
+        <i class="bi bi-chevron-right"></i>
+    </button>
+
+    <!-- SLIDER -->
+    <div class="product-slider" id="hotSlider">
 
         <!-- PRODUCT -->
-        <div class="col-6 col-lg-3">
+        <div class="product-item">
 
             <div class="card-product position-relative">
 
@@ -1658,7 +2119,7 @@ footer h3:active{
 
                 <div class="overflow-hidden rounded-4">
 
-                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rdyi-m0k403zmx3b8a2.webp">
 
                 </div>
 
@@ -1667,11 +2128,11 @@ footer h3:active{
                 </p>
 
                 <h6>
-                    Gazelle Low Blue
+                    Tribune Black Gum
                 </h6>
 
                 <p class="text-primary fw-bold">
-                    Rp 408.000
+                    Rp 598.000
                 </p>
 
                 <div class="d-flex gap-2 mt-3">
@@ -1690,14 +2151,15 @@ footer h3:active{
 
         </div>
 
-        <!-- PRODUCT -->
-        <div class="col-6 col-lg-3">
 
-            <div class="card-product">
+        <!-- PRODUCT -->
+        <div class="product-item">
+
+            <div class="card-product" data-id="p1">
 
                 <div class="overflow-hidden rounded-4">
 
-                    <img src="https://down-id.img.susercontent.com/file/id-11134211-82251-mkm33t6j2b5zb0@resize_w900_nl.webp">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134211-82251-mjry56fcldl07d.webp">
 
                 </div>
 
@@ -1706,11 +2168,11 @@ footer h3:active{
                 </p>
 
                 <h6>
-                    DBR Madeira White
+                    JOGGER 24 WORK WEAR
                 </h6>
 
                 <p class="text-primary fw-bold">
-                    Rp 394.800
+                    Rp 380.000
                 </p>
 
                 <div class="d-flex gap-2 mt-3">
@@ -1729,13 +2191,52 @@ footer h3:active{
         </div>
 
         <!-- PRODUCT -->
-        <div class="col-6 col-lg-3">
+        <div class="product-item">
 
-            <div class="card-product">
+            <div class="card-product" data-id="p2">
 
                 <div class="overflow-hidden rounded-4">
 
-                    <img src="https://down-id.img.susercontent.com/file/id-11134207-822wi-mnax637slf5wcb.webp">
+                    <img src="https://down-id.img.susercontent.com/file/17e7db4d6153a4349845ef44344a638c.webp">
+
+                </div>
+
+                <p class="text-muted small mt-3 mb-1">
+                    Ventela
+                </p>
+
+                <h6>
+                    New Public Low Black Natural
+                </h6>
+
+                <p class="text-primary fw-bold">
+                    Rp 400.000
+                </p>
+
+                <div class="d-flex gap-2 mt-3">
+
+                <button class="wishlist-btn">
+                     <i class="bi bi-heart"></i>
+                 </button>
+
+                <button class="btn-buy w-100 add-cart">
+                    Add to Bag
+                </button>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT -->
+        <div class="product-item">
+
+            <div class="card-product" data-id="p3">
+
+                <div class="overflow-hidden rounded-4">
+
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-8224o-mjgnq95vsgzq60@resize_w450_nl.webp">
 
                 </div>
 
@@ -1744,11 +2245,11 @@ footer h3:active{
                 </p>
 
                 <h6>
-                    Cherrie Ballerina
+                    Massive Low 2.0
                 </h6>
 
                 <p class="text-primary fw-bold">
-                    Rp 162.000
+                    Rp 400.000
                 </p>
 
                 <div class="d-flex gap-2 mt-3">
@@ -1767,44 +2268,47 @@ footer h3:active{
         </div>
 
         <!-- PRODUCT -->
-        <div class="col-6 col-lg-3">
+<div class="product-item">
 
-            <div class="card-product">
+    <div class="card-product" data-id="p4">
 
-                <div class="overflow-hidden rounded-4">
+        <div class="overflow-hidden rounded-4">
 
-                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=500&q=80">
-
-                </div>
-
-                <p class="text-muted small mt-3 mb-1">
-                    Geoff Max
-                </p>
-
-                <h6>
-                    Urban Street Series
-                </h6>
-
-                <p class="text-primary fw-bold">
-                    Rp 299.000
-                </p>
-
-                <div class="d-flex gap-2 mt-3">
-
-                <button class="wishlist-btn">
-                    <i class="bi bi-heart"></i>
-                </button>
-
-                <button class="btn-buy w-100 add-cart">
-                    Add to Bag
-                </button>
-
-                </div>
-            </div>
+            <img src="https://down-id.img.susercontent.com/file/id-11134201-7r98v-lwj525o8f5aw07.webp">
 
         </div>
 
-    </div>
+        <p class="text-muted small mt-3 mb-1">
+            Geoff Max
+        </p>
+
+        <h6>
+            Gavin Black Gum STZ
+        </h6>
+
+        <p class="text-primary fw-bold">
+            Rp 450.000
+        </p>
+
+        <div class="d-flex gap-2 mt-3">
+
+            <button class="wishlist-btn">
+                <i class="bi bi-heart"></i>
+            </button>
+
+            <button class="btn-buy w-100 add-cart">
+                Add to Bag
+            </button>
+
+        </div>
+
+    </div> <!-- END card-product -->
+
+</div> <!-- END product-item -->
+
+</div> <!-- END product-slider -->
+
+</div> <!-- END product-slider-wrapper -->
 
 </section>
 
@@ -1862,34 +2366,166 @@ footer h3:active{
 
 <script>
 
+document.addEventListener('DOMContentLoaded', function() {
+
 AOS.init({
     once:true,
     duration:1000
 });
 
-/* SEARCH REALTIME */
+/* =========================================
+   SEARCH REALTIME IMPROVED
+========================================= */
 
-const searchInput = document.querySelector('.search-box input');
+const searchInput =
+document.querySelector('#searchModal input');
 
-searchInput.addEventListener('keyup', function(){
+const searchTags =
+document.querySelectorAll('.search-tag');
 
-    let filter = searchInput.value.toLowerCase();
+function performSearch(autoClose = false){
 
-    let products = document.querySelectorAll('.card-product');
+    const filter =
+    searchInput.value.trim().toLowerCase();
 
-    products.forEach(product => {
+    const productItems =
+    document.querySelectorAll('.product-item');
 
-        let title = product.innerText.toLowerCase();
+    let found = false;
 
-        if(title.includes(filter)){
-            product.parentElement.style.display = 'block';
+    productItems.forEach(item => {
+
+        const brand =
+        item.querySelector('.text-muted')
+        ?.innerText
+        .trim()
+        .toLowerCase() || '';
+
+        const title =
+        item.querySelector('h6')
+        ?.innerText
+        .trim()
+        .toLowerCase() || '';
+
+        // SEARCH BRAND + PRODUCT
+        const match =
+            brand.includes(filter) ||
+            title.includes(filter);
+
+        if(match){
+
+            item.style.display = 'block';
+            found = true;
+
         } else {
-            product.parentElement.style.display = 'none';
+
+            item.style.display = 'none';
+
         }
 
     });
 
+    if(autoClose && filter !== '' && found){
+
+        const modal =
+        bootstrap.Modal.getInstance(searchModal);
+
+        modal.hide();
+
+        setTimeout(() => {
+
+            document.getElementById('shop')
+            .scrollIntoView({
+                behavior:'smooth'
+            });
+
+        },300);
+
+    }
+
+}
+
+/* ENTER SEARCH */
+
+searchInput.addEventListener(
+    'keydown',
+    function(e){
+
+        if(e.key === 'Enter'){
+
+            e.preventDefault();
+
+            performSearch(true);
+
+        }
+
+    }
+);
+
+/* SEARCH INPUT */
+
+searchInput.addEventListener(
+    'input',
+    () => performSearch(false)
+);
+
+/* SEARCH TAG CLICK */
+
+searchTags.forEach(tag => {
+
+    tag.addEventListener('click', () => {
+
+        const keyword =
+        tag.innerText.trim();
+
+        /* isi input */
+        searchInput.value = keyword;
+
+        /* jalankan search */
+        performSearch();
+
+        /* tutup modal search */
+        const modal =
+        bootstrap.Modal.getInstance(searchModal);
+
+        modal.hide();
+
+        /* scroll ke section produk */
+        document.getElementById('shop')
+        .scrollIntoView({
+            behavior:'smooth'
+        });
+
+    });
+
 });
+
+
+/* AUTO FOCUS MODAL */
+
+const searchModal =
+document.getElementById('searchModal');
+
+searchModal.addEventListener(
+    'shown.bs.modal',
+    () => {
+
+        searchInput.focus();
+
+    }
+);
+
+/* RESET SEARCH SAAT MODAL DITUTUP */
+
+searchModal.addEventListener(
+    'hidden.bs.modal',
+    () => {
+
+        // kosongkan input TANPA reset produk
+        searchInput.value = '';
+
+    }
+);
 
 /* AUTO CLOSE SIDEBAR */
 
@@ -1976,6 +2612,70 @@ function flyToTarget(imageSrc, startElement, targetElement){
 }
 
 /* =========================================
+   EMPTY STATE CONTROLLER
+========================================= */
+
+function toggleWishlistEmpty(){
+
+    const empty =
+    document.querySelector('.wishlist-empty');
+    
+    const items =
+    wishlistBody.querySelectorAll('.mini-product');
+
+    if(items.length > 0){
+
+        if(empty){
+            empty.style.display = 'none';
+        }
+
+    } else {
+
+        if(empty){
+            empty.style.display = 'flex';
+        }
+
+    }
+
+}
+
+function toggleCartEmpty(){
+
+    const empty =
+    document.querySelector('.cart-empty');
+
+    const items =
+    document.querySelectorAll('#cartItems .mini-product');
+
+    empty.style.display =
+    items.length > 0 ? 'none' : 'flex';
+
+}
+
+function saveWishlistToStorage(){
+
+    let items = [];
+
+    wishlistBody.querySelectorAll('.mini-product')
+    .forEach(item => {
+
+        items.push({
+            name: item.querySelector('h6').innerText,
+            brand: item.querySelector('p').innerText,
+            price: item.querySelector('span').innerText,
+            image: item.querySelector('img').src
+        });
+
+    });
+
+    localStorage.setItem(
+        'wishlistItems',
+        JSON.stringify(items)
+    );
+
+}
+
+/* =========================================
    WISHLIST
 ========================================= */
 
@@ -1983,7 +2683,7 @@ const wishlistButtons =
 document.querySelectorAll('.wishlist-btn');
 
 const wishlistBody =
-document.querySelector('#wishlistCanvas .offcanvas-body');
+document.getElementById('wishlistItems');
 
 const wishlistTarget =
 document.querySelector('[data-label="Wishlist"]');
@@ -2010,7 +2710,30 @@ wishlistButtons.forEach(button => {
         button.classList.toggle('active');
 
         if(button.classList.contains('active')){
+            let wishlistItems =
+            JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
+            wishlistItems.push({
+                name: title,
+                brand: brand,
+                price: price,
+                image: image
+            });
+
+            localStorage.setItem(
+                'wishlistItems',
+                JSON.stringify(wishlistItems)
+            );
+
+            const existingItem =
+            [...wishlistBody.querySelectorAll('.mini-product')]
+            .find(item =>
+            item.querySelector('h6').innerText === title
+            );
+
+            if(existingItem){
+                return;
+            }
             wishlistBody.innerHTML += `
 
             <div class="mini-product mb-3">
@@ -2046,8 +2769,24 @@ wishlistButtons.forEach(button => {
             );
 
             showToast('Added to Wishlist');
+            toggleWishlistEmpty();
 
         } else {
+
+            button.classList.remove('active');
+
+            let wishlistItems =
+            JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+            wishlistItems =
+            wishlistItems.filter(item =>
+                item.name !== title
+            );
+
+            localStorage.setItem(
+                'wishlistItems',
+                JSON.stringify(wishlistItems)
+            );
 
             [...wishlistBody.querySelectorAll('.mini-product')]
             .forEach(item => {
@@ -2059,6 +2798,9 @@ wishlistButtons.forEach(button => {
             });
 
             showToast('Removed from Wishlist');
+
+            toggleWishlistEmpty();
+            saveWishlistToStorage();
 
         }
 
@@ -2074,11 +2816,10 @@ const cartButtons =
 document.querySelectorAll('.add-cart');
 
 const cartBody =
-document.querySelector('.cart-items');
+document.getElementById('cartItems');
 
 const cartTarget =
 document.querySelector('[data-label="Cart"]');
-
 
 let totalPrice = 0;
 
@@ -2089,109 +2830,147 @@ function updateCartTotal(){
     'Rp ' + totalPrice.toLocaleString('id-ID');
 
 }
+
+function loadCartFromStorage(){
+
+    let cartItems =
+    JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    cartBody.querySelectorAll('.mini-product')
+    .forEach(item => item.remove());
+
+    totalPrice = 0;
+
+    cartItems.forEach(item => {
+
+        totalPrice += item.price * item.qty;
+
+        cartBody.innerHTML += `
+
+        <div class="mini-product mb-4">
+
+            <img src="${item.image}">
+
+            <div class="mini-product-content">
+
+                <h6 class="mb-1">
+                    ${item.name}
+                </h6>
+
+                <p class="text-secondary small mb-2">
+                    ${item.brand}
+                </p>
+
+            <div class="d-flex align-items-center gap-2 mt-2">
+
+                <button class="qty-minus btn btn-sm btn-dark">
+                    -
+                </button>
+
+                <span class="qty-value">
+                    ${item.qty}
+                </span>
+
+                <button class="qty-plus btn btn-sm btn-dark">
+                    +
+                </button>
+
+            </div>
+
+            <span class="text-primary fw-bold d-block mt-2">
+                Rp ${(item.price * item.qty).toLocaleString('id-ID')}
+            </span>
+
+            </div>
+
+            <button class="delete-item">
+                <i class="bi bi-trash"></i>
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+    updateCartTotal();
+
+}
+
+/* ADD TO CART */
+
 cartButtons.forEach(button => {
 
     button.addEventListener('click', () => {
 
-        const product =
-        button.closest('.card-product');
+        const product = button.closest('.card-product');
 
-        const title =
-        product.querySelector('h6').innerText;
+        const title = product.querySelector('h6').innerText;
+        const brand = product.querySelector('.text-muted').innerText;
+        const price = product.querySelector('.text-primary').innerText;
+        const image = product.querySelector('img').src;
 
-        const brand =
-        product.querySelector('.text-muted').innerText;
+        const numericPrice = parseInt(price.replace(/[^0-9]/g, ''));
 
-        const price =
-        product.querySelector('.text-primary').innerText;
+        button.classList.add('active-cart');
 
-        const image =
-        product.querySelector('img').src;
+        if (button.classList.contains('active-cart')) {
 
-        const numericPrice =
-        parseInt(price.replace(/[^0-9]/g,''));
+            button.innerText = 'Added';
 
-        button.classList.toggle('active-cart');
+            totalPrice += numericPrice;
+            updateCartTotal();
 
-        if(button.classList.contains('active-cart')){
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-    button.innerText = 'Added';
+            const existingItem = cartItems.find(item => item.name === title);
 
-    totalPrice += numericPrice;
-    updateCartTotal();
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cartItems.push({
+                    name: title,
+                    brand: brand,
+                    price: numericPrice,
+                    image: image,
+                    qty: 1
+                });
+            }
 
-    cartBody.innerHTML += `
-
-    <div class="mini-product mb-4">
-
-        <img src="${image}">
-
-        <div class="mini-product-content">
-
-            <h6 class="mb-1">
-                ${title}
-            </h6>
-
-            <p class="text-secondary small mb-2">
-                ${brand}
-            </p>
-
-            <span class="text-primary fw-bold">
-                ${price}
-            </span>
-
-        </div>
-
-        <button class="delete-item">
-            <i class="bi bi-trash"></i>
-        </button>
-
-    </div>
-
-    `;
-            flyToTarget(
-                image,
-                product.querySelector('img'),
-                cartTarget
+            localStorage.setItem(
+                'cartItems',
+                JSON.stringify(cartItems)
             );
 
+            loadCartFromStorage();
+
+            
+            document.querySelector('.cart-empty').style.display = 'none';   
+
+            flyToTarget(image, product.querySelector('img'), cartTarget);
+
             showToast('Added to Cart');
-
-        } else {
-
-    button.innerText = 'Add to Bag';
-
-    totalPrice -= numericPrice;
-
-    if(totalPrice < 0){
-        totalPrice = 0;
-    }
-
-    updateCartTotal();
-
-    [...cartBody.querySelectorAll('.mini-product')]
-    .forEach(item => {
-
-        if(item.querySelector('h6').innerText === title){
-            item.remove();
+            toggleCartEmpty();
         }
-    });
-
-    showToast('Removed from Cart');
-
-    }
 
     });
 
 });
 
-/* =========================================
-   DELETE ITEM
-========================================= */
-
 document.addEventListener('click', function(e){
 
-    if(e.target.closest('.delete-item')){
+    if(
+        !e.target.classList.contains('qty-plus') &&
+        !e.target.classList.contains('qty-minus')
+    ){
+        return;
+    }
+
+    let cartItems =
+    JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    /* PLUS */
+    if(e.target.classList.contains('qty-plus')){
 
         const item =
         e.target.closest('.mini-product');
@@ -2199,24 +2978,111 @@ document.addEventListener('click', function(e){
         const title =
         item.querySelector('h6').innerText;
 
-        /* KHUSUS CART */
-        if(item.closest('.cart-items')){
+        cartItems.forEach(product => {
 
-            const priceText =
-            item.querySelector('.text-primary').innerText;
-
-            const numericPrice =
-            parseInt(priceText.replace(/[^0-9]/g,''));
-
-            totalPrice -= numericPrice;
-
-            if(totalPrice < 0){
-                totalPrice = 0;
+            if(product.name === title){
+                product.qty += 1;
             }
 
-            updateCartTotal();
+        });
 
-        }
+    }
+
+    /* MINUS */
+    if(e.target.classList.contains('qty-minus')){
+
+        const item =
+        e.target.closest('.mini-product');
+
+        const title =
+        item.querySelector('h6').innerText;
+
+        cartItems.forEach(product => {
+
+            if(product.name === title){
+
+                product.qty -= 1;
+
+            }
+
+        });
+
+        cartItems =
+        cartItems.filter(item => item.qty > 0);
+
+        document.querySelectorAll('.card-product')
+        .forEach(product => {
+
+            const productTitle =
+            product.querySelector('h6').innerText;
+
+            cartItems.forEach(() => {});
+
+            const exists =
+            cartItems.find(item => item.name === productTitle);
+
+            if(!exists){
+
+                const cartBtn =
+                product.querySelector('.add-cart');
+
+                cartBtn.classList.remove('active-cart');
+
+                cartBtn.innerText = 'Add to Bag';
+
+            }
+
+        });
+
+    }
+
+ localStorage.setItem(
+        'cartItems',
+        JSON.stringify(cartItems)
+    );
+
+    loadCartFromStorage();
+
+    toggleCartEmpty();
+
+});
+
+/* =========================================
+   DELETE ITEM
+========================================= */
+
+document.addEventListener('click', function (e) {
+
+    const deleteBtn = e.target.closest('.delete-item');
+
+    if (!deleteBtn) return;
+
+    const item =
+    deleteBtn.closest('.mini-product');
+
+    const title =
+    item.querySelector('h6').innerText.trim();
+
+    /* =========================
+       DELETE CART
+    ========================= */
+
+    if (
+        item.closest('#cartItems')
+    ){
+
+        let cartItems =
+        JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        cartItems =
+        cartItems.filter(product =>
+            product.name !== title
+        );
+
+        localStorage.setItem(
+            'cartItems',
+            JSON.stringify(cartItems)
+        );
 
         /* RESET BUTTON */
         document.querySelectorAll('.card-product')
@@ -2227,30 +3093,249 @@ document.addEventListener('click', function(e){
 
             if(productTitle === title){
 
-                const cartBtn =
+                const btn =
                 product.querySelector('.add-cart');
 
-                cartBtn.classList.remove('active-cart');
+                btn.classList.remove('active-cart');
 
-                cartBtn.innerText = 'Add to Bag';
-
-                const wishBtn =
-                product.querySelector('.wishlist-btn');
-
-                wishBtn.classList.remove('active');
+                btn.innerText = 'Add to Bag';
 
             }
 
         });
 
-        item.remove();
+        loadCartFromStorage();
+
+        toggleCartEmpty();
+
+        showToast('Removed from Cart');
+
+    }
+
+    /* =========================
+       DELETE WISHLIST
+    ========================= */
+
+    if (
+        item.closest('#wishlistItems')
+    ){
+
+        let wishlistItems =
+        JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+        wishlistItems =
+        wishlistItems.filter(product =>
+            product.name !== title
+        );
+
+        localStorage.setItem(
+            'wishlistItems',
+            JSON.stringify(wishlistItems)
+        );
+
+        document.querySelectorAll('.card-product')
+        .forEach(product => {
+
+            const productTitle =
+            product.querySelector('h6').innerText;
+
+            if(productTitle === title){
+
+                product.querySelector('.wishlist-btn')
+                ?.classList.remove('active');
+
+            }
+
+        });
+
+        loadWishlistFromStorage();
+
+        toggleWishlistEmpty();
+
+        showToast('Removed from Wishlist');
 
     }
 
 });
 
+loadCartFromStorage();
+loadWishlistFromStorage();
+toggleCartEmpty();
+
+function loadWishlistFromStorage() {
+
+    let wishlistItems =
+        JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+    wishlistBody.querySelectorAll('.mini-product')
+        .forEach(item => item.remove());
+
+    wishlistItems.forEach(item => {
+
+        wishlistBody.insertAdjacentHTML('beforeend', `
+            <div class="mini-product mb-3">
+
+                <img src="${item.image}">
+
+                <div class="mini-product-content">
+
+                    <h6 class="mb-1">${item.name}</h6>
+
+                    <p class="text-secondary small mb-2">
+                        ${item.brand}
+                    </p>
+
+                    <span class="text-primary fw-bold">
+                        ${item.price}
+                    </span>
+
+                </div>
+
+                <button class="delete-item">
+                    <i class="bi bi-trash"></i>
+                </button>
+
+            </div>
+        `);
+
+    });
+
+    toggleWishlistEmpty();
+}
+
+/* =========================================
+   SEARCH CART & WISHLIST
+========================================= */
+
+const wishlistSearch =
+document.getElementById('wishlistSearch');
+
+const cartSearch =
+document.getElementById('cartSearch');
+
+/* =========================================
+   SEARCH CART & WISHLIST IMPROVED
+========================================= */
+
+function smartSearch(input, container){
+
+    const value = input.value.trim().toLowerCase();
+
+    const items = container.querySelectorAll('.mini-product');
+
+    items.forEach(item => {
+
+        const brand = item.querySelector('p')?.innerText?.toLowerCase() || '';
+        const title = item.querySelector('h6')?.innerText?.toLowerCase() || '';
+
+        const match = brand.includes(value) || title.includes(value);
+
+        item.style.display = match ? '' : 'none';
+
+    });
+}
+
+/* WISHLIST SEARCH */
+
+wishlistSearch.addEventListener('input', () => {
+
+    smartSearch(
+        wishlistSearch,
+        wishlistBody
+    );
+
+});
+
+/* CART SEARCH */
+
+cartSearch.addEventListener('input', () => {
+
+    smartSearch(
+        cartSearch,
+        cartBody
+    );
+
+});
+
+/* HOTTEST DROP SLIDER */
+
+const hotSlider =
+document.getElementById('hotSlider');
+
+const hotPrev =
+document.getElementById('hotPrev');
+
+const hotNext =
+document.getElementById('hotNext');
+
+hotNext.addEventListener('click', () => {
+
+    hotSlider.scrollBy({
+        left:320,
+        behavior:'smooth'
+    });
+
+});
+
+hotPrev.addEventListener('click', () => {
+
+    hotSlider.scrollBy({
+        left:-320,
+        behavior:'smooth'
+    });
+
+});
+
+document.getElementById('clearWishlistBtn')
+.addEventListener('click', () => {
+
+    localStorage.removeItem('wishlistItems');
+
+    wishlistBody.innerHTML = '';
+
+    document.querySelectorAll('.wishlist-btn')
+    .forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    toggleWishlistEmpty();
+
+    showToast('Wishlist cleared');
+});
+
+document.getElementById('clearCartBtn')
+.addEventListener('click', () => {
+
+    // hapus data cart di storage
+    localStorage.removeItem('cartItems');
+
+    // kosongkan tampilan cart
+    cartBody.querySelectorAll('.mini-product')
+    .forEach(item => item.remove());
+
+    // reset total
+    totalPrice = 0;
+    updateCartTotal();
+
+    // reset semua tombol "Add to Bag"
+    document.querySelectorAll('.add-cart')
+    .forEach(btn => {
+        btn.classList.remove('active-cart');
+        btn.innerText = 'Add to Bag';
+    });
+
+    // update empty state
+    toggleCartEmpty();
+
+    // toast
+    showToast('Cart cleared');
+});
+
+});
 
 </script>
+
 <div class="custom-toast" id="customToast"></div>
+
 </body>
 </html>
