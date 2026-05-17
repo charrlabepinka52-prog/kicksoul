@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Detail | KICKSOUL</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#0b0b0b;
+    --card:#141414;
+    --border:#222;
+    --text:#f5f5f5;
+    --muted:#999;
+    --accent:#00d2ff;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Montserrat',sans-serif;
+}
+
+.navbar{
+    background:#0b0b0b;
+    border-bottom:1px solid var(--border);
+    padding:18px 0;
+}
+
+.navbar-brand{
+    font-weight:800;
+    color:#fff !important;
+    font-size:1.8rem;
+}
+
+.logo-accent{
+    color:var(--accent);
+}
+
+.mirrored-c{
+    display:inline-block;
+    transform:scaleX(-1);
+}
+
+.product-gallery img{
+    width:100%;
+    border-radius:24px;
+    object-fit:cover;
+}
+
+.thumbnail-wrapper{
+    display:flex;
+    gap:12px;
+    margin-top:15px;
+}
+
+.thumbnail{
+    width:90px;
+    height:90px;
+    border-radius:16px;
+    object-fit:cover;
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:0.3s;
+}
+
+.thumbnail:hover,
+.thumbnail.active{
+    border-color:var(--accent);
+    transform:scale(1.03);
+}
+
+.product-brand{
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#aaa;
+    font-size:0.8rem;
+}
+
+.product-title{
+    font-size:2.5rem;
+    font-weight:800;
+}
+
+.product-price{
+    color:var(--accent);
+    font-size:2rem;
+    font-weight:700;
+}
+
+.option-btn{
+    border:none;
+    background:#151515;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:12px;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.option-btn:hover{
+    border-color:var(--accent);
+}
+
+.option-btn.active{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
+}
+
+.quantity-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.qty-btn{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:12px;
+    background:#151515;
+    color:#fff;
+    font-size:1.2rem;
+}
+
+.qty-number{
+    font-size:1.1rem;
+    font-weight:700;
+    min-width:30px;
+    text-align:center;
+}
+
+.action-btn{
+    height:55px;
+    border:none;
+    border-radius:16px;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.btn-cart{
+    background:var(--accent);
+    color:#000;
+}
+
+.btn-cart:hover{
+    background:#fff;
+}
+
+.btn-wishlist{
+    background:#151515;
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.btn-wishlist:hover{
+    background:#ff4d6d;
+}
+
+.product-description{
+    line-height:1.9;
+    color:#bbb;
+}
+
+.info-card{
+    background:#111;
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:22px;
+    padding:25px;
+    height:100%;
+}
+
+.review-card{
+    background:#111;
+    border-radius:22px;
+    padding:22px;
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+.review-avatar{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+}
+
+.related-product{
+    background:#111;
+    border-radius:22px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.related-product:hover{
+    transform:translateY(-6px);
+}
+
+.related-product img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.related-product-body{
+    padding:18px;
+}
+
+footer{
+    border-top:1px solid var(--border);
+}
+
+@media(max-width:768px){
+
+    .product-title{
+        font-size:2rem;
+    }
+
+}
+
+/* =========================================
+   PRODUCT GALLERY
+========================================= */
+
+.product-gallery{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.main-image-container{
+    width:100%;
+    border-radius:28px;
+    overflow:hidden;
+
+    background:#111;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.main-product-image{
+    width:100%;
+    height:600px;
+
+    object-fit:cover;
+
+    transition:0.4s;
+}
+
+.thumbnail-wrapper{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.thumb{
+    width:90px;
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    border:2px solid transparent;
+
+    opacity:0.7;
+
+    transition:0.3s;
+}
+
+.thumb:hover{
+    opacity:1;
+    transform:translateY(-4px);
+}
+
+.thumb.active{
+    border-color:var(--accent);
+    opacity:1;
+
+    box-shadow:
+    0 0 18px rgba(0,210,255,0.3);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .main-product-image{
+        height:420px;
+    }
+
+    .thumb{
+        width:70px;
+        height:70px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="KickSoul.html">
+            KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span>
+        </a>
+    </div>
+</nav>
+
+<!-- PRODUCT DETAIL -->
+<section class="container py-5">
+
+    <div class="row g-5 align-items-start">
+
+        <!-- LEFT -->
+        <div class="col-lg-6">
+
+            <div class="product-gallery">
+                <img id="mainImage"
+                     src="https://down-id.img.susercontent.com/file/sg-11134201-7rfgo-m3qhvbu0zns7f6.webp">
+            </div>
+
+            <div class="thumbnail-wrapper">
+
+                <img class="thumbnail active"
+                     src="https://down-id.img.susercontent.com/file/sg-11134201-7rfgo-m3qhvbu0zns7f6.webp">
+
+                <img class="thumbnail"
+                     src="https://down-id.img.susercontent.com/file/sg-11134201-7rdx7-m0k4cnka2215e4@resize_w900_nl.webp">
+
+                <img class="thumbnail"
+                     src="https://down-id.img.susercontent.com/file/sg-11134201-7rdx7-m0k3zm64zukk72.webp">
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="col-lg-6">
+
+            <p class="product-brand mb-2">
+                Compass
+            </p>
+
+            <h1 class="product-title mb-3">
+                Tribune Navy Gum
+            </h1>
+
+            <div class="d-flex align-items-center gap-3 mb-4">
+
+                <div class="text-warning">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div>
+
+                <span class="text-secondary">
+                    4.9 (128 Reviews)
+                </span>
+
+            </div>
+
+            <h2 class="product-price mb-4">
+                Rp 573.900
+            </h2>
+
+            <p class="product-description mb-5">
+                Compass Tribune hadir dengan desain vintage modern yang cocok untuk daily wear maupun streetwear outfit. Menggunakan material canvas premium dengan outsole gum klasik yang nyaman dipakai sepanjang hari.
+            </p>
+
+            <!-- SIZE -->
+            <div class="mb-5">
+
+                <h6 class="fw-bold mb-3">
+                    SELECT SIZE
+                </h6>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="option-btn active">39</button>
+                    <button class="option-btn">40</button>
+                    <button class="option-btn">41</button>
+                    <button class="option-btn">42</button>
+                    <button class="option-btn">43</button>
+                </div>
+
+            </div>
+
+            <!-- QUANTITY -->
+            <div class="mb-5">
+
+                <h6 class="fw-bold mb-3">
+                    QUANTITY
+                </h6>
+
+                <div class="quantity-box">
+
+                    <button class="qty-btn" id="minusQty">
+                        -
+                    </button>
+
+                    <div class="qty-number" id="qtyNumber">
+                        1
+                    </div>
+
+                    <button class="qty-btn" id="plusQty">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+            <div class="d-grid gap-3">
+
+                <button class="action-btn btn-cart">
+                    Add to Cart
+                </button>
+
+                <button class="action-btn btn-wishlist">
+                    <i class="bi bi-heart me-2"></i>
+                    Add to Wishlist
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PRODUCT INFO -->
+<section class="container pb-5">
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="info-card">
+                <h5 class="fw-bold mb-3">
+                    Material
+                </h5>
+                <p class="text-secondary mb-0">
+                    Premium canvas upper with rubber gum outsole.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="info-card">
+                <h5 class="fw-bold mb-3">
+                    Shipping
+                </h5>
+                <p class="text-secondary mb-0">
+                    Free shipping Indonesia minimum order Rp 500.000.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="info-card">
+                <h5 class="fw-bold mb-3">
+                    Warranty
+                </h5>
+                <p class="text-secondary mb-0">
+                    7 days product exchange guarantee.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- REVIEWS -->
+<section class="container pb-5">
+
+    <div class="mb-5">
+        <h2 class="fw-bold">
+            Customer Reviews
+        </h2>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="review-card">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="review-avatar">
+                        C
+                    </div>
+
+                    <div>
+                        <h6 class="mb-0">Charrla</h6>
+                        <small class="text-secondary">
+                            Verified Buyer
+                        </small>
+                    </div>
+                </div>
+
+                <p class="text-secondary mb-0">
+                    Material bagus, nyaman dipakai dan packaging premium.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="review-card">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="review-avatar">
+                        D
+                    </div>
+
+                    <div>
+                        <h6 class="mb-0">Dodo</h6>
+                        <small class="text-secondary">
+                            Verified Buyer
+                        </small>
+                    </div>
+                </div>
+
+                <p class="text-secondary mb-0">
+                    Size sesuai dan kualitas sepatu sangat worth it.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- RELATED PRODUCTS -->
+<section class="container pb-5">
+
+    <div class="mb-5">
+        <h2 class="fw-bold">
+            Related Products
+        </h2>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4 col-6">
+            <div class="related-product">
+                <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rbmf-locaidb0hrpmd9.webp">
+
+                <div class="related-product-body">
+                    <h6 class="fw-bold mb-2">
+                        Velocity
+                    </h6>
+
+                    <p class="text-primary fw-bold mb-0">
+                        Rp 798.000
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-6">
+            <div class="related-product">
+                <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rbmg-lo7vva0u6p45c1.webp">
+
+                <div class="related-product-body">
+                    <h6 class="fw-bold mb-2">
+                        Retrograde
+                    </h6>
+
+                    <p class="text-primary fw-bold mb-0">
+                        Rp 538.000
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-6">
+            <div class="related-product">
+                <img src="https://down-id.img.susercontent.com/file/sg-11134201-8261l-mk3zq9feam12db.webp">
+
+                <div class="related-product-body">
+                    <h6 class="fw-bold mb-2">
+                        T-Shirt
+                    </h6>
+
+                    <p class="text-primary fw-bold mb-0">
+                        Rp 238.000
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="py-5 mt-5">
+
+    <div class="container text-center">
+
+        <h3 class="fw-bold mb-4">
+            KI<span class="mirrored-c">C</span>K<span class="logo-accent">SOUL</span>
+        </h3>
+
+        <p class="text-secondary mb-0">
+            © 2026 KICKSOUL Official Store
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- SCRIPT -->
+<script>
+
+/* THUMBNAIL */
+const thumbnails =
+document.querySelectorAll('.thumbnail');
+
+const mainImage =
+document.getElementById('mainImage');
+
+thumbnails.forEach(img => {
+
+    img.addEventListener('click', () => {
+
+        thumbnails.forEach(x =>
+            x.classList.remove('active')
+        );
+
+        img.classList.add('active');
+
+        mainImage.src = img.src;
+
+    });
+
+});
+
+/* SIZE */
+document.querySelectorAll('.option-btn')
+.forEach(btn => {
+
+    btn.addEventListener('click', () => {
+
+        document.querySelectorAll('.option-btn')
+        .forEach(x =>
+            x.classList.remove('active')
+        );
+
+        btn.classList.add('active');
+
+    });
+
+});
+
+/* QUANTITY */
+let qty = 1;
+
+const qtyNumber =
+document.getElementById('qtyNumber');
+
+const plusQty =
+document.getElementById('plusQty');
+
+const minusQty =
+document.getElementById('minusQty');
+
+plusQty.addEventListener('click', () => {
+
+    qty++;
+    qtyNumber.innerText = qty;
+
+});
+
+minusQty.addEventListener('click', () => {
+
+    if(qty > 1){
+        qty--;
+        qtyNumber.innerText = qty;
+    }
+
+});
+
+</script>
+
+</body>
+</html>
