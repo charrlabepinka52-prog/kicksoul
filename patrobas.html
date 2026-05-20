@@ -295,11 +295,12 @@ body{
 /* =========================================
    HERO
 ========================================= */
+
 .hero{
     height:60vh;
     background:
     linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
-    url('https://down-bs-id.img.susercontent.com/id-11134210-822wp-mns7gxwty1aad9.webp');
+    url('https://down-tx-id.img.susercontent.com/id-11134210-7rash-m31wsnlsu7aq81.webp');
     background-size:cover;
     background-position:center;
     display:flex;
@@ -309,23 +310,155 @@ body{
 }
 
 /* =========================================
-   CATEGORY
+   CATEGORY (UPGRADED)
 ========================================= */
 
 .category-card{
     border:none;
     overflow:hidden;
     border-radius:24px;
-
     position:relative;
+    cursor:pointer;
 }
 
 .category-card img{
-    transition:0.5s;
+    transition:0.7s ease;
+
+    /* gambar lebih terang & tajam */
+    filter:
+    brightness(1.05)
+    contrast(1.08)
+    saturate(1.1);
 }
 
+/* overlay gradient agar teks lebih hidup */
+.category-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.15)
+    );
+
+    transition:0.4s;
+}
+
+/* hover image */
 .category-card:hover img{
     transform:scale(1.08);
+    filter:brightness(0.9);
+}
+
+/* hover overlay */
+.category-card:hover::before{
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.9),
+        rgba(0,210,255,0.08)
+    );
+}
+
+/* semua isi card */
+.category-card .card-img-overlay{
+    position:relative;
+    z-index:2;
+}
+
+/* title */
+.category-card h2,
+.category-card h4{
+    font-weight:800;
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:8px;
+
+    transition:0.4s;
+
+    text-shadow:
+    0 3px 10px rgba(0,0,0,0.6);
+}
+
+/* desc */
+.category-card p{
+    color:#d6d6d6;
+    letter-spacing:1px;
+    transition:0.4s;
+}
+
+/* hover title */
+.category-card:hover h2,
+.category-card:hover h4{
+    transform:translateY(-4px);
+
+    text-shadow:
+    0 0 15px rgba(0,210,255,0.3),
+    0 0 30px rgba(0,210,255,0.12);
+}
+
+/* =========================================
+   CATEGORY BUTTON
+========================================= */
+
+.category-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    margin-top:15px;
+
+    padding:13px 26px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:2px;
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    background:rgba(255,255,255,0.06);
+
+    backdrop-filter:blur(12px);
+
+    transition:0.4s ease;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,0.25);
+}
+
+.category-btn i{
+    transition:0.4s;
+}
+
+/* hover tombol */
+.category-btn:hover{
+    background:var(--accent);
+
+    color:#000;
+
+    border-color:var(--accent);
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 20px rgba(0,210,255,0.35),
+    0 0 35px rgba(0,210,255,0.15);
+}
+
+.category-btn:hover i{
+    transform:
+    translateX(4px)
+    rotate(45deg);
 }
 
 /* =========================================
@@ -403,8 +536,9 @@ body{
 }
 
 .btn-buy:hover{
-    background:#fff;
+    background:var(--accent);
     color:#000;
+    border-color:var(--accent);
 }
 
 /* =========================================
@@ -905,43 +1039,6 @@ footer h3:active{
 }
 
 /* =========================================
-   QUANTITY
-========================================= */
-
-.quantity-box{
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    margin-top:12px;
-}
-
-.qty-btn{
-    width:30px;
-    height:30px;
-
-    border:none;
-    border-radius:8px;
-
-    background:#1a1a1a;
-    color:#fff;
-
-    transition:0.3s;
-}
-
-.qty-btn:hover{
-    background:var(--accent);
-    color:#000;
-}
-
-.qty-number{
-    min-width:20px;
-    text-align:center;
-
-    font-weight:700;
-}
-
-/* =========================================
    RESPONSIVE BUTTON
 ========================================= */
 
@@ -1052,45 +1149,114 @@ footer h3:active{
 }
 
 /* =========================================
-   SIZE MODAL
+   HOTTEST DROPS SLIDER
 ========================================= */
 
-.option-btn{
-    border:1px solid rgba(255,255,255,0.1);
-    background:#151515;
-    color:#fff;
-
-    padding:12px 18px;
-    border-radius:12px;
-
-    transition:0.3s;
+.product-slider-wrapper{
+    position:relative;
 }
 
-.option-btn:hover{
-    border-color:var(--accent);
-    color:var(--accent);
+.product-slider{
+    display:flex;
+    gap:32px;
+
+    overflow-x:auto;
+    scroll-behavior:smooth;
+
+    padding:10px 20px 30px;
 }
 
-.option-btn.active{
-    background:var(--accent);
-    color:#000;
-    border-color:var(--accent);
+.product-slider::-webkit-scrollbar{
+    display:none;
 }
 
-.product-option-img{
-    width:100%;
-    border-radius:18px;
-    height:260px;
-    object-fit:cover;
+.product-slider .product-item{
+    min-width:340px;
+    flex:0 0 auto;
 }
 
 /* =========================================
-   SEARCH ANIMATION
+   HOTTEST DROPS BUTTON UPGRADE
 ========================================= */
 
-.product-item{
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:56px;
+    height:56px;
+
+    border:none;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    z-index:20;
+    cursor:pointer;
+
+    /* glass effect */
+    background:rgba(20,20,20,0.55);
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.35);
+
+    transition:all 0.4s ease;
+}
+
+.slider-btn i{
+    font-size:1.2rem;
     transition:0.35s;
 }
+
+/* hover */
+.slider-btn:hover{
+    background:rgba(0,210,255,0.18);
+
+    border-color:rgba(0,210,255,0.45);
+
+    box-shadow:
+        0 0 20px rgba(0,210,255,0.25),
+        0 0 35px rgba(0,210,255,0.12);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+.slider-btn:hover i{
+    color:var(--accent);
+}
+
+/* click */
+.slider-btn:active{
+    transform:
+        translateY(-50%)
+        scale(0.94);
+}
+
+/* posisi tombol */
+.slider-prev{
+    left:8px;
+}
+
+.slider-next{
+    right:8px;
+}
+
+
+.slider-btn{
+    width:45px;
+    height:45px;
+}
+
 
     .empty-state{
     display:flex;
@@ -1164,6 +1330,158 @@ footer h3:active{
 
 }
 
+.glow {
+    animation: glowEffect 0.6s ease-in-out;
+}
+
+@keyframes glowEffect {
+    0% {
+        transform: scale(0.98);
+        box-shadow: 0 0 0 rgba(0,0,0,0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        opacity: 1;
+    }
+}
+
+.cart-items {
+    position: relative;
+    z-index: 1;
+}
+
+.cart-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    background: #111; /* sesuaikan tema kamu */
+}
+
+.delete-item {
+    position: relative;
+    z-index: 999;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* =========================================
+   SIZE MODAL
+========================================= */
+
+.option-btn{
+    border:1px solid rgba(255,255,255,0.1);
+    background:#151515;
+    color:#fff;
+
+    padding:8px 14px;
+
+    font-size:13px;
+    min-width:52px;
+
+    border-radius:12px;
+
+    transition:0.3s;
+}
+
+.option-btn:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.option-btn.active{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
+}
+
+.product-option-img{
+    width:100%;
+    border-radius:18px;
+    height:260px;
+    object-fit:cover;
+}
+
+#productOptionModal .modal-content{
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    padding: 16px !important;
+}
+
+#modalProductImage{
+
+    width: 100%;
+
+    max-height: 180px;
+
+    object-fit: contain;
+
+    background: #f5f5f5;
+
+    padding: 10px;
+
+    border-radius: 22px;
+
+    margin-bottom: 14px !important;
+}
+
+#modalProductImage{
+
+    width: 100%;
+
+    max-height: 180px;
+
+    object-fit: contain;
+
+    background: #f5f5f5;
+
+    padding: 10px;
+
+    border-radius: 22px;
+
+    margin-bottom: 14px !important;
+}
+
+#sizeOptions,
+#variantOptions{
+
+    gap: 10px !important;
+}
+
+#confirmAddCart{
+
+    padding:12px !important;
+
+    font-size:16px;
+
+    background:var(--accent) !important;
+
+    border:1px solid var(--accent) !important;
+
+    color:#000 !important;
+
+    font-weight:700;
+
+    border-radius:14px;
+
+    transition:0.3s;
+}
+
+#confirmAddCart:hover{
+
+    background:var(--accent) !important;
+
+    color:#000 !important;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 18px rgba(0,210,255,0.35);
+}
 
 </style>
 </head>
@@ -1302,8 +1620,8 @@ footer h3:active{
 
 
                 <div class="collapse submenu" id="brandsCollapse">
-                    <a class="nav-link" href="#">Compass</a>
-                    <a class="nav-link" href="#">Ventela</a>
+                    <a class="nav-link" href="compass.html">Compass</a>
+                    <a class="nav-link" href="patrobas.html">Patrobas</a>
                     <a class="nav-link" href="#">Aerostreet</a>
                     <a class="nav-link" href="#">Geoff Max Footwear</a>
                     <a class="nav-link" href="#">Piero</a>
@@ -1399,8 +1717,12 @@ footer h3:active{
 
                     <div class="d-flex flex-wrap gap-2">
 
-                        <span class="search-tag">Compass</span>
-                        <span class="search-tag">Ventela</span>
+                        <a href="compass.html" class="search-tag text-decoration-none text-white">
+                            Compass
+                        </a>
+                        <a href="patrobas.html" class="search-tag text-decoration-none text-white">
+                            Patrobas
+                        </a>
                         <span class="search-tag">Aerostreet</span>
                         <span class="search-tag">Gazelle</span>
                         <span class="search-tag">Slip On</span>
@@ -1425,43 +1747,43 @@ footer h3:active{
      tabindex="-1"
      id="wishlistCanvas">
 
-    <div class="offcanvas-header">
+        <div class="offcanvas-header">
 
-        <h5 class="offcanvas-title">
-            MY WISHLIST
-        </h5>
+            <h5 class="offcanvas-title">
+                MY WISHLIST
+            </h5>
 
-        <button class="btn-close btn-close-white"
-                data-bs-dismiss="offcanvas">
-        </button>
+            <div class="d-flex gap-2">
 
-    </div>
+                <button class="btn btn-sm btn-danger"
+                        id="clearWishlistBtn">
+                    Clear All
+                </button>
 
-    <div class="offcanvas-body">
+                <button class="btn-close btn-close-white"
+                        data-bs-dismiss="offcanvas">
+                </button>
 
-        <div class="search-box mb-4">
-
-            <i class="bi bi-search"></i>
-
-            <input type="text"
-                   class="form-control"
-                   id="wishlistSearch"
-                   placeholder="Search wishlist...">
+            </div>
 
         </div>
+        <div class="offcanvas-body">
+
+        <div class="search-box mb-4">
+            <i class="bi bi-search"></i>
+            <input type="text"
+                class="form-control"
+                id="wishlistSearch"
+                placeholder="Search wishlist...">
+        </div>
+
+        <!-- 🔥 TAMBAHAN -->
+        <div id="wishlistItems"></div>
 
         <div class="empty-state wishlist-empty">
-
             <i class="bi bi-heart"></i>
-
-            <h6>
-                Your Wishlist is Empty
-            </h6>
-
-            <p>
-                Save your favorite sneakers here.
-            </p>
-
+            <h6>Your Wishlist is Empty</h6>
+            <p>Save your favorite sneakers here.</p>
         </div>
 
     </div>
@@ -1476,49 +1798,58 @@ footer h3:active{
      tabindex="-1"
      id="cartCanvas">
 
-    <div class="offcanvas-header">
+        <div class="offcanvas-header">
 
-        <h5 class="offcanvas-title">
-            SHOPPING CART
-        </h5>
+            <h5 class="offcanvas-title">
+                SHOPPING CART
+            </h5>
 
-        <button class="btn-close btn-close-white"
-                data-bs-dismiss="offcanvas">
-        </button>
+            <div class="d-flex gap-2">
 
-    </div>
+                <button class="btn btn-sm btn-danger"
+                        id="clearCartBtn">
+                    Clear All
+                </button>
+
+                <button class="btn-close btn-close-white"
+                        data-bs-dismiss="offcanvas">
+                </button>
+
+            </div>
+
+        </div>
 
     <div class="offcanvas-body d-flex flex-column p-0">
 
     <!-- CART ITEMS -->
     <div class="cart-items flex-grow-1 p-4">
+
         <div class="search-box mb-4">
+            <i class="bi bi-search"></i>
+            <input type="text"
+                class="form-control"
+                id="cartSearch"
+                placeholder="Search cart...">
+        </div>
 
-    <i class="bi bi-search"></i>
+        <!-- TAMBAHAN INI -->
+        <div id="cartItems"></div>
 
-    <input type="text"
-           class="form-control"
-           id="cartSearch"
-           placeholder="Search cart...">
+        <div class="empty-state cart-empty">
 
-</div>
+            <i class="bi bi-bag"></i>
 
-    <div class="empty-state cart-empty">
+            <h6>
+                Your Cart is Empty
+            </h6>
 
-        <i class="bi bi-bag"></i>
+            <p>
+                Start shopping your favorite sneakers.
+            </p>
 
-        <h6>
-            Your Cart is Empty
-        </h6>
-
-        <p>
-            Start shopping your favorite sneakers.
-        </p>
+        </div>
 
     </div>
-
-</div>
-
 
     <!-- FOOTER -->
     <div class="cart-footer">
@@ -1544,74 +1875,23 @@ footer h3:active{
 </div>
 
 <!-- =========================================
-     PRODUCT OPTION MODAL
+     HERO
 ========================================= -->
-<div class="modal fade" id="productOptionModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content search-modal">
-            <div class="modal-body p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4 class="fw-bold mb-0">
-                        Select Option
-                    </h4>
-                    <button class="btn-close btn-close-white"
-                            data-bs-dismiss="modal">
-                    </button>
-                </div>
-                <img id="optionImage"
-                     class="product-option-img mb-4"
-                     src="">
-                <h5 id="optionTitle" class="fw-bold"></h5>
-                <p id="optionPrice"
-                   class="text-primary fw-bold mb-4">
-                </p>
 
-                <!-- SIZE -->
-                <div class="mb-4">
-                    <p class="small text-secondary mb-2">
-                        SELECT SIZE
-                    </p>
-                    <div id="sizeOptions"
-                         class="d-flex flex-wrap gap-2">
-                    </div>
-                </div>
-
-                <!-- VARIANT -->
-                <div class="mb-4">
-                    <p class="small text-secondary mb-2">
-                        SELECT VARIANT
-                    </p>
-                    <div id="variantOptions"
-                         class="d-flex flex-wrap gap-2">
-                    </div>
-                </div>
-
-                <button class="checkout-btn w-100"
-                        id="confirmAddCart">
-                    Add to Cart
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- HERO -->
 <section class="hero">
     <div>
-        <h1 class="display-3 fw-bold">COMPASS</h1>
+        <h1 class="display-3 fw-bold">PATROBAS</h1>
             <p class="lead">
-                    Local Pride Sneakers From Indonesia
+                    Timeless Everyday Footwear
             </p>
         </div>
 </section>
 
 <!-- DESKRIPSI -->
 <section class="container py-5 text-center">
-    <h2 class="fw-bold mb-4">About Compass</h2>
+    <h2 class="fw-bold mb-4">About Patrobas</h2>
         <p class="text-secondary">
-            Compass merupakan brand sepatu lokal Indonesia
-            yang terkenal dengan desain vintage, casual,
-            dan streetwear modern.
+            Patrobas merupakan brand sepatu dengan desain klasik timeless dan kenyamanan modern.
         </p>
     </section>
 
@@ -1620,18 +1900,32 @@ footer h3:active{
 ========================================= -->
 
 <section class="brand-section py-4">
+
     <div class="container">
+
         <div class="brand-container">
-            <div class="brand-item"><h5 class="brand-logo">COMPASS</h5></div>
-            <div class="brand-item"><h5 class="brand-logo">VENTELA</h5></div>
+
+            <a href="compass.html" class="text-decoration-none">
+                <div class="brand-item"><h5 class="brand-logo mb-0">COMPASS</h5></div>
+            </a>
+            <a href="patrobas.html" class="text-decoration-none">
+                <div class="brand-item"><h5 class="brand-logo mb-0">PATROBAS</h5></div>
+            </a>
             <div class="brand-item"><h5 class="brand-logo">AEROSTREET</h5></div>
             <div class="brand-item"><h5 class="brand-logo">GEOFF MAX FOOTWEAR</h5></div>
             <div class="brand-item"><h5 class="brand-logo">PIERO</h5></div>
+            
+
         </div>
+
     </div>
+
 </section>
 
-<!-- PRODUK -->
+<!-- =========================================
+     PRODUCTS
+========================================= -->
+
 <section class="container pb-5">
     <section id="shop" class="container py-5">
         <div class="mb-5">
@@ -1647,24 +1941,17 @@ footer h3:active{
         <!-- PRODUCT 1 -->
         <div class="col-md-4 col-6 product-item">
             <div class="card-product">
-                <a href="product_detail.html"
-                class="overflow-hidden rounded-4 d-block">
-
-                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfgo-m3qhvbu0zns7f6.webp">
-
-                </a>
-
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-822wt-mlrj74zj53ia23.webp">
+                </div>
                 <p class="text-muted small mt-3 mb-1">
-                    Compass
+                    Patrobas
                 </p>
                 <h6>
-                    <a href="product_detail.html"
-                    class="text-white text-decoration-none">
-                        Tribune
-                    </a>
+                    Nomad
                 </h6>
                 <p class="text-primary fw-bold">
-                    Rp 573.900
+                    Rp 469.900
                 </p>
                 <div class="d-flex gap-2 mt-3">
                     <button class="wishlist-btn">
@@ -1672,15 +1959,16 @@ footer h3:active{
                     </button>
                     <button 
                         class="btn-buy w-100 add-cart"
-                        data-title="Tribune"
-                        data-brand="Compass"
-                        data-price="573900"
-                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rfgo-m3qhvbu0zns7f6.webp"
-                        data-sizes="36,37,38,39,40,41,42,43,44,45,46"
+                        data-title="Nomad"
+                        data-brand="Patrobas"
+                        data-price="469900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-822wt-mlrj74zj53ia23.webp"
+                        data-sizes="37,38,39,40,41,42,43,44"
                         data-variants="
-                        Tribune Navy Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rfgo-m3qhvbu0zns7f6.webp|
-                        Tribune Red Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rdx7-m0k4cnka2215e4@resize_w900_nl.webp|
-                        Tribune Black Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rdx7-m0k3zm64zukk72.webp
+                        Nomad White Silver,https://down-id.img.susercontent.com/file/id-11134207-822wt-mlrj74zj53ia23.webp|
+                        Nomad Grey White,https://down-id.img.susercontent.com/file/id-11134207-822wu-mlriy3hdee4gb4.webp|
+                        Nomad All Black,https://down-id.img.susercontent.com/file/id-11134207-822wu-mlriy3hdee4gb4.webp|
+                        Nomad Black White,https://down-id.img.susercontent.com/file/id-11134207-822wh-mlriy3hf5lok62.webp
                         ">
                         Add to Bag
                     </button>
@@ -1692,16 +1980,16 @@ footer h3:active{
         <div class="col-md-4 col-6 product-item">
             <div class="card-product">
                 <div class="overflow-hidden rounded-4">
-                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rbmf-locaidb0hrpmd9.webp">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk9-m6gbbj53ffhm0b.webp">
                 </div>
                 <p class="text-muted small mt-3 mb-1">
-                    Compass
+                    Patrobas
                 </p>
                 <h6>
-                    Velocity
+                    Bulky
                 </h6>
                 <p class="text-primary fw-bold">
-                    Rp 798.000
+                    Rp 389.900
                 </p>
                 <div class="d-flex gap-2 mt-3">
                     <button class="wishlist-btn">
@@ -1709,15 +1997,15 @@ footer h3:active{
                     </button>
                     <button 
                         class="btn-buy w-100 add-cart"
-                        data-title="Velocity"
-                        data-brand="Compass"
-                        data-price="798000"
-                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rbmf-locaidb0hrpmd9.webp"
-                        data-sizes="36,37,38,39,40,41,42,43,44,45,46"
+                        data-title="Bulky"
+                        data-brand="Patrobas"
+                        data-price="389900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-7rbk9-m6gbbj53ffhm0b.webp"
+                        data-sizes="35,36,37,38,39,40,41,42,43,44,45"
                         data-variants="
-                        Velocity Grey,https://down-id.img.susercontent.com/file/sg-11134201-7rbmf-locaidb0hrpmd9.webp|
-                        Velocity Black,https://down-id.img.susercontent.com/file/sg-11134201-7rblr-lo7w3yvyb39t28.webp|
-                        Velocity Black Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rd4m-lwo9md6gm6j3eb.webp
+                        Bulky Black White,https://down-id.img.susercontent.com/file/id-11134207-7rbk9-m6gbbj53ffhm0b.webp|
+                        Bulky Off White,https://down-id.img.susercontent.com/file/id-11134207-7rbk1-m6gbbj53gu2238.webp|
+                        Bulky Black White,https://down-id.img.susercontent.com/file/id-11134207-7rbk9-m6gbbj53mgbu8c.webp
                         ">
                         Add to Bag
                     </button>
@@ -1729,16 +2017,16 @@ footer h3:active{
         <div class="col-md-4 col-6 product-item">
             <div class="card-product">
                 <div class="overflow-hidden rounded-4">
-                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rbmg-lo7vva0u6p45c1.webp">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk8-mab1t9o6weowdf.webp">
                 </div>
                 <p class="text-muted small mt-3 mb-1">
-                    Compass
+                    Patrobas
                 </p>
                 <h6>
-                    Retrograde
+                    Cloud
                 </h6>
                 <p class="text-primary fw-bold">
-                    Rp 538.000
+                    Rp 349.900
                 </p>
                 <div class="d-flex gap-2 mt-3">
                     <button class="wishlist-btn">
@@ -1746,16 +2034,17 @@ footer h3:active{
                     </button>
                     <button 
                         class="btn-buy w-100 add-cart"
-                        data-title="Retrograde"
-                        data-brand="Compass"
-                        data-price="538000"
-                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rbmg-lo7vva0u6p45c1.webp"
-                        data-sizes="36,37,38,39,40,41,42,43,44,45,46"
+                        data-title="Cloud"
+                        data-brand="Patrobas"
+                        data-price="349900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-7rbk8-mab1t9o6weowdf.webp"
+                        data-sizes="35,36,37,38,39,40,41,42,43,44,45"
                         data-variants="
-                        Retrograde Low White Blue,https://down-id.img.susercontent.com/file/sg-11134201-7rbmg-lo7vva0u6p45c1.webp|
-                        Retrograde Low Triple Black,https://down-id.img.susercontent.com/file/sg-11134201-7rd4b-lvcqvwecowtuf3.webp|                        
-                        Retrograde Low Cream,https://down-id.img.susercontent.com/file/sg-11134201-7rbnf-lo7w0qtm5kqb00.webp|
-                        Retrograde Low Black White,https://down-id.img.susercontent.com/file/sg-11134201-7rbnf-lo7w0qtm5kqb00.webp
+                        Cloud Olive,https://down-id.img.susercontent.com/file/id-11134207-7rbk8-mab1t9o6weowdf.webp|
+                        Cloud Navy,https://down-id.img.susercontent.com/file/id-11134207-7rbk9-majfst6il5yw24.webp|
+                        Cloud Off White,https://down-id.img.susercontent.com/file/id-11134207-7ra0r-mdt14wusv7hw9d.webp|
+                        Cloud White Red,https://down-id.img.susercontent.com/file/2afac6994773579f20f973cbf5a7c915.webp|                        
+                        Cloud White Blue,https://down-id.img.susercontent.com/file/5c32f06fdfc0c161d60529cf92be5341.webp
                         ">
                         Add to Bag
                     </button>
@@ -1769,7 +2058,7 @@ footer h3:active{
 <section class="container pb-5">
     <div class="mb-5">
         <h2 class="fw-bold">
-            Apparels
+            Sandal
         </h2>
     </div>
 
@@ -1778,17 +2067,17 @@ footer h3:active{
         <div class="col-md-4 col-6 product-item">
             <div class="card-product">
                 <div class="overflow-hidden rounded-4">
-                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-8261l-mk3zq9feam12db.webp">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lt0tzvy57kop9b.webp">
                 </div>
 
                 <p class="text-muted small mt-3 mb-1">
-                    Compass
+                    Patrobas
                 </p>
                 <h6>
-                    T-Shirt
+                    Ease Sandal
                 </h6>
                 <p class="text-primary fw-bold">
-                    Rp 238.000
+                    Rp 99.900
                 </p>
                 <div class="d-flex gap-2 mt-3">
                     <button class="wishlist-btn">
@@ -1797,13 +2086,17 @@ footer h3:active{
                     <button 
                         class="btn-buy w-100 add-cart"
                         data-title="T-Shirt"
-                        data-brand="Compass"
-                        data-price="238000"
-                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-8261l-mk3zq9feam12db.webp"
-                        data-sizes="S,M,L,XL,XXL"
+                        data-brand="Patrobas"
+                        data-price="99900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lt0tzvy57kop9b.webp"
+                        data-sizes="36-37,38-39,40-41,42-43,44-45"
                         data-variants="
-                        Black,https://down-id.img.susercontent.com/file/sg-11134201-8261l-mk3zq9feam12db.webp|
-                        White,https://down-id.img.susercontent.com/file/sg-11134201-8260p-mk3zhe0u1gjr3d.webp
+                        Black,https://down-id.img.susercontent.com/file/id-11134207-7r98r-lt0tzvy57kop9b.webp|
+                        Brown,https://down-id.img.susercontent.com/file/id-11134207-7r98o-lzyp6gc0f7c827.webp|
+                        Berly,https://down-id.img.susercontent.com/file/id-11134207-7r98z-lt0uonl6fxeheb.webp|
+                        Asphalt,https://down-id.img.susercontent.com/file/id-11134207-7r98u-lzyp6gc0nmp94a.webp|
+                        Sand,https://down-id.img.susercontent.com/file/id-11134207-7r98u-lzyp6gc0nmp94a.webp|
+                        Ivory,https://down-id.img.susercontent.com/file/id-11134207-7r990-lt0utl90c6qvaf.webp
                         ">
                         Add to Bag
                     </button>
@@ -1815,16 +2108,16 @@ footer h3:active{
         <div class="col-md-4 col-6 product-item">
             <div class="card-product">
                 <div class="overflow-hidden rounded-4">
-                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7ra10-m5357c40gry8fb.webp">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-8224w-mik5hk9sbgg8ad.webp">
                 </div>
                 <p class="text-muted small mt-3 mb-1">
-                    Compass
+                    Patrobas
                 </p>
                 <h6>
-                    Jersey LS Away
+                    Flip Sandal Recovery
                 </h6>
                 <p class="text-primary fw-bold">
-                    Rp 438.000
+                    Rp 109.900
                 </p>
                 <div class="d-flex gap-2 mt-3">
                     <button class="wishlist-btn">
@@ -1832,14 +2125,16 @@ footer h3:active{
                     </button>
                     <button 
                         class="btn-buy w-100 add-cart"
-                        data-title="Jersey LS Away"
-                        data-brand="Compass"
-                        data-price="438000"
-                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7ra10-m5357c40gry8fb.webp"
-                        data-sizes="S,M,L,XL,XXL"
+                        data-title="Flip Sandal Recovery"
+                        data-brand="Patrobas"
+                        data-price="109900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-8224w-mik5hk9sbgg8ad.webp"
+                        data-sizes="36-37,38-39,40-41,42-43,44-45"
                         data-variants="
-                        Black,https://down-id.img.susercontent.com/file/sg-11134201-7ra10-m5357c40gry8fb.webp|
-                        Maroon,https://down-id.img.susercontent.com/file/sg-11134201-7ra10-m5357c40gry8fb.webp
+                        Brown,https://down-id.img.susercontent.com/file/id-11134207-8224w-mik5hk9sbgg8ad.webp|
+                        Black,https://down-id.img.susercontent.com/file/id-11134207-8224o-mik4qwsk5n2a79.webp|
+                        Army,https://down-id.img.susercontent.com/file/id-11134207-8224t-mik5hk9sihageb.webp|
+                        Asphalt,https://down-id.img.susercontent.com/file/id-11134207-82251-mik5hk9u2o00ad.webp
                         ">
                         Add to Bag
                     </button>
@@ -1851,16 +2146,16 @@ footer h3:active{
         <div class="col-md-4 col-6 product-item">
             <div class="card-product">
                 <div class="overflow-hidden rounded-4">
-                    <img src="https://down-id.img.susercontent.com/file/id-11134207-81ztd-mdwqy7b7zz7ode.webp">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0q-mbusbl98cuvree.webp">
                 </div>
                 <p class="text-muted small mt-3 mb-1">
-                    Compass
+                    Patrobas
                 </p>
                 <h6>
-                    Socks
+                    Sandal Slide
                 </h6>
                 <p class="text-primary fw-bold">
-                    Rp 98.000
+                    Rp 89.900
                 </p>
                 <div class="d-flex gap-2 mt-3">
                     <button class="wishlist-btn">
@@ -1868,13 +2163,14 @@ footer h3:active{
                     </button>
                     <button 
                         class="btn-buy w-100 add-cart"
-                        data-title="Socks"
-                        data-brand="Compass"
-                        data-price="98000"
-                        data-image="https://down-id.img.susercontent.com/file/id-11134207-81ztd-mdwqy7b7zz7ode.webp"
+                        data-title="Sandal Slide"
+                        data-brand="Patrobas"
+                        data-price="89900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-7ra0q-mbusbl98cuvree.webp"
+                        data-sizes="39,40,41,42,43,44"
                         data-variants="
-                        Hi Black,https://down-id.img.susercontent.com/file/id-11134207-81ztd-mdwqy7b7zz7ode.webp|
-                        Low Black,https://down-id.img.susercontent.com/file/id-11134207-81ztl-mdwqy7c3943m82.webp                      
+                        Jax Sandal Slide,https://down-id.img.susercontent.com/file/id-11134207-7ra0q-mbusbl98cuvree.webp|
+                        Monarch Sandal Slide,https://down-id.img.susercontent.com/file/id-11134207-7rbk0-m7oprsl3bivkdd.webp                      
                         ">
                         Add to Bag
                     </button>
@@ -1923,9 +2219,14 @@ footer h3:active{
 <!-- =========================================
      SCRIPT
 ========================================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 <script>
+
+document.addEventListener('DOMContentLoaded', function() {
 
 AOS.init({
     once:true,
@@ -1933,158 +2234,224 @@ AOS.init({
 });
 
 /* =========================================
-   SMART SEARCH
+   SEARCH REALTIME IMPROVED
 ========================================= */
 
 const searchInput =
-document.querySelector('.search-box input');
+document.querySelector('#searchModal input');
 
 const searchTags =
 document.querySelectorAll('.search-tag');
 
-const products =
-document.querySelectorAll('.product-item');
+function performSearch(autoClose = false){
 
-/* SEARCH FUNCTION */
-function performSearch(keyword){
+    const filter =
+    searchInput.value.trim().toLowerCase();
 
-    keyword =
-    keyword.toLowerCase().trim();
+    const productItems =
+    document.querySelectorAll('.product-item');
 
-    let found = 0;
+    let found = false;
 
-    products.forEach(product => {
-
-        const title =
-        product.querySelector('h6')
-        .innerText
-        .toLowerCase();
+    productItems.forEach(item => {
 
         const brand =
-        product.querySelector('.text-muted')
-        .innerText
-        .toLowerCase();
+        item.querySelector('.text-muted')
+        ?.innerText
+        .trim()
+        .toLowerCase() || '';
 
-        const fullText =
-        product.innerText.toLowerCase();
+        const title =
+        item.querySelector('h6')
+        ?.innerText
+        .trim()
+        .toLowerCase() || '';
 
-        /* SMART MATCH */
-        const isMatch =
+        // SEARCH BRAND + PRODUCT
+        const match =
+            brand.includes(filter) ||
+            title.includes(filter);
 
-            title.includes(keyword) ||
-            brand.includes(keyword) ||
-            fullText.includes(keyword);
+        if(match){
 
-        if(isMatch){
-
-            product.style.display = 'block';
-            found++;
+            item.style.display = 'block';
+            found = true;
 
         } else {
 
-            product.style.display = 'none';
+            item.style.display = 'none';
 
         }
 
     });
 
-    /* NO RESULT */
-    const existing =
-    document.querySelector('.no-search-result');
+    if(autoClose && filter !== '' && found){
 
-    if(existing){
-        existing.remove();
+        const modal =
+        bootstrap.Modal.getInstance(searchModal);
+
+        modal.hide();
+
+        setTimeout(() => {
+
+            document.getElementById('shop')
+            .scrollIntoView({
+                behavior:'smooth'
+            });
+
+        },300);
+
     }
 
-    if(found === 0){
-
-        document.querySelector('#shop')
-        .insertAdjacentHTML(
-            'beforeend',
-            `
-            <div class="no-search-result text-center py-5">
-
-                <h4 class="fw-bold">
-                    Product Not Found
-                </h4>
-
-                <p class="text-secondary">
-                    Try another keyword
-                </p>
-
-            </div>
-            `
-        );
-    }
 }
 
-/* INPUT SEARCH */
-searchInput.addEventListener(
-    'keyup',
-    function(){
+/* ENTER SEARCH */
 
-        performSearch(this.value);
+searchInput.addEventListener(
+    'keydown',
+    function(e){
+
+        if(e.key === 'Enter'){
+
+            e.preventDefault();
+
+            performSearch(true);
+
+        }
 
     }
 );
 
-/* CLICK TAG */
+/* SEARCH INPUT */
+
+searchInput.addEventListener(
+    'input',
+    () => performSearch(false)
+);
+
+/* SEARCH TAG CLICK */
+
 searchTags.forEach(tag => {
 
     tag.addEventListener('click', () => {
 
         const keyword =
-        tag.innerText;
+        tag.innerText.trim();
 
+        /* isi input */
         searchInput.value = keyword;
 
-        performSearch(keyword);
+        /* jalankan search */
+        performSearch();
+
+        /* tutup modal search */
+        const modal =
+        bootstrap.Modal.getInstance(searchModal);
+
+        modal.hide();
+
+        /* scroll ke section produk */
+        document.getElementById('shop')
+        .scrollIntoView({
+            behavior:'smooth'
+        });
 
     });
 
 });
 
+
+/* AUTO FOCUS MODAL */
+
+const searchModal =
+document.getElementById('searchModal');
+
+searchModal.addEventListener(
+    'shown.bs.modal',
+    () => {
+
+        searchInput.focus();
+
+    }
+);
+
+/* RESET SEARCH SAAT MODAL DITUTUP */
+
+searchModal.addEventListener(
+    'hidden.bs.modal',
+    () => {
+
+        // kosongkan input TANPA reset produk
+        searchInput.value = '';
+
+    }
+);
+
 /* AUTO CLOSE SIDEBAR */
+
 const navLinks = document.querySelectorAll('.nav-close');
+
 navLinks.forEach(link => {
+
     link.addEventListener('click', () => {
+
         const offcanvasElement =
         document.getElementById('menuCanvas');
+
         const bsOffcanvas =
         bootstrap.Offcanvas.getInstance(offcanvasElement);
+
         bsOffcanvas.hide();
+
     });
+
 });
 
 /* =========================================
    TOAST
 ========================================= */
+
 function showToast(message){
+
     const toast =
     document.getElementById('customToast');
+
     toast.innerText = message;
+
     toast.classList.add('show');
+
     setTimeout(() => {
         toast.classList.remove('show');
     },2000);
+
 }
 
 /* =========================================
    FLY EFFECT
 ========================================= */
+
 function flyToTarget(imageSrc, startElement, targetElement){
+
     const img =
     document.createElement('img');
+
     img.src = imageSrc;
+
     img.className = 'fly-product';
+
     document.body.appendChild(img);
+
     const start =
     startElement.getBoundingClientRect();
+
     const target =
     targetElement.getBoundingClientRect();
+
     img.style.left = start.left + 'px';
     img.style.top = start.top + 'px';
+
     requestAnimationFrame(() => {
+
         img.style.transform = `
     translate(
         ${target.left - start.left}px,
@@ -2093,627 +2460,16 @@ function flyToTarget(imageSrc, startElement, targetElement){
     scale(0.15)
     rotate(4deg)
 `;
+
         img.style.opacity = '0';
+
     });
+
     setTimeout(() => {
         img.remove();
     },1600);
-}
-
-/* =========================================
-   WISHLIST
-========================================= */
-
-const wishlistButtons =
-document.querySelectorAll('.wishlist-btn');
-
-const wishlistBody =
-document.querySelector(
-    '#wishlistCanvas .offcanvas-body'
-);
-
-const wishlistTarget =
-document.querySelector(
-    '[data-label="Wishlist"]'
-);
-
-/* SAVE */
-function renderWishlist(){
-
-    wishlistBody.innerHTML = '';
-
-    wishlistData.forEach(item => {
-
-        wishlistBody.innerHTML += `
-        <div class="mini-product mb-3">
-
-            <img src="${item.image}">
-
-            <div class="mini-product-content">
-
-                <h6 class="mb-1">
-                    ${item.title}
-                </h6>
-
-                <p class="text-secondary small mb-2">
-                    ${item.brand}
-                </p>
-
-                <span class="text-primary fw-bold">
-                    ${item.price}
-                </span>
-
-            </div>
-
-            <button class="delete-item wishlist-delete">
-                <i class="bi bi-trash"></i>
-            </button>
-
-        </div>
-        `;
-    });
-
-    /* ACTIVE HEART */
-    document.querySelectorAll('.card-product')
-    .forEach(product => {
-
-        const title =
-        product.querySelector('h6').innerText;
-
-        const heartBtn =
-        product.querySelector('.wishlist-btn');
-
-        const exists =
-        wishlistData.some(
-            item => item.title === title
-        );
-
-        if(exists){
-            heartBtn.classList.add('active');
-        } else {
-            heartBtn.classList.remove('active');
-        }
-
-    });
 
 }
-
-wishlistButtons.forEach(button => {
-
-    button.addEventListener('click', () => {
-
-        const product =
-        button.closest('.card-product');
-
-        const title =
-        product.querySelector('h6').innerText;
-
-        const brand =
-        product.querySelector('.text-muted')
-        .innerText;
-
-        const price =
-        product.querySelector('.text-primary')
-        .innerText;
-
-        const image =
-        product.querySelector('img').src;
-
-        const existing =
-        wishlistData.find(
-            item => item.title === title
-        );
-
-        /* REMOVE */
-        if(existing){
-
-            wishlistData =
-            wishlistData.filter(
-                item => item.title !== title
-            );
-
-            button.classList.remove('active');
-
-            showToast('Removed from Wishlist');
-
-        } else {
-
-            wishlistData.push({
-                title:title,
-                brand:brand,
-                price:price,
-                image:image
-            });
-
-            button.classList.add('active');
-
-            flyToTarget(
-                image,
-                product.querySelector('img'),
-                wishlistTarget
-            );
-
-            showToast('Added to Wishlist');
-        }
-
-        saveWishlist();
-        renderWishlist();
-
-    });
-
-});
-
-/* =========================================
-   CART WITH SIZE & VARIANT
-========================================= */
-const cartButtons =
-document.querySelectorAll('.add-cart');
-const cartBody =
-document.querySelector('.cart-items');
-const cartTarget =
-document.querySelector('[data-label="Cart"]');
-const optionModal =
-new bootstrap.Modal(
-    document.getElementById('productOptionModal')
-);
-
-let selectedProduct = null;
-let selectedSize = '';
-let selectedVariant = '';
-let totalPrice = 0;
-
-let cartData = JSON.parse(
-    localStorage.getItem('cartData')
-) || [];
-let wishlistData = JSON.parse(
-    localStorage.getItem('wishlistData')
-) || [];
-function updateCartTotal(){
-    document.getElementById('cartTotal')
-    .innerText =
-    'Rp ' + totalPrice.toLocaleString('id-ID');
-}
-
-function saveCart(){
-    localStorage.setItem(
-        'cartData',
-        JSON.stringify(cartData)
-    );
-}
-
-function saveWishlist(){
-    localStorage.setItem(
-        'wishlistData',
-        JSON.stringify(wishlistData)
-    );
-}
-
-/* OPEN MODAL */
-cartButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        selectedProduct = button;
-        const title =
-        button.dataset.title;
-        const brand =
-        button.dataset.brand;
-        const price =
-        Number(button.dataset.price);
-        const image =
-        button.dataset.image;
-        const sizes =
-        button.dataset.sizes
-        ? button.dataset.sizes.split(',')
-        : [];
-        const variants =
-        button.dataset.variants.split('|');
-        document.getElementById('optionTitle')
-        .innerText = title;
-        document.getElementById('optionPrice')
-        .innerText =
-        'Rp ' + price.toLocaleString('id-ID');
-        document.getElementById('optionImage')
-        .src = image;
-
-        /* SIZE */
-        const sizeContainer =
-        document.getElementById('sizeOptions');
-
-        const sizeWrapper =
-        sizeContainer.closest('.mb-4');
-
-        sizeContainer.innerHTML = '';
-
-        if(sizes.length > 0){
-
-            sizeWrapper.style.display = 'block';
-
-            sizes.forEach(size => {
-                sizeContainer.innerHTML += `
-                    <button class="option-btn size-btn">
-                        ${size}
-                    </button>
-                `;
-            });
-
-        } else {
-
-            sizeWrapper.style.display = 'none';
-
-        }
-
-        /* VARIANT */
-        const variantContainer =
-        document.getElementById('variantOptions');
-        variantContainer.innerHTML = '';
-        variants.forEach(item => {
-        const data = item.split(',');
-        const variantName = data[0];
-        const variantImage = data[1];
-            variantContainer.innerHTML += `
-                <button
-                    class="option-btn variant-btn"
-                    data-image="${variantImage}">
-                    ${variantName}
-                </button>
-            `;
-        });
-
-        /* VARIANT CLICK */
-        document.querySelectorAll('.variant-btn')
-        .forEach(btn => {
-            btn.addEventListener('click', () => {
-                document
-                .querySelectorAll('.variant-btn')
-                .forEach(x =>
-                    x.classList.remove('active')
-                );
-                btn.classList.add('active');
-                selectedVariant =
-                btn.innerText;
-
-                /* CHANGE IMAGE */
-                document.getElementById('optionImage')
-                .src =
-                btn.dataset.image;
-            });
-        });
-
-        /* SIZE CLICK */
-        document.querySelectorAll('.size-btn')
-        .forEach(btn => {
-            btn.addEventListener('click', () => {
-                document
-                .querySelectorAll('.size-btn')
-                .forEach(x =>
-                    x.classList.remove('active')
-                );
-                btn.classList.add('active');
-                selectedSize =
-                btn.innerText;
-            });
-        });
-
-        /* VARIANT CLICK */
-        document.querySelectorAll('.variant-btn')
-        .forEach(btn => {
-            btn.addEventListener('click', () => {
-                document
-                .querySelectorAll('.variant-btn')
-                .forEach(x =>
-                    x.classList.remove('active')
-                );
-                btn.classList.add('active');
-                selectedVariant =
-                btn.innerText;
-            });
-        });
-        optionModal.show();
-    });
-});
-
-/* CONFIRM ADD CART */
-document.getElementById('confirmAddCart')
-.addEventListener('click', () => {
-const hasSize =
-document.querySelectorAll('.size-btn').length > 0;
-    if(hasSize && selectedSize === ''){
-        showToast('Select Size First');
-        return;
-    }
-    if(selectedVariant === ''){
-        showToast('Select Variant First');
-        return;
-    }
-
-    const button = selectedProduct;
-    const title =
-    button.dataset.title;
-    const brand =
-    button.dataset.brand;
-    const price =
-    Number(button.dataset.price);
-    const image =
-    button.dataset.image;
-    totalPrice += price;
-
-    cartData.push({
-        title:title,
-        brand:brand,
-        price:price,
-        image:image,
-        size:selectedSize,
-        variant:selectedVariant
-    });
-
-    saveCart();
-
-    updateCartTotal();
-
-    cartBody.innerHTML += `
-    <div class="mini-product mb-4">
-        <img src="${image}">
-        <div class="mini-product-content">
-            <h6 class="mb-1">
-                ${title}
-            </h6>
-            <p class="text-secondary small mb-1">
-                ${brand}
-            </p>
-            ${selectedSize ? `
-                <p class="small mb-1">
-                    Size : ${selectedSize}
-                </p>
-            ` : ''}
-            <p class="small mb-2">
-                Variant : ${selectedVariant}
-            </p>
-            <div class="d-flex justify-content-between align-items-center mt-2">
-
-                <span class="text-primary fw-bold item-price">
-                    Rp ${price.toLocaleString('id-ID')}
-                </span>
-
-                <div class="quantity-box">
-
-                    <button class="qty-btn minus-btn">
-                        -
-                    </button>
-
-                    <span class="qty-number">
-                        1
-                    </span>
-
-                    <button class="qty-btn plus-btn">
-                        +
-                    </button>
-
-                </div>
-
-            </div>
-        </div>
-
-        <button class="delete-item">
-            <i class="bi bi-trash"></i>
-        </button>
-    </div>
-    `;
-
-    flyToTarget(
-        image,
-        button,
-        cartTarget
-    );
-
-    showToast('Added to Cart');
-    optionModal.hide();
-    selectedSize = '';
-    selectedVariant = '';
-});
-
-/* =========================================
-   DELETE ITEM
-========================================= */
-document.addEventListener('click', function(e){
-    if(e.target.closest('.delete-item')){
-        const item =
-        e.target.closest('.mini-product');
-        const title =
-        item.querySelector('h6').innerText;
-        /* KHUSUS CART */
-        if(item.closest('.cart-items')){
-            const priceText =
-            item.querySelector('.text-primary').innerText;
-            const numericPrice =
-            parseInt(priceText.replace(/[^0-9]/g,''));
-            totalPrice -= numericPrice;
-            if(totalPrice < 0){
-                totalPrice = 0;
-            }
-            updateCartTotal();
-        }
-
-        /* RESET BUTTON */
-        document.querySelectorAll('.card-product')
-        .forEach(product => {
-            const productTitle =
-            product.querySelector('h6').innerText;
-            if(productTitle === title){
-                const cartBtn =
-                product.querySelector('.add-cart');
-                cartBtn.classList.remove('active-cart');
-                cartBtn.innerText = 'Add to Bag';
-                const wishBtn =
-                product.querySelector('.wishlist-btn');
-                wishBtn.classList.remove('active');
-            }
-        });
-        const index =
-        [...document.querySelectorAll('.cart-items .mini-product')]
-        .indexOf(item);
-
-        if(index > -1){
-            cartData.splice(index,1);
-            saveCart();
-        }
-
-        /* WISHLIST DELETE */
-        if(item.closest('#wishlistCanvas')){
-
-            wishlistData =
-            wishlistData.filter(data =>
-                data.title !== title
-            );
-
-            saveWishlist();
-            renderWishlist();
-        }
-
-        item.remove();
-    }
-});
-
-/* =========================================
-   RENDER CART
-========================================= */
-
-function renderCart(){
-
-    cartBody.innerHTML = '';
-    totalPrice = 0;
-
-    cartData.forEach(item => {
-
-        totalPrice += item.price;
-
-        cartBody.innerHTML += `
-        <div class="mini-product mb-4">
-
-            <img src="${item.image}">
-
-            <div class="mini-product-content">
-
-                <h6 class="mb-1">
-                    ${item.title}
-                </h6>
-
-                <p class="text-secondary small mb-1">
-                    ${item.brand}
-                </p>
-
-                ${item.size ? `
-                    <p class="small mb-1">
-                        Size : ${item.size}
-                    </p>
-                ` : ''}
-
-                <p class="small mb-2">
-                    Variant : ${item.variant}
-                </p>
-
-                <span class="text-primary fw-bold">
-                    Rp ${item.price.toLocaleString('id-ID')}
-                </span>
-
-            </div>
-
-            <button class="delete-item">
-                <i class="bi bi-trash"></i>
-            </button>
-
-        </div>
-        `;
-    });
-
-    updateCartTotal();
-}
-
-/* =========================================
-   QUANTITY BUTTON
-========================================= */
-
-document.addEventListener('click', function(e){
-
-    /* PLUS */
-    if(e.target.closest('.plus-btn')){
-
-        const item =
-        e.target.closest('.mini-product');
-
-        const qtyElement =
-        item.querySelector('.qty-number');
-
-        let qty =
-        parseInt(qtyElement.innerText);
-
-        qty++;
-
-        qtyElement.innerText = qty;
-
-        const priceText =
-        item.querySelector('.item-price')
-        .innerText;
-
-        const singlePrice =
-        parseInt(
-            priceText.replace(/[^0-9]/g,'')
-        ) / (qty - 1);
-
-        totalPrice += singlePrice;
-
-        updateCartTotal();
-    }
-
-    /* MINUS */
-    if(e.target.closest('.minus-btn')){
-
-        const item =
-        e.target.closest('.mini-product');
-
-        const qtyElement =
-        item.querySelector('.qty-number');
-
-        let qty =
-        parseInt(qtyElement.innerText);
-
-        if(qty > 1){
-
-            qty--;
-
-            qtyElement.innerText = qty;
-
-            const priceText =
-            item.querySelector('.item-price')
-            .innerText;
-
-            const singlePrice =
-            parseInt(
-                priceText.replace(/[^0-9]/g,'')
-            ) / (qty + 1);
-
-            totalPrice -= singlePrice;
-
-            updateCartTotal();
-        }
-    }
-
-});
-
-renderCart();
-renderWishlist();
-</script>
-
-<div class="custom-toast" id="customToast"></div>
-
-<script>
-document
-.getElementById('searchModal')
-.addEventListener('shown.bs.modal', () => {
-
-    document
-    .querySelector('.search-box input')
-    .focus();
-
-});
 
 /* =========================================
    EMPTY STATE CONTROLLER
@@ -2722,8 +2478,8 @@ document
 function toggleWishlistEmpty(){
 
     const empty =
-    wishlistBody.querySelector('.wishlist-empty');
-
+    document.querySelector('.wishlist-empty');
+    
     const items =
     wishlistBody.querySelectorAll('.mini-product');
 
@@ -2746,24 +2502,36 @@ function toggleWishlistEmpty(){
 function toggleCartEmpty(){
 
     const empty =
-    cartBody.querySelector('.cart-empty');
+    document.querySelector('.cart-empty');
 
     const items =
-    cartBody.querySelectorAll('.mini-product');
+    document.querySelectorAll('#cartItems .mini-product');
 
-    if(items.length > 0){
+    empty.style.display =
+    items.length > 0 ? 'none' : 'flex';
 
-        if(empty){
-            empty.style.display = 'none';
-        }
+}
 
-    } else {
+function saveWishlistToStorage(){
 
-        if(empty){
-            empty.style.display = 'flex';
-        }
+    let items = [];
 
-    }
+    wishlistBody.querySelectorAll('.mini-product')
+    .forEach(item => {
+
+        items.push({
+            name: item.querySelector('h6').innerText,
+            brand: item.querySelector('p').innerText,
+            price: item.querySelector('span').innerText,
+            image: item.querySelector('img').src
+        });
+
+    });
+
+    localStorage.setItem(
+        'wishlistItems',
+        JSON.stringify(items)
+    );
 
 }
 
@@ -2775,7 +2543,7 @@ const wishlistButtons =
 document.querySelectorAll('.wishlist-btn');
 
 const wishlistBody =
-document.querySelector('#wishlistCanvas .offcanvas-body');
+document.getElementById('wishlistItems');
 
 const wishlistTarget =
 document.querySelector('[data-label="Wishlist"]');
@@ -2802,7 +2570,20 @@ wishlistButtons.forEach(button => {
         button.classList.toggle('active');
 
         if(button.classList.contains('active')){
+            let wishlistItems =
+            JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
+            wishlistItems.push({
+                name: title,
+                brand: brand,
+                price: price,
+                image: image
+            });
+
+            localStorage.setItem(
+                'wishlistItems',
+                JSON.stringify(wishlistItems)
+            );
 
             const existingItem =
             [...wishlistBody.querySelectorAll('.mini-product')]
@@ -2814,7 +2595,6 @@ wishlistButtons.forEach(button => {
                 return;
             }
             wishlistBody.innerHTML += `
-
 
             <div class="mini-product mb-3">
 
@@ -2853,6 +2633,21 @@ wishlistButtons.forEach(button => {
 
         } else {
 
+            button.classList.remove('active');
+
+            let wishlistItems =
+            JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+            wishlistItems =
+            wishlistItems.filter(item =>
+                item.name !== title
+            );
+
+            localStorage.setItem(
+                'wishlistItems',
+                JSON.stringify(wishlistItems)
+            );
+
             [...wishlistBody.querySelectorAll('.mini-product')]
             .forEach(item => {
 
@@ -2863,7 +2658,9 @@ wishlistButtons.forEach(button => {
             });
 
             showToast('Removed from Wishlist');
+
             toggleWishlistEmpty();
+            saveWishlistToStorage();
 
         }
 
@@ -2879,7 +2676,7 @@ const cartButtons =
 document.querySelectorAll('.add-cart');
 
 const cartBody =
-document.querySelector('.cart-items');
+document.getElementById('cartItems');
 
 const cartTarget =
 document.querySelector('[data-label="Cart"]');
@@ -2906,7 +2703,7 @@ function loadCartFromStorage(){
 
     cartItems.forEach(item => {
 
-        totalPrice += item.price;
+        totalPrice += item.price * item.qty;
 
         cartBody.innerHTML += `
 
@@ -2920,13 +2717,33 @@ function loadCartFromStorage(){
                     ${item.name}
                 </h6>
 
-                <p class="text-secondary small mb-2">
-                    ${item.brand}
-                </p>
+            <p class="text-secondary small mb-1">
+                ${item.brand}
+            </p>
 
-                <span class="text-primary fw-bold">
-                    Rp ${item.price.toLocaleString('id-ID')}
+            <p class="small text-info mb-2">
+                ${item.variant || '-'} | Size ${item.size || '-'}
+            </p>
+
+            <div class="d-flex align-items-center gap-2 mt-2">
+
+                <button class="qty-minus btn btn-sm btn-dark">
+                    -
+                </button>
+
+                <span class="qty-value">
+                    ${item.qty}
                 </span>
+
+                <button class="qty-plus btn btn-sm btn-dark">
+                    +
+                </button>
+
+            </div>
+
+            <span class="text-primary fw-bold d-block mt-2">
+                Rp ${(item.price * item.qty).toLocaleString('id-ID')}
+            </span>
 
             </div>
 
@@ -2946,126 +2763,240 @@ function loadCartFromStorage(){
 
 /* ADD TO CART */
 
+let selectedProduct = null;
+
+let selectedSize = null;
+let selectedVariant = null;
+let selectedVariantImage = null;
+
 cartButtons.forEach(button => {
 
     button.addEventListener('click', () => {
 
-        const product =
-        button.closest('.card-product');
+        const title = button.dataset.title;
+        const brand = button.dataset.brand;
+        const price = parseInt(button.dataset.price);
+        const image = button.dataset.image;
 
-        const title =
-        product.querySelector('h6').innerText;
+        const sizes =
+        button.dataset.sizes
+        ? button.dataset.sizes.split(',')
+        : [];
 
-        const brand =
-        product.querySelector('.text-muted').innerText;
+        const variants =
+        button.dataset.variants.trim().split('|');
 
-        const price =
-        product.querySelector('.text-primary').innerText;
+        selectedProduct = {
+            title,
+            brand,
+            price,
+            image
+        };
 
-        const image =
-        product.querySelector('img').src;
+        selectedSize = null;
+        selectedVariant = null;
 
-        const numericPrice =
-        parseInt(price.replace(/[^0-9]/g,''));
+        // TITLE
+        document.getElementById(
+            'modalProductTitle'
+        ).innerText = title;
 
-        button.classList.toggle('active-cart');
+        // PRICE
+        document.getElementById(
+            'modalProductPrice'
+        ).innerText =
+        'Rp ' + price.toLocaleString('id-ID');
 
-        if(button.classList.contains('active-cart')){
+        // IMAGE
+        document.getElementById(
+            'modalProductImage'
+        ).src = image;
 
-            button.innerText = 'Added';
+        /* SIZE BUTTON */
+        const sizeContainer =
+        document.getElementById('sizeOptions');
 
-            totalPrice += numericPrice;
+        sizeContainer.innerHTML = '';
 
-            updateCartTotal();
+        sizes.forEach(size => {
 
-            let cartItems =
-            JSON.parse(localStorage.getItem('cartItems')) || [];
+            const btn =
+            document.createElement('button');
 
-            cartItems.push({
-                name: title,
-                brand: brand,
-                price: numericPrice,
-                image: image
+            btn.className = 'option-btn';
+
+            btn.innerText = size;
+
+            btn.addEventListener('click', () => {
+
+                document
+                .querySelectorAll(
+                    '#sizeOptions .option-btn'
+                )
+                .forEach(b =>
+                    b.classList.remove('active')
+                );
+
+                btn.classList.add('active');
+
+                selectedSize = size;
+
             });
 
-            localStorage.setItem(
-                'cartItems',
-                JSON.stringify(cartItems)
-            );
+            sizeContainer.appendChild(btn);
 
-            cartBody.innerHTML += `
+        });
 
-            <div class="mini-product mb-4">
+        /* VARIANT BUTTON */
+        const variantContainer =
+        document.getElementById('variantOptions');
 
-                <img src="${image}">
+        variantContainer.innerHTML = '';
 
-                <div class="mini-product-content">
+        variants.forEach(v => {
 
-                    <h6 class="mb-1">
-                        ${title}
-                    </h6>
+            const data = v.split(',');
 
-                    <p class="text-secondary small mb-2">
-                        ${brand}
-                    </p>
+            const variantName = data[0].trim();
 
-                    <span class="text-primary fw-bold">
-                        ${price}
-                    </span>
+            const variantImage =
+            data[1]?.trim();
 
-                </div>
+            const btn =
+            document.createElement('button');
 
-                <button class="delete-item">
-                    <i class="bi bi-trash"></i>
-                </button>
+            btn.className = 'option-btn';
 
-            </div>
+            btn.innerText = variantName;
 
-            `;
+            btn.addEventListener('click', () => {
 
-            flyToTarget(
-                image,
-                product.querySelector('img'),
-                cartTarget
-            );
+                document
+                .querySelectorAll(
+                    '#variantOptions .option-btn'
+                )
+                .forEach(b =>
+                    b.classList.remove('active')
+                );
 
-            showToast('Added to Cart');
-            toggleCartEmpty();
+                btn.classList.add('active');
 
-        } else {
+                selectedVariant =
+                variantName;
 
-            button.innerText = 'Add to Bag';
+                selectedVariantImage =
+                variantImage;
 
-            let cartItems =
-            JSON.parse(localStorage.getItem('cartItems')) || [];
+                document.getElementById(
+                    'modalProductImage'
+                ).src = variantImage;
 
-            cartItems =
-            cartItems.filter(item =>
-            item.name !== title
-            );
-            
-            localStorage.setItem(
-                'cartItems',
-                JSON.stringify(cartItems)
-            );
+            });
 
-            loadCartFromStorage();
+            variantContainer.appendChild(btn);
 
-            showToast('Removed from Cart');
+        });
 
-        }
+        const modal =
+        new bootstrap.Modal(
+            document.getElementById('productOptionModal')
+        );
+
+        modal.show();
 
     });
 
 });
 
-/* =========================================
-   DELETE ITEM
-========================================= */
+document.getElementById('confirmAddCart')
+.addEventListener('click', () => {
+
+    if(!selectedVariant){
+
+        showToast('Select variant first');
+        return;
+    }
+
+    if(
+        document.getElementById('sizeOptions')
+        .children.length > 0 &&
+        !selectedSize
+    ){
+
+        showToast('Select size first');
+        return;
+    }
+
+    let cartItems =
+    JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    const existingItem =
+    cartItems.find(item =>
+
+        item.name === selectedProduct.title &&
+        item.variant === selectedVariant &&
+        item.size === selectedSize
+    );
+
+    if(existingItem){
+
+        existingItem.qty += 1;
+
+    } else {
+
+        cartItems.push({
+
+            name: selectedProduct.title,
+
+            brand: selectedProduct.brand,
+
+            price: selectedProduct.price,
+
+            image:
+            selectedVariantImage ||
+            selectedProduct.image,
+
+            qty: 1,
+
+            variant: selectedVariant,
+
+            size: selectedSize || '-'
+
+        });
+
+    }
+
+    localStorage.setItem(
+        'cartItems',
+        JSON.stringify(cartItems)
+    );
+
+    loadCartFromStorage();
+
+    toggleCartEmpty();
+
+    showToast('Added to Cart');
+
+    bootstrap.Modal.getInstance(
+        document.getElementById('productOptionModal')
+    ).hide();
+
+});
 
 document.addEventListener('click', function(e){
 
-    if(e.target.closest('.delete-item')){
+    if(
+        !e.target.classList.contains('qty-plus') &&
+        !e.target.classList.contains('qty-minus')
+    ){
+        return;
+    }
+
+    let cartItems =
+    JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    /* PLUS */
+    if(e.target.classList.contains('qty-plus')){
 
         const item =
         e.target.closest('.mini-product');
@@ -3073,25 +3004,111 @@ document.addEventListener('click', function(e){
         const title =
         item.querySelector('h6').innerText;
 
-        /* KHUSUS CART */
-        if(item.closest('.cart-items')){
+        cartItems.forEach(product => {
 
-            const priceText =
-            item.querySelector('.text-primary').innerText;
-
-            const numericPrice =
-            parseInt(priceText.replace(/[^0-9]/g,''));
-
-            totalPrice -= numericPrice;
-
-            if(totalPrice < 0){
-                totalPrice = 0;
+            if(product.name === title){
+                product.qty += 1;
             }
 
-            updateCartTotal();
-            toggleCartEmpty();
+        });
 
-        }
+    }
+
+    /* MINUS */
+    if(e.target.classList.contains('qty-minus')){
+
+        const item =
+        e.target.closest('.mini-product');
+
+        const title =
+        item.querySelector('h6').innerText;
+
+        cartItems.forEach(product => {
+
+            if(product.name === title){
+
+                product.qty -= 1;
+
+            }
+
+        });
+
+        cartItems =
+        cartItems.filter(item => item.qty > 0);
+
+        document.querySelectorAll('.card-product')
+        .forEach(product => {
+
+            const productTitle =
+            product.querySelector('h6').innerText;
+
+            cartItems.forEach(() => {});
+
+            const exists =
+            cartItems.find(item => item.name === productTitle);
+
+            if(!exists){
+
+                const cartBtn =
+                product.querySelector('.add-cart');
+
+                cartBtn.classList.remove('active-cart');
+
+                cartBtn.innerText = 'Add to Bag';
+
+            }
+
+        });
+
+    }
+
+ localStorage.setItem(
+        'cartItems',
+        JSON.stringify(cartItems)
+    );
+
+    loadCartFromStorage();
+
+    toggleCartEmpty();
+
+});
+
+/* =========================================
+   DELETE ITEM
+========================================= */
+
+document.addEventListener('click', function (e) {
+
+    const deleteBtn = e.target.closest('.delete-item');
+
+    if (!deleteBtn) return;
+
+    const item =
+    deleteBtn.closest('.mini-product');
+
+    const title =
+    item.querySelector('h6').innerText.trim();
+
+    /* =========================
+       DELETE CART
+    ========================= */
+
+    if (
+        item.closest('#cartItems')
+    ){
+
+        let cartItems =
+        JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        cartItems =
+        cartItems.filter(product =>
+            product.name !== title
+        );
+
+        localStorage.setItem(
+            'cartItems',
+            JSON.stringify(cartItems)
+        );
 
         /* RESET BUTTON */
         document.querySelectorAll('.card-product')
@@ -3102,44 +3119,115 @@ document.addEventListener('click', function(e){
 
             if(productTitle === title){
 
-                const cartBtn =
+                const btn =
                 product.querySelector('.add-cart');
 
-                cartBtn.classList.remove('active-cart');
+                btn.classList.remove('active-cart');
 
-                cartBtn.innerText = 'Add to Bag';
-
-                const wishBtn =
-                product.querySelector('.wishlist-btn');
-
-                wishBtn.classList.remove('active');
+                btn.innerText = 'Add to Bag';
 
             }
 
         });
 
-        let cartItems =
-        JSON.parse(localStorage.getItem('cartItems')) || [];
+        loadCartFromStorage();
 
-        cartItems =
-        cartItems.filter(cart =>
-            cart.name !== title
+        toggleCartEmpty();
+
+        showToast('Removed from Cart');
+
+    }
+
+    /* =========================
+       DELETE WISHLIST
+    ========================= */
+
+    if (
+        item.closest('#wishlistItems')
+    ){
+
+        let wishlistItems =
+        JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+        wishlistItems =
+        wishlistItems.filter(product =>
+            product.name !== title
         );
 
         localStorage.setItem(
-            'cartItems',
-            JSON.stringify(cartItems)
+            'wishlistItems',
+            JSON.stringify(wishlistItems)
         );
 
-        item.remove();
+        document.querySelectorAll('.card-product')
+        .forEach(product => {
+
+            const productTitle =
+            product.querySelector('h6').innerText;
+
+            if(productTitle === title){
+
+                product.querySelector('.wishlist-btn')
+                ?.classList.remove('active');
+
+            }
+
+        });
+
+        loadWishlistFromStorage();
+
         toggleWishlistEmpty();
-        toggleCartEmpty();
+
+        showToast('Removed from Wishlist');
 
     }
 
 });
 
 loadCartFromStorage();
+loadWishlistFromStorage();
+toggleCartEmpty();
+
+function loadWishlistFromStorage() {
+
+    let wishlistItems =
+        JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+    wishlistBody.querySelectorAll('.mini-product')
+        .forEach(item => item.remove());
+
+    wishlistItems.forEach(item => {
+
+        wishlistBody.insertAdjacentHTML('beforeend', `
+            <div class="mini-product mb-3">
+
+                <img src="${item.image}">
+
+                <div class="mini-product-content">
+
+                    <h6 class="mb-1">${item.name}</h6>
+
+                    <p class="text-secondary small mb-2">
+                        ${item.brand}
+                    </p>
+
+                    <span class="text-primary fw-bold">
+                        ${item.price}
+                    </span>
+
+                </div>
+
+                <button class="delete-item">
+                    <i class="bi bi-trash"></i>
+                </button>
+
+            </div>
+        `);
+
+    });
+
+    toggleWishlistEmpty();
+}
 
 /* =========================================
    SEARCH CART & WISHLIST
@@ -3157,66 +3245,20 @@ document.getElementById('cartSearch');
 
 function smartSearch(input, container){
 
-    const value =
-    input.value.trim().toLowerCase();
+    const value = input.value.trim().toLowerCase();
 
-    const items =
-    container.querySelectorAll('.mini-product');
-
-    let firstMatch = null;
+    const items = container.querySelectorAll('.mini-product');
 
     items.forEach(item => {
 
-        const brand =
-        item.querySelector('p')
-        .innerText
-        .toLowerCase();
+        const brand = item.querySelector('p')?.innerText?.toLowerCase() || '';
+        const title = item.querySelector('h6')?.innerText?.toLowerCase() || '';
 
-        const title =
-        item.querySelector('h6')
-        .innerText
-        .toLowerCase();
+        const match = brand.includes(value) || title.includes(value);
 
-        const match =
-        brand.includes(value) ||
-        title.includes(value);
-
-        item.style.display =
-        match ? 'flex' : 'none';
-
-        /* simpan item pertama yg cocok */
-        if(match && !firstMatch){
-
-            firstMatch = item;
-
-        }
+        item.style.display = match ? '' : 'none';
 
     });
-
-    /* auto focus / scroll */
-    if(firstMatch){
-
-        firstMatch.scrollIntoView({
-            behavior:'smooth',
-            block:'center'
-        });
-
-        /* glow effect sementara */
-        firstMatch.style.transition =
-        '0.3s';
-
-        firstMatch.style.boxShadow =
-        '0 0 25px rgba(0,210,255,0.35)';
-
-        setTimeout(() => {
-
-            firstMatch.style.boxShadow =
-            '';
-
-        },700);
-
-    }
-
 }
 
 /* WISHLIST SEARCH */
@@ -3270,7 +3312,121 @@ hotPrev.addEventListener('click', () => {
 
 });
 
+document.getElementById('clearWishlistBtn')
+.addEventListener('click', () => {
+
+    localStorage.removeItem('wishlistItems');
+
+    wishlistBody.innerHTML = '';
+
+    document.querySelectorAll('.wishlist-btn')
+    .forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    toggleWishlistEmpty();
+
+    showToast('Wishlist cleared');
+});
+
+document.getElementById('clearCartBtn')
+.addEventListener('click', () => {
+
+    // hapus data cart di storage
+    localStorage.removeItem('cartItems');
+
+    // kosongkan tampilan cart
+    cartBody.querySelectorAll('.mini-product')
+    .forEach(item => item.remove());
+
+    // reset total
+    totalPrice = 0;
+    updateCartTotal();
+
+    // reset semua tombol "Add to Bag"
+    document.querySelectorAll('.add-cart')
+    .forEach(btn => {
+        btn.classList.remove('active-cart');
+        btn.innerText = 'Add to Bag';
+    });
+
+    // update empty state
+    toggleCartEmpty();
+
+    // toast
+    showToast('Cart cleared');
+});
+
+});
+
 </script>
+
+<div class="custom-toast" id="customToast"></div>
+
+<!-- OPTION MODAL -->
+<div class="modal fade" id="productOptionModal" tabindex="-1">
+
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content bg-black text-white border-secondary rounded-5 p-3">
+
+      <!-- HEADER -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h2 class="fw-bold mb-2 fs-3">
+          Select Option
+        </h2>
+
+        <button class="btn-close btn-close-white"
+                data-bs-dismiss="modal">
+        </button>
+
+      </div>
+
+      <!-- IMAGE -->
+      <img id="modalProductImage"
+           class="img-fluid rounded-5 mb-4"
+           src="">
+
+      <!-- TITLE -->
+      <h2 id="modalProductTitle"
+            class="fw-bold fs-3 mb-1">
+      </h2>
+
+      <!-- PRICE -->
+      <h4 id="modalProductPrice"
+          class="text-info fw-bold fs-5 mb-3">
+      </h4>
+
+      <!-- SIZE -->
+      <p class="text-secondary mb-2 small">
+        SELECT SIZE
+      </p>
+
+      <div id="sizeOptions"
+           class="d-flex flex-wrap gap-2 mb-4">
+      </div>
+
+      <!-- VARIANT -->
+      <p class="text-secondary mb-2 small">
+        SELECT VARIANT
+      </p>
+
+      <div id="variantOptions"
+           class="d-flex flex-wrap gap-2 mb-3">
+      </div>
+
+      <!-- BUTTON -->
+      <button id="confirmAddCart"
+              class="btn btn-light text-dark fw-bold py-3 rounded-4">
+        Add to Cart
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 
 </body>
 </html>
