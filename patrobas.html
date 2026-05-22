@@ -1600,13 +1600,11 @@ footer h3:active{
 
         <ul class="navbar-nav">
 
-            <li class="nav-item mb-2">
-                <a href="#home"
-                    class="menu-link nav-close">
-                    HOME
-                    <i class="bi bi-house"></i>
-                </a>
-            </li>
+            <a href="KickSoul.html"
+                class="menu-link nav-close">
+                HOME
+                <i class="bi bi-house"></i>
+            </a>
 
 
             <li class="nav-item mb-2">
@@ -2182,7 +2180,7 @@ footer h3:active{
 
 <!-- BUTTON BACK -->
     <div class="text-center pb-5">
-        <a href="KickSoul.html"
+        <a href="index.html"
             class="btn btn-outline-light px-4">
             ← Back to Home
         </a>
@@ -3294,23 +3292,27 @@ document.getElementById('hotPrev');
 const hotNext =
 document.getElementById('hotNext');
 
-hotNext.addEventListener('click', () => {
+if (hotSlider && hotPrev && hotNext) {
 
-    hotSlider.scrollBy({
-        left:320,
-        behavior:'smooth'
+    hotNext.addEventListener('click', () => {
+
+        hotSlider.scrollBy({
+            left: 320,
+            behavior: 'smooth'
+        });
+
     });
 
-});
+    hotPrev.addEventListener('click', () => {
 
-hotPrev.addEventListener('click', () => {
+        hotSlider.scrollBy({
+            left: -320,
+            behavior: 'smooth'
+        });
 
-    hotSlider.scrollBy({
-        left:-320,
-        behavior:'smooth'
     });
 
-});
+}
 
 document.getElementById('clearWishlistBtn')
 .addEventListener('click', () => {
