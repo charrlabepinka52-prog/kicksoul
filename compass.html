@@ -2785,7 +2785,9 @@ cartButtons.forEach(button => {
         : [];
 
         const variants =
-        button.dataset.variants.trim().split('|');
+        button.dataset.variants
+        ? button.dataset.variants.trim().split('|')
+        : [];
 
         selectedProduct = {
             title,
@@ -2818,6 +2820,25 @@ cartButtons.forEach(button => {
         document.getElementById('sizeOptions');
 
         sizeContainer.innerHTML = '';
+
+        const sizeLabel =
+        document.getElementById('sizeLabel');
+
+        if(sizes.length === 0){
+
+        sizeContainer.style.display = 'none';
+        sizeLabel.style.display = 'none';
+
+        /* HAPUS JARAK BAWAH */
+        sizeContainer.style.marginBottom = '0';
+
+        } else {
+
+        sizeContainer.style.display = 'flex';
+        sizeLabel.style.display = 'block';
+        sizeContainer.style.marginBottom = '1.5rem';
+
+        }
 
         sizes.forEach(size => {
 
@@ -2853,6 +2874,26 @@ cartButtons.forEach(button => {
         document.getElementById('variantOptions');
 
         variantContainer.innerHTML = '';
+
+        const variantLabel =
+        document.getElementById('variantLabel');
+
+        if(variants.length === 0){
+
+        selectedVariant = 'Default';
+        selectedVariantImage = image;
+
+        /* HIDE VARIANT */
+        variantContainer.style.display = 'none';
+        variantLabel.style.display = 'none';
+
+        } else {
+
+        /* SHOW VARIANT */
+        variantContainer.style.display = 'flex';
+        variantLabel.style.display = 'block';
+
+        }
 
         variants.forEach(v => {
 
@@ -2919,10 +2960,13 @@ cartButtons.forEach(button => {
 document.getElementById('confirmAddCart')
 .addEventListener('click', () => {
 
-    if(!selectedVariant){
+    const hasVariant =
+    document.getElementById('variantOptions')
+    .children.length > 0;
 
-        showToast('Select variant first');
-        return;
+    if(hasVariant && !selectedVariant){
+    showToast('Select variant first');
+    return;
     }
 
     if(
@@ -3411,16 +3455,20 @@ document.getElementById('clearCartBtn')
       </h4>
 
       <!-- SIZE -->
-      <p class="text-secondary mb-2 small">
+      <p
+        id="sizeLabel"
+        class="text-secondary mb-2 small">
         SELECT SIZE
       </p>
 
       <div id="sizeOptions"
-           class="d-flex flex-wrap gap-2 mb-4">
+           class="d-flex flex-wrap gap-2 mb-2">
       </div>
 
       <!-- VARIANT -->
-      <p class="text-secondary mb-2 small">
+      <p
+        id="variantLabel"
+        class="text-secondary mb-2 small">
         SELECT VARIANT
       </p>
 
