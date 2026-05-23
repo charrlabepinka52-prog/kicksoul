@@ -490,14 +490,11 @@ body{
 }
 
 .card-product img{
-    width:100%;
-    height:250px;
-
-    object-fit:cover;
-
-    border-radius:16px;
-
-    transition:0.5s;
+ width:100%;
+ height:auto;
+ object-fit:contain;
+ border-radius:16px;
+ transition:0.5s;
 }
 
 .card-product:hover img{
@@ -1413,37 +1410,24 @@ footer h3:active{
 }
 
 #modalProductImage{
+ width:100%;
+ height:260px;
 
-    width: 100%;
+ object-fit:contain;
 
-    max-height: 180px;
+ background:#fff;
 
-    object-fit: contain;
+ padding:0;
 
-    background: #f5f5f5;
+ border-radius:24px;
 
-    padding: 10px;
+ margin-bottom:20px !important;
 
-    border-radius: 22px;
+ transition:0.4s;
 
-    margin-bottom: 14px !important;
-}
-
-#modalProductImage{
-
-    width: 100%;
-
-    max-height: 180px;
-
-    object-fit: contain;
-
-    background: #f5f5f5;
-
-    padding: 10px;
-
-    border-radius: 22px;
-
-    margin-bottom: 14px !important;
+ filter:drop-shadow(
+ 0 12px 18px rgba(0,0,0,0.15)
+ );
 }
 
 #sizeOptions,
