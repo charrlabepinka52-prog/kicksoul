@@ -626,21 +626,41 @@ body{
 }
 
 .btn-buy{
-    border:1px solid rgba(255,255,255,0.1);
 
-    background:transparent;
-    color:#fff;
+ border:1px solid rgba(255,255,255,0.1);
 
-    border-radius:12px;
+ background:transparent;
 
-    padding:10px;
+ color:#fff;
 
-    transition:0.3s;
+ border-radius:14px;
+
+ padding:14px 18px;
+
+ min-height:56px;
+
+ font-size:15px;
+
+ font-weight:700;
+
+ width:100%;
+
+ display:flex;
+
+ align-items:center;
+
+ justify-content:center;
+
+ letter-spacing:0.5px;
+
+ transition:0.3s ease;
+
 }
 
 .btn-buy:hover{
-    background:#fff;
-    color:#000;
+ background:var(--accent);
+ color:#000;
+ border-color:var(--accent);
 }
 
 /* =========================================
@@ -1468,6 +1488,110 @@ footer h3:active{
     cursor: pointer;
 }
 
+/* =========================================
+   SIZE MODAL
+========================================= */
+
+.option-btn{
+    border:1px solid rgba(255,255,255,0.1);
+    background:#151515;
+    color:#fff;
+
+    padding:8px 14px;
+
+    font-size:13px;
+    min-width:52px;
+
+    border-radius:12px;
+
+    transition:0.3s;
+}
+
+.option-btn:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.option-btn.active{
+    background:var(--accent);
+    color:#000;
+    border-color:var(--accent);
+}
+
+.product-option-img{
+    width:100%;
+    border-radius:18px;
+    height:260px;
+    object-fit:cover;
+}
+
+#productOptionModal .modal-content{
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    padding: 16px !important;
+}
+
+#modalProductImage{
+ width:100%;
+ height:260px;
+
+ object-fit:contain;
+
+ background:#fff;
+
+ padding:0;
+
+ border-radius:24px;
+
+ margin-bottom:20px !important;
+
+ transition:0.4s;
+
+ filter:drop-shadow(
+ 0 12px 18px rgba(0,0,0,0.15)
+ );
+}
+
+#sizeOptions,
+#variantOptions{
+
+    gap: 10px !important;
+}
+
+#confirmAddCart{
+
+    padding:12px !important;
+
+    font-size:16px;
+
+    background:var(--accent) !important;
+
+    border:1px solid var(--accent) !important;
+
+    color:#000 !important;
+
+    font-weight:700;
+
+    border-radius:14px;
+
+    transition:0.3s;
+}
+
+#confirmAddCart:hover{
+
+    background:var(--accent) !important;
+
+    color:#000 !important;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 18px rgba(0,210,255,0.35);
+}
+
 </style>
 </head>
 
@@ -2153,9 +2277,14 @@ footer h3:active{
         <i class="bi bi-heart"></i>
     </button>
 
-    <button class="btn-buy w-100 add-cart">
-        Add to Bag
-    </button>
+    <button class="btn-buy add-cart-btn"
+        data-name="Compass Velocity"
+        data-price="Rp 599.000"
+        data-image="https://down-id.img.susercontent.com/file/sg-11134201-81zu3-mn64pj3dpzb954@resize_w450_nl.webp">
+
+    Add To Bag
+
+</button>
 
 </div>
 
@@ -2193,8 +2322,13 @@ footer h3:active{
                     <i class="bi bi-heart"></i>
                 </button>
 
-                <button class="btn-buy w-100 add-cart">
-                    Add to Bag
+                <button class="btn-buy add-cart-btn"
+                    data-name="Compass Velocity"
+                    data-price="Rp 599.000"
+                    data-image="https://linkgambar.jpg">
+
+                    Add To Bag
+
                 </button>
                 </div>
 
@@ -2231,10 +2365,14 @@ footer h3:active{
                      <i class="bi bi-heart"></i>
                  </button>
 
-                <button class="btn-buy w-100 add-cart">
-                    Add to Bag
-                </button>
+                <button class="btn-buy add-cart-btn"
+                    data-name="Compass Velocity"
+                    data-price="Rp 599.000"
+                    data-image="https://linkgambar.jpg">
 
+                    Add To Bag
+
+                </button>
                 </div>
             </div>
 
@@ -2270,10 +2408,14 @@ footer h3:active{
                      <i class="bi bi-heart"></i>
                  </button>
 
-                <button class="btn-buy w-100 add-cart">
-                    Add to Bag
-                </button>
+                <button class="btn-buy add-cart-btn"
+                    data-name="Compass Velocity"
+                    data-price="Rp 599.000"
+                    data-image="https://linkgambar.jpg">
 
+                    Add To Bag
+
+                </button>
                 </div>
             </div>
 
@@ -2308,10 +2450,14 @@ footer h3:active{
                 <i class="bi bi-heart"></i>
             </button>
 
-            <button class="btn-buy w-100 add-cart">
-                Add to Bag
-            </button>
+            <button class="btn-buy add-cart-btn"
+                data-name="Compass Velocity"
+                data-price="Rp 599.000"
+                data-image="https://linkgambar.jpg">
 
+                Add To Bag
+
+            </button>
         </div>
 
     </div> <!-- END card-product -->
@@ -3348,6 +3494,225 @@ document.getElementById('clearCartBtn')
 </script>
 
 <div class="custom-toast" id="customToast"></div>
+
+<!-- =========================================
+     PRODUCT OPTION MODAL
+========================================= -->
+
+<div class="modal fade" id="productOptionModal" tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content search-modal">
+
+            <div class="modal-body p-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h5 class="fw-bold mb-0">
+                        SELECT OPTIONS
+                    </h5>
+
+                    <button class="btn-close btn-close-white"
+                            data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <img id="modalProductImage"
+                     src=""
+                     alt="Product">
+
+                <h5 id="modalProductName" class="fw-bold mb-1"></h5>
+
+                <p id="modalProductPrice"
+                   class="text-primary fw-bold mb-4">
+                </p>
+
+                <!-- SIZE -->
+                <div class="mb-4">
+
+                    <h6 class="fw-bold mb-3">
+                        Select Size
+                    </h6>
+
+                    <div class="d-flex flex-wrap"
+                         id="sizeOptions">
+
+                        <button class="option-btn">39</button>
+                        <button class="option-btn">40</button>
+                        <button class="option-btn">41</button>
+                        <button class="option-btn">42</button>
+                        <button class="option-btn">43</button>
+
+                    </div>
+
+                </div>
+
+                <!-- VARIANT -->
+                <div class="mb-4">
+
+                    <h6 class="fw-bold mb-3">
+                        Select Variant
+                    </h6>
+
+                    <div class="d-flex flex-wrap"
+                         id="variantOptions">
+
+                        <button class="option-btn">Black</button>
+                        <button class="option-btn">White</button>
+                        <button class="option-btn">Cream</button>
+
+                    </div>
+
+                </div>
+
+                <button class="btn w-100"
+                        id="confirmAddCart">
+
+                    Add To Bag
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let selectedSize = "";
+let selectedVariant = "";
+
+const optionModal = new bootstrap.Modal(
+    document.getElementById("productOptionModal")
+);
+
+const modalImage =
+document.getElementById("modalProductImage");
+
+const modalName =
+document.getElementById("modalProductName");
+
+const modalPrice =
+document.getElementById("modalProductPrice");
+
+const confirmBtn =
+document.getElementById("confirmAddCart");
+
+let selectedProduct = {};
+
+/* =========================================
+   OPEN MODAL
+========================================= */
+
+document.querySelectorAll(".add-cart-btn")
+.forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        selectedProduct = {
+
+            name:btn.dataset.name,
+            price:btn.dataset.price,
+            image:btn.dataset.image
+
+        };
+
+        modalImage.src = selectedProduct.image;
+        modalName.innerText = selectedProduct.name;
+        modalPrice.innerText = selectedProduct.price;
+
+        selectedSize = "";
+        selectedVariant = "";
+
+        document
+        .querySelectorAll("#sizeOptions .option-btn")
+        .forEach(b=>b.classList.remove("active"));
+
+        document
+        .querySelectorAll("#variantOptions .option-btn")
+        .forEach(b=>b.classList.remove("active"));
+
+        optionModal.show();
+
+    });
+
+});
+
+/* =========================================
+   SIZE SELECT
+========================================= */
+
+document
+.querySelectorAll("#sizeOptions .option-btn")
+.forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        document
+        .querySelectorAll("#sizeOptions .option-btn")
+        .forEach(b=>b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        selectedSize = btn.innerText;
+
+    });
+
+});
+
+/* =========================================
+   VARIANT SELECT
+========================================= */
+
+document
+.querySelectorAll("#variantOptions .option-btn")
+.forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        document
+        .querySelectorAll("#variantOptions .option-btn")
+        .forEach(b=>b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        selectedVariant = btn.innerText;
+
+    });
+
+});
+
+/* =========================================
+   CONFIRM ADD TO CART
+========================================= */
+
+confirmBtn.addEventListener("click",()=>{
+
+    if(!selectedSize || !selectedVariant){
+
+        alert("Please select size and variant first.");
+        return;
+
+    }
+
+    console.log({
+
+        ...selectedProduct,
+        size:selectedSize,
+        variant:selectedVariant
+
+    });
+
+    optionModal.hide();
+
+});
+
+</script>
 
 </body>
 </html>
