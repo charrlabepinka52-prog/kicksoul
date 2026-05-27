@@ -293,23 +293,6 @@ body{
 }
 
 /* =========================================
-   HERO
-========================================= */
-
-.hero{
-    height:60vh;
-    background:
-    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
-    url('https://cdn.shopify.com/s/files/1/0712/0397/9503/files/Cover-Desktop-Blog.png?v=1771572245&width=2000&height=1063&crop=center');
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-/* =========================================
    CATEGORY (UPGRADED)
 ========================================= */
 
@@ -644,27 +627,6 @@ footer .social-icon:hover{
     color:var(--accent) !important;
 
     transform:translateY(-4px);
-}
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media(max-width:768px){
-
-    .hero-content h1{
-        font-size:3rem;
-    }
-
-    .hero-slide{
-        height:75vh;
-        margin:15px;
-    }
-
-    .offcanvas.offcanvas-start{
-        width:100%;
-    }
-
 }
 
 /* =========================================
@@ -1672,15 +1634,9 @@ footer h3:active{
 
                 <div class="collapse submenu" id="apparelCollapse">
 
-                    <a class="nav-link" href="#" onclick="window.location.href='apparels.html#tshirts'">
-                        T-Shirts
-                    </a>
-                    <a class="nav-link" href="#" onclick="window.location.href='apparels.html#slipon'">
-                        Slip On
-                    </a>
-                    <a class="nav-link" href="#" onclick="window.location.href='apparels.html#socks'">
-                        Socks
-                    </a>
+                    <a class="nav-link" href="apparels.html#tshirts">T-Shirts</a>
+                    <a class="nav-link" href="apparels.html#slipon">Slip On</a>
+                    <a class="nav-link" href="apparels.html#socks">Socks</a>
 
                 </div>
 
@@ -1911,213 +1867,16 @@ footer h3:active{
 </div>
 
 <!-- =========================================
-     HERO
-========================================= -->
-
-<section class="hero">
-    <div>
-        <h1 class="display-3 fw-bold">COMPASS</h1>
-            <p class="lead">
-                    Local Pride Sneakers From Indonesia
-            </p>
-        </div>
-</section>
-
-<!-- DESKRIPSI -->
-<section class="container py-5 text-center">
-    <h2 class="fw-bold mb-4">About Compass</h2>
-        <p class="text-secondary">
-            Siapa yang nggak tahu brand dengan logo striking Gazelle yang satu ini? Di KickSoul, kami menghadirkan Sepatu Compass, sang legenda yang berhasil membangkitkan gairah sepatu kanvas lokal di Indonesia. Menggabungkan sentuhan vintage klasik dengan kultur modern, Compass bukan sekadar alas kaki, melainkan sebuah simbol kebanggaan dan pergerakan anak muda. Setiap siluetnya yang ikonik dirancang dengan detail presisi dan sejarah panjang, menjadikannya koleksi wajib untuk kamu yang menghargai cerita di setiap langkah.
-        </p>
-    </section>
-
-<!-- =========================================
-     BRANDS
-========================================= -->
-
-<section class="brand-section py-4">
-
-    <div class="container">
-
-        <div class="brand-container">
-
-            <a href="compass.html" class="text-decoration-none">
-                <div class="brand-item"><h5 class="brand-logo mb-0">COMPASS</h5></div>
-            </a>
-            <a href="patrobas.html" class="text-decoration-none">
-                <div class="brand-item"><h5 class="brand-logo mb-0">PATROBAS</h5></div>
-            </a>
-            <a href="aerostreet.html" class="text-decoration-none">
-                <div class="brand-item"><h5 class="brand-logo mb-0">AEROSTREET</h5></div>
-            </a>
-            <a href="geoffmax.html" class="text-decoration-none">
-                <div class="brand-item"><h5 class="brand-logo mb-0">GEOFF MAX FOOTWEAR</h5></div>
-            </a>
-            <a href="piero.html" class="text-decoration-none">
-                <div class="brand-item"><h5 class="brand-logo mb-0">PIERO</h5></div>
-            </a>
-            
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================
      PRODUCTS
 ========================================= -->
 
-<section class="container pb-5">
-    <section id="shop" class="container py-5">
-        <div class="mb-5">
-            <h6 class="text-primary fw-bold">
-                PRODUK TERBARU
-            </h6>
-            <h2 class="fw-bold">
-                Sneakers
-            </h2>
-        </div>
-
-    <div class="row g-4">
-        <!-- PRODUCT 1 -->
-        <div class="col-md-4 col-6 product-item">
-            <div class="card-product">
-                <a href="productdetail.html"
-                class="overflow-hidden rounded-4 d-block">
-
-                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfgo-m3qhvbu0zns7f6.webp">
-
-                </a>
-
-                <p class="text-muted small mt-3 mb-1">
-                    Compass
-                </p>
-                <h6>
-                    <a href="product_detail.html"
-                    class="text-white text-decoration-none">
-                        Tribune
-                    </a>
-                </h6>
-                <p class="text-primary fw-bold">
-                    Rp 598.000
-                </p>
-                <div class="product-meta">
-                    <span class="rating">⭐ 4.8</span>
-                    <span class="sold">• 1.3k sold</span>
-                </div>
-                <div class="d-flex gap-2 mt-3">
-                    <button class="wishlist-btn">
-                        <i class="bi bi-heart"></i>
-                    </button>
-                    <button 
-                        class="btn-buy w-100 add-cart"
-                        data-title="Tribune"
-                        data-brand="Compass"
-                        data-price="598000"
-                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rfgo-m3qhvbu0zns7f6.webp"
-                        data-sizes="36,37,38,39,40,41,42,43,44,45,46"
-                        data-variants="
-                        Tribune Navy Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rfgo-m3qhvbu0zns7f6.webp,598000|
-                        Tribune Red Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rdx7-m0k4cnka2215e4@resize_w900_nl.webp,598000|
-                        Tribune Black Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rdx7-m0k3zm64zukk72.webp,598000
-                        ">
-                        Add to Bag
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- PRODUCT 2 -->
-        <div class="col-md-4 col-6 product-item">
-            <div class="card-product">
-                <div class="overflow-hidden rounded-4">
-                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rbmf-locaidb0hrpmd9.webp">
-                </div>
-                <p class="text-muted small mt-3 mb-1">
-                    Compass
-                </p>
-                <h6>
-                    Velocity
-                </h6>
-                <p class="text-primary fw-bold">
-                    Rp 798.000
-                </p>
-                <div class="product-meta">
-                    <span class="rating">⭐ 4.9</span>
-                    <span class="sold">• 1.5k sold</span>
-                </div>
-                <div class="d-flex gap-2 mt-3">
-                    <button class="wishlist-btn">
-                        <i class="bi bi-heart"></i>
-                    </button>
-                    <button 
-                        class="btn-buy w-100 add-cart"
-                        data-title="Velocity"
-                        data-brand="Compass"
-                        data-price="798000"
-                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rbmf-locaidb0hrpmd9.webp"
-                        data-sizes="36,37,38,39,40,41,42,43,44,45,46"
-                        data-variants="
-                        Velocity Grey,https://down-id.img.susercontent.com/file/sg-11134201-7rbmf-locaidb0hrpmd9.webp,798000|
-                        Velocity Black,https://down-id.img.susercontent.com/file/sg-11134201-7rblr-lo7w3yvyb39t28.webp,798000|
-                        Velocity Black Gum,https://down-id.img.susercontent.com/file/sg-11134201-7rd4m-lwo9md6gm6j3eb.webp,798000
-                        ">
-                        Add to Bag
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- PRODUCT 3 -->
-        <div class="col-md-4 col-6 product-item">
-            <div class="card-product">
-                <div class="overflow-hidden rounded-4">
-                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rbmg-lo7vva0u6p45c1.webp">
-                </div>
-                <p class="text-muted small mt-3 mb-1">
-                    Compass
-                </p>
-                <h6>
-                    Retrograde
-                </h6>
-                <p class="text-primary fw-bold">
-                    Rp 491.900
-                </p>
-                <div class="product-meta">
-                    <span class="rating">⭐ 4.7</span>
-                    <span class="sold">• 1.1k sold</span>
-                </div>
-                <div class="d-flex gap-2 mt-3">
-                    <button class="wishlist-btn">
-                        <i class="bi bi-heart"></i>
-                    </button>
-                    <button 
-                        class="btn-buy w-100 add-cart"
-                        data-title="Retrograde"
-                        data-brand="Compass"
-                        data-price="491900"
-                        data-image="https://down-id.img.susercontent.com/file/sg-11134201-7rbmg-lo7vva0u6p45c1.webp"
-                        data-sizes="36,37,38,39,40,41,42,43,44,45,46"
-                        data-variants="
-                        Retrograde Low White Blue,https://down-id.img.susercontent.com/file/sg-11134201-7rbmg-lo7vva0u6p45c1.webp,491900|
-                        Retrograde Low Triple Black,https://down-id.img.susercontent.com/file/sg-11134201-7rd4b-lvcqvwecowtuf3.webp,538000|                        
-                        Retrograde Low Cream,https://down-id.img.susercontent.com/file/sg-11134201-7rbnf-lo7w0qtm5kqb00.webp,515900|
-                        Retrograde Low Black White,https://down-id.img.susercontent.com/file/sg-11134201-7rbmq-lo6voepli4yt8f.webp,538000
-                        ">
-                        Add to Bag
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>      
-</section>
-
-<!-- PRODUK -->
-<section class="container pb-5">
+<section id="tshirts" class="container pb-5">
     <div class="mb-5">
+        <h6 class="text-primary fw-bold">
+            APPARELS
+        </h6>
         <h2 class="fw-bold">
-            Apparels
+            T-Shirts
         </h2>
     </div>
 
@@ -2204,6 +1963,412 @@ footer h3:active{
             </div>
         </div>
 
+        <!-- PRODUCT 2 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-822wr-mmil5wre9c757c.webp">
+                </div>
+
+                <p class="text-muted small mt-3 mb-1">
+                    Aerostreet
+                </p>
+                <h6>
+                    Fuji Kaos Wanita
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 75.900
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.9</span>
+                    <span class="sold">• 1.1k sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Fuji Kaos Wanita"
+                        data-brand="Aerostreet"
+                        data-price="75900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-822wr-mmil5wre9c757c.webp"
+                        data-sizes="S,M,L,XL"
+                        data-variants="
+                        White,https://down-id.img.susercontent.com/file/id-11134207-822wr-mmil5wre9c757c.webp,75900|
+                        Black,https://down-id.img.susercontent.com/file/id-11134207-8224t-mkaf9ya8wm4m10.webp,89900|
+                        Dark Grey,https://down-id.img.susercontent.com/file/id-11134207-8224y-mkaf9ya8zf9ib8.webp,89900|
+                        Brown,https://down-id.img.susercontent.com/file/id-11134207-8224y-mkaf9ya90tty1a.webp,89900|
+                        Denim,https://down-id.img.susercontent.com/file/id-11134207-8224u-mkaf9ya928ee75.webp,89900|
+                        Charcoal,https://down-id.img.susercontent.com/file/id-11134207-8224u-mkaf9ya928ee75.webp,89900|
+                        Mocca,https://down-id.img.susercontent.com/file/id-11134207-82250-mkaf9ya951ja7c.webp,89900|
+                        Light Grey,https://down-id.img.susercontent.com/file/id-11134207-8224s-mkaf9ya96g3q8a.webp,89900|
+                        Pink Coral,https://down-id.img.susercontent.com/file/id-11134207-82252-mkaf9ya9998mac.webp,89900|
+                        Cream,https://down-id.img.susercontent.com/file/id-11134207-8224t-mkaeyxyo6epw60.webp,89900
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-822wi-mlllajou9z48ef.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Aerostreet
+                </p>
+                <h6>
+                    Lex Kaos Polo Scuba Pria
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 109.900
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.9</span>
+                    <span class="sold">• 1.5k sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Nasty Hoodie"
+                        data-brand="Geoff Max Footwear"
+                        data-price="600000"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-822wi-mlllajou9z48ef.webp"
+                        data-sizes="S,M,L,XL"
+                        data-variants="
+                        Black,https://down-id.img.susercontent.com/file/id-11134207-822wi-mlllajou9z48ef.webp,109900|
+                        Maroon,https://down-id.img.susercontent.com/file/id-11134207-822wj-mlllajou8kjs31.webp,109900|
+                        Broken White,https://down-id.img.susercontent.com/file/id-11134207-822wu-mlllajotyqko3b.webp,109900|
+                        Ivory,https://down-id.img.susercontent.com/file/id-11134207-822wt-mlllajou055465.webp,109900|
+                        Dark Grey,https://down-id.img.susercontent.com/file/id-11134207-822wq-mlllajou2ya023.webp,109900
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PRODUCT 2 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk5-m9k4merchyiqbe.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Geoff Max Footwear
+                </p>
+                <h6>
+                    Nasty Hoodie
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 600.000
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.9</span>
+                    <span class="sold">• 678 sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Nasty Hoodie"
+                        data-brand="Geoff Max Footwear"
+                        data-price="600000"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-7rbk5-m9k4merchyiqbe.webp"
+                        data-sizes="S,M,L,XL"
+                        data-variants="
+                        Black,https://down-id.img.susercontent.com/file/id-11134207-7rbk5-m9k4merchyiqbe.webp,600000|
+                        Misty,https://down-id.img.susercontent.com/file/id-11134207-7rbk8-m9k4okum826l9d.webp,600000
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>        
+    </div>      
+</section>
+
+<!-- PRODUK -->
+<section id="slipon" class="container pb-5">
+    <div class="mb-5">
+        <h2 class="fw-bold">
+            Slip On
+        </h2>
+    </div>
+
+    <div class="row g-4">
+        <!-- PRODUCT 1 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lt0tzvy57kop9b.webp">
+                </div>
+
+                <p class="text-muted small mt-3 mb-1">
+                    Patrobas
+                </p>
+                <h6>
+                    Ease Sandal
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 99.900
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.8</span>
+                    <span class="sold">• 1.1k sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="T-Shirt"
+                        data-brand="Patrobas"
+                        data-price="99900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lt0tzvy57kop9b.webp"
+                        data-sizes="36-37,38-39,40-41,42-43,44-45"
+                        data-variants="
+                        Black,https://down-id.img.susercontent.com/file/id-11134207-7r98r-lt0tzvy57kop9b.webp,99900|
+                        Brown,https://down-id.img.susercontent.com/file/id-11134207-7r98o-lzyp6gc0f7c827.webp,99900|
+                        Berly,https://down-id.img.susercontent.com/file/id-11134207-7r98z-lt0uonl6fxeheb.webp,99900|
+                        Asphalt,https://down-id.img.susercontent.com/file/id-11134207-7r98u-lzyp6gc0nmp94a.webp,99900|
+                        Sand,https://down-id.img.susercontent.com/file/id-11134207-7r990-lzyp6gc0i0fhfe.webp,99900|
+                        Ivory,https://down-id.img.susercontent.com/file/id-11134207-7r990-lt0utl90c6qvaf.webp,99900
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-8224w-mik5hk9sbgg8ad.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Patrobas
+                </p>
+                <h6>
+                    Flip Sandal Recovery
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 109.900
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.8</span>
+                    <span class="sold">• 1k sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Flip Sandal Recovery"
+                        data-brand="Patrobas"
+                        data-price="109900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-8224w-mik5hk9sbgg8ad.webp"
+                        data-sizes="36-37,38-39,40-41,42-43,44-45"
+                        data-variants="
+                        Brown,https://down-id.img.susercontent.com/file/id-11134207-8224w-mik5hk9sbgg8ad.webp,109900|
+                        Black,https://down-id.img.susercontent.com/file/id-11134207-8224o-mik4qwsk5n2a79.webp,109900|
+                        Army,https://down-id.img.susercontent.com/file/id-11134207-8224t-mik5hk9sihageb.webp,109900|
+                        Asphalt,https://down-id.img.susercontent.com/file/id-11134207-82251-mik5hk9u2o00ad.webp,109900
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0q-mbusbl98cuvree.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Patrobas
+                </p>
+                <h6>
+                    Sandal Slide
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 89.900
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.7</span>
+                    <span class="sold">• 980 sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Sandal Slide"
+                        data-brand="Patrobas"
+                        data-price="89900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-7ra0q-mbusbl98cuvree.webp"
+                        data-sizes="39,40,41,42,43,44"
+                        data-variants="
+                        Jax Sandal Slide,https://down-id.img.susercontent.com/file/id-11134207-7ra0q-mbusbl98cuvree.webp,89900|
+                        Monarch Sandal Slide,https://down-id.img.susercontent.com/file/id-11134207-7rbk0-m7oprsl3bivkdd.webp,89900                      
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+                <!-- PRODUCT 1 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-822wm-mn0yczop80zka5.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Aerostreet
+                </p>
+                <h6>
+                    Sandal Slop CLara
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 89.900
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.8</span>
+                    <span class="sold">• 1k sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Dura SP"
+                        data-brand="Aerostreet"
+                        data-price="89900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-822wm-mn0yczop80zka5.webp"
+                        data-sizes="36,37,38,39,40"
+                        data-variants="
+                        Pink,https://down-id.img.susercontent.com/file/id-11134207-822wm-mn0yczop80zka5.webp,89900|
+                        Off White,https://down-id.img.susercontent.com/file/id-11134207-822wl-mn0y7ebp52bk48.webp,89900|
+                        Krem,https://down-id.img.susercontent.com/file/id-11134207-822wn-mn0yczopau4g9b.webp,89900|
+                        Sage,https://down-id.img.susercontent.com/file/id-11134207-822ws-mn0y7ebpgav41a.webp,89900|
+                        Yellow Lime,https://down-id.img.susercontent.com/file/id-11134207-822wg-mn0y7ebr63uw50.webp,89900|
+                        Hitam,https://down-id.img.susercontent.com/file/id-11134207-822wu-mn0yczopj9j413.webp,89900
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCT 1 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134201-7rbk4-m7lqwup2cg1j9b.webp">
+                </div>
+
+                <p class="text-muted small mt-3 mb-1">
+                    Piero
+                </p>
+                <h6>
+                    Puna RS Distorted
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 89.900
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.7</span>
+                    <span class="sold">• 540 sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Puna RS Distorted"
+                        data-brand="Piero"
+                        data-price="89900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134201-7rbk4-m7lqwup2cg1j9b.webp"
+                        data-sizes="37,38,39,40,41,42,43,44,45"
+                        data-variants="
+                        Light Brown Light Grey,https://down-id.img.susercontent.com/file/id-11134201-7rbk4-m7lqwup2cg1j9b.webp,89900|
+                        Red Light Taupe,https://down-id.img.susercontent.com/file/id-11134201-7rbk5-m7lqwtj61rdl08.webp,89900|
+                        Dark Green Light Crepe,https://down-id.img.susercontent.com/file/id-11134201-7rbk5-m7lqx4eo4txs3e.webp,89900|
+                        Dark Grey Orange,https://down-id.img.susercontent.com/file/id-11134201-7rbkc-m7lqxsnkngexd0.webp,89900|
+                        Old Navy Cream,https://down-id.img.susercontent.com/file/id-11134201-7rbk6-m7lqwwuh75tjca.webp,89900
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134201-7rbk4-m7lqx28pazic68.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Piero
+                </p>
+                <h6>
+                    Sandals Ryo Kaneda
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 139.900
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.8</span>
+                    <span class="sold">• 1.1k sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Sandals Ryo Kaneda"
+                        data-brand="Piero"
+                        data-price="139900"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134201-7rbk4-m7lqx28pazic68.webp"
+                        data-sizes="38,39,40,41,42,43,44,45"
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>        
+    </div>      
+</section>
+
+<!-- PRODUK -->
+<section id="socks" class="container pb-5">
+    <div class="mb-5">
+        <h2 class="fw-bold">
+            Socks
+        </h2>
+    </div>
+
+    <div class="row g-4">
         <!-- PRODUCT 3 -->
         <div class="col-md-4 col-6 product-item">
             <div class="card-product">
@@ -2239,6 +2404,86 @@ footer h3:active{
                         Ankle Black,https://down-id.img.susercontent.com/file/id-11134207-81ztm-mdwqy7c3hjia80.webp,68000|
                         Low White,https://down-id.img.susercontent.com/file/id-11134207-7ra0o-md2y92dq46zoe1.webp,88000|
                         Ankle White,https://down-id.img.susercontent.com/file/id-11134207-81ztp-mdwqy7c3eqdefb.webp,68000                     
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+                <!-- PRODUCT 3 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-81ztk-mdy32h1dgbnnd3.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Geoff Max Footwear
+                </p>
+                <h6>
+                    Dura SP
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 79.000
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.8</span>
+                    <span class="sold">• 1.1k sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Dura SP"
+                        data-brand="Geoff Max Footwear"
+                        data-price="79000"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134207-81ztk-mdy32h1dgbnnd3.webp"
+                        data-variants="
+                        Black Grey,https://down-id.img.susercontent.com/file/id-11134207-81ztk-mdy32h1dgbnnd3.webp,79000|
+                        White Grey,https://down-id.img.susercontent.com/file/id-11134207-81ztq-mdy32h21bz7qc7.webp,79000|
+                        Grey Brown,https://down-id.img.susercontent.com/file/id-11134207-82252-mh0ie39p3ytq28.webp,79000|
+                        Black Brown,https://down-id.img.susercontent.com/file/id-11134207-8224v-mh0lnsqx2xou20.webp,79000                      
+                        ">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+                <!-- PRODUCT 3 -->
+        <div class="col-md-4 col-6 product-item">
+            <div class="card-product">
+                <div class="overflow-hidden rounded-4">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134211-7rbkc-matbopmwpnfd83.webp">
+                </div>
+                <p class="text-muted small mt-3 mb-1">
+                    Piero
+                </p>
+                <h6>
+                    Classico Micro Crew Socks
+                </h6>
+                <p class="text-primary fw-bold">
+                    Rp 23.880
+                </p>
+                <div class="product-meta">
+                    <span class="rating">⭐ 4.7</span>
+                    <span class="sold">• 1.2k sold</span>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button 
+                        class="btn-buy w-100 add-cart"
+                        data-title="Classico Micro Crew Socks"
+                        data-brand="Piero"
+                        data-price="23880"
+                        data-image="https://down-id.img.susercontent.com/file/id-11134211-7rbkc-matbopmwpnfd83.webp"
+                        data-variants="
+                        Black,https://down-id.img.susercontent.com/file/id-11134211-7rbkc-matbopmwpnfd83.webp,23880|
+                        White,https://down-id.img.susercontent.com/file/id-11134211-7rbka-matddwd54m2ge3.webp,23880                      
                         ">
                         Add to Bag
                     </button>
@@ -3555,5 +3800,41 @@ document.getElementById('clearCartBtn')
 
 </div>
 
+<script>
+document.querySelectorAll('.apparel-link').forEach(link => {
+    link.addEventListener('click', function () {
+
+        let sidebar = document.getElementById('sidebar'); // ID offcanvas kamu
+        let bsOffcanvas = bootstrap.Offcanvas.getInstance(sidebar);
+
+        if (bsOffcanvas) {
+            bsOffcanvas.hide();
+        }
+    });
+});
+</script>
+
+<script>
+document.querySelectorAll('.submenu a').forEach(link => {
+    link.addEventListener('click', () => {
+        const sidebar = document.querySelector('.sidebar'); // sesuaikan class sidebar kamu
+        if (sidebar.classList.contains('show')) {
+            new bootstrap.Collapse(sidebar).hide();
+        }
+    });
+});
+</script>
+
+<script>
+document.querySelectorAll('.submenu a').forEach(link => {
+    link.addEventListener('click', () => {
+        const offcanvas = document.querySelector('.offcanvas');
+        const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvas);
+        if (bsOffcanvas) {
+            bsOffcanvas.hide();
+        }
+    });
+});
+</script>
 </body>
 </html>
