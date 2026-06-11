@@ -583,13 +583,14 @@ body{
 }
 
 .card-product:hover{
+
     transform:translateY(-12px);
 
-    border-color:rgba(0,210,255,0.4);
+    border-color:rgba(0,210,255,0.35);
 
     box-shadow:
-    0 20px 40px rgba(0,0,0,0.7),
-    0 0 20px rgba(0,210,255,0.08);
+    0 15px 35px rgba(0,0,0,0.5),
+    0 0 20px rgba(0,210,255,0.15);
 }
 
 .card-product img{
@@ -1583,6 +1584,32 @@ footer h3:active{
     0 0 18px rgba(0,210,255,0.35);
 }
 
+.product-meta{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:0.8rem;
+
+    margin-bottom:10px;
+}
+
+.rating{
+    background:rgba(255,193,7,0.15);
+
+    padding:2px 8px;
+
+    border-radius:6px;
+
+    color:#ffc107;
+
+    font-weight:600;
+}
+
+.sold{
+    color:#888;
+}
+
 </style>
 </head>
 
@@ -2256,18 +2283,23 @@ footer h3:active{
                 </div>
 
                 <p class="text-muted small mt-3 mb-1">
-                    Compass
-                </p>
+    Compass
+</p>
 
-                <h6>
-                    Tribune 
-                </h6>
+<h6>
+    Tribune
+</h6>
 
-                <p class="text-primary fw-bold">
-                    Rp 598.000
-                </p>
+<p class="text-primary fw-bold">
+    Rp 598.000
+</p>
 
-                <div class="d-flex gap-2 mt-3">
+<div class="product-meta">
+    <span class="rating">⭐ 4.8</span>
+    <span class="sold">• 22k sold</span>
+</div>
+
+<div class="d-flex gap-2 mt-3">
 
 
     <button class="wishlist-btn">
@@ -2325,10 +2357,15 @@ footer h3:active{
                 </h6>
 
                 <p class="text-primary fw-bold">
-                    Rp 424.800
-                </p>
+    Rp 424.800
+</p>
 
-                <div class="d-flex gap-2 mt-3">
+<div class="product-meta">
+    <span class="rating">⭐ 4.7</span>
+    <span class="sold">• 3.5k sold</span>
+</div>
+
+<div class="d-flex gap-2 mt-3">
 
                 <button class="wishlist-btn">
                     <i class="bi bi-heart"></i>
@@ -2390,10 +2427,16 @@ footer h3:active{
                 </h6>
 
                 <p class="text-primary fw-bold">
-                    Rp 389.900
-                </p>
+    Rp 389.900
+</p>
 
-                <div class="d-flex gap-2 mt-3">
+<div class="product-meta">
+    <span class="rating">⭐ 4.7</span>
+    <span class="sold">• 1.5k sold</span>
+</div>
+
+<div class="d-flex gap-2 mt-3">
+
 
                 <button class="wishlist-btn">
                      <i class="bi bi-heart"></i>
@@ -2450,6 +2493,11 @@ footer h3:active{
                     Rp 229.900
                 </p>
 
+                <div class="product-meta">
+    <span class="rating">⭐ 4.8</span>
+    <span class="sold">• 22k sold</span>
+</div>
+
                 <div class="d-flex gap-2 mt-3">
 
                 <button class="wishlist-btn">
@@ -2505,6 +2553,10 @@ footer h3:active{
         <p class="text-primary fw-bold">
             Rp 650.000
         </p>
+        <div class="product-meta">
+    <span class="rating">⭐ 4.7</span>
+    <span class="sold">• 1.5k sold</span>
+</div>
 
         <div class="d-flex gap-2 mt-3">
 
@@ -3056,7 +3108,7 @@ wishlistButtons.forEach(button => {
 ========================================= */
 
 const cartButtons =
-document.querySelectorAll('.add-cart');
+document.querySelectorAll('.add-cart-btn');
 
 const cartBody =
 document.getElementById('cartItems');
@@ -3137,6 +3189,7 @@ function loadCartFromStorage(){
     });
 
     updateCartTotal();
+    toggleCartEmpty();
 
 }
 
