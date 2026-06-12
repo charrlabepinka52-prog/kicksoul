@@ -1716,8 +1716,13 @@ footer h3:active{
                         <a href="aerostreet.html" class="search-tag text-decoration-none text-white">
                             Aerostreet
                         </a>
-                        <span class="search-tag">Gazelle</span>
-                        <span class="search-tag">Slip On</span>
+                        <a href="#socks" class="search-tag text-decoration-none text-white">
+                            Socks
+                        </a>
+                        <a href="#slipon" class="search-tag text-decoration-none text-white">
+                            Slip On
+                        </a>
+
 
                     </div>
 
@@ -2037,9 +2042,9 @@ footer h3:active{
                     </button>
                     <button 
                         class="btn-buy w-100 add-cart"
-                        data-title="Nasty Hoodie"
+                        data-title="Lex Kaos Polo Scuba Pria"
                         data-brand="Geoff Max Footwear"
-                        data-price="600000"
+                        data-price="109900"
                         data-image="https://down-id.img.susercontent.com/file/id-11134207-822wi-mlllajou9z48ef.webp"
                         data-sizes="S,M,L,XL"
                         data-variants="
@@ -2511,13 +2516,15 @@ footer h3:active{
         </h3>
 
         <div class="d-flex justify-content-center gap-4 mb-4">
-            <a href="#" class="text-white social-icon">
+            <a href="https://www.instagram.com/kicksoulofficialstore?igsh=MW9wNXd0aWozcG5pYQ==" class="text-white social-icon">
                 <i class="bi bi-instagram fs-4"></i>
             </a>
-            <a href="#" class="text-white social-icon">
+
+            <a href="https://www.tiktok.com/@kicksoulofficials?_r=1&_t=ZS-979NlXEHjeu" class="text-white social-icon">
                 <i class="bi bi-tiktok fs-4"></i>
             </a>
-            <a href="#" class="text-white social-icon">
+
+            <a href="https://wa.me/+6281276402778" class="text-white social-icon">
                 <i class="bi bi-whatsapp fs-4"></i>
             </a>
         </div>
@@ -2886,12 +2893,18 @@ wishlistButtons.forEach(button => {
             let wishlistItems =
             JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
-            wishlistItems.push({
-                name: title,
-                brand: brand,
-                price: price,
-                image: image
-            });
+            const exists = wishlistItems.some(
+                item => item.name === title
+            );
+
+            if(!exists){
+                wishlistItems.push({
+                    name: title,
+                    brand: brand,
+                    price: price,
+                    image: image
+                });
+            }
 
             localStorage.setItem(
                 'wishlistItems',
@@ -2972,8 +2985,8 @@ wishlistButtons.forEach(button => {
 
             showToast('Removed from Wishlist');
 
+            loadWishlistFromStorage();
             toggleWishlistEmpty();
-            saveWishlistToStorage();
 
         }
 
@@ -3557,6 +3570,31 @@ function loadWishlistFromStorage() {
     let wishlistItems =
         JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
+    // Reset semua tombol love
+    document.querySelectorAll('.wishlist-btn')
+        .forEach(btn => btn.classList.remove('active'));
+
+    // Aktifkan tombol love sesuai wishlist
+    wishlistItems.forEach(item => {
+
+        document.querySelectorAll('.card-product')
+            .forEach(product => {
+
+                const title = product
+                    .querySelector('h6')
+                    .innerText
+                    .trim();
+
+                if (title === item.name) {
+                    product
+                        .querySelector('.wishlist-btn')
+                        ?.classList.add('active');
+                }
+
+            });
+
+    });
+
     wishlistBody.querySelectorAll('.mini-product')
         .forEach(item => item.remove());
 
@@ -3800,41 +3838,5 @@ document.getElementById('clearCartBtn')
 
 </div>
 
-<script>
-document.querySelectorAll('.apparel-link').forEach(link => {
-    link.addEventListener('click', function () {
-
-        let sidebar = document.getElementById('sidebar'); // ID offcanvas kamu
-        let bsOffcanvas = bootstrap.Offcanvas.getInstance(sidebar);
-
-        if (bsOffcanvas) {
-            bsOffcanvas.hide();
-        }
-    });
-});
-</script>
-
-<script>
-document.querySelectorAll('.submenu a').forEach(link => {
-    link.addEventListener('click', () => {
-        const sidebar = document.querySelector('.sidebar'); // sesuaikan class sidebar kamu
-        if (sidebar.classList.contains('show')) {
-            new bootstrap.Collapse(sidebar).hide();
-        }
-    });
-});
-</script>
-
-<script>
-document.querySelectorAll('.submenu a').forEach(link => {
-    link.addEventListener('click', () => {
-        const offcanvas = document.querySelector('.offcanvas');
-        const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvas);
-        if (bsOffcanvas) {
-            bsOffcanvas.hide();
-        }
-    });
-});
-</script>
 </body>
 </html>

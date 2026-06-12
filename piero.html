@@ -1761,8 +1761,13 @@ footer h3:active{
                         <a href="aerostreet.html" class="search-tag text-decoration-none text-white">
                             Aerostreet
                         </a>
-                        <span class="search-tag">Gazelle</span>
-                        <span class="search-tag">Slip On</span>
+                        <a href="apparels.html#socks" class="search-tag text-decoration-none text-white">
+                            Socks
+                        </a>
+                        <a href="apparels.html#slipon" class="search-tag text-decoration-none text-white">
+                            Slip On
+                        </a>
+
 
                     </div>
 
@@ -2260,13 +2265,15 @@ footer h3:active{
         </h3>
 
         <div class="d-flex justify-content-center gap-4 mb-4">
-            <a href="#" class="text-white social-icon">
+            <a href="https://www.instagram.com/kicksoulofficialstore?igsh=MW9wNXd0aWozcG5pYQ==" class="text-white social-icon">
                 <i class="bi bi-instagram fs-4"></i>
             </a>
-            <a href="#" class="text-white social-icon">
+
+            <a href="https://www.tiktok.com/@kicksoulofficials?_r=1&_t=ZS-979NlXEHjeu" class="text-white social-icon">
                 <i class="bi bi-tiktok fs-4"></i>
             </a>
-            <a href="#" class="text-white social-icon">
+
+            <a href="https://wa.me/+6281276402778" class="text-white social-icon">
                 <i class="bi bi-whatsapp fs-4"></i>
             </a>
         </div>
@@ -2635,12 +2642,18 @@ wishlistButtons.forEach(button => {
             let wishlistItems =
             JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
-            wishlistItems.push({
-                name: title,
-                brand: brand,
-                price: price,
-                image: image
-            });
+            const exists = wishlistItems.some(
+                item => item.name === title
+            );
+
+            if(!exists){
+                wishlistItems.push({
+                    name: title,
+                    brand: brand,
+                    price: price,
+                    image: image
+                });
+            }
 
             localStorage.setItem(
                 'wishlistItems',
@@ -2721,8 +2734,8 @@ wishlistButtons.forEach(button => {
 
             showToast('Removed from Wishlist');
 
+            loadWishlistFromStorage();
             toggleWishlistEmpty();
-            saveWishlistToStorage();
 
         }
 
@@ -2880,10 +2893,10 @@ cartButtons.forEach(button => {
         const sizeContainer =
         document.getElementById('sizeOptions');
 
+        sizeContainer.innerHTML = '';
+
         const sizeLabel =
         document.getElementById('sizeLabel');
-
-        sizeContainer.innerHTML = '';
 
         if(sizes.length === 0){
 
@@ -2893,7 +2906,7 @@ cartButtons.forEach(button => {
         /* HAPUS JARAK BAWAH */
         sizeContainer.style.marginBottom = '0';
 
-        }else {
+        } else {
 
         sizeContainer.style.display = 'flex';
         sizeLabel.style.display = 'block';
@@ -3306,6 +3319,31 @@ function loadWishlistFromStorage() {
     let wishlistItems =
         JSON.parse(localStorage.getItem('wishlistItems')) || [];
 
+    // Reset semua tombol love
+    document.querySelectorAll('.wishlist-btn')
+        .forEach(btn => btn.classList.remove('active'));
+
+    // Aktifkan tombol love sesuai wishlist
+    wishlistItems.forEach(item => {
+
+        document.querySelectorAll('.card-product')
+            .forEach(product => {
+
+                const title = product
+                    .querySelector('h6')
+                    .innerText
+                    .trim();
+
+                if (title === item.name) {
+                    product
+                        .querySelector('.wishlist-btn')
+                        ?.classList.add('active');
+                }
+
+            });
+
+    });
+
     wishlistBody.querySelectorAll('.mini-product')
         .forEach(item => item.remove());
 
@@ -3516,14 +3554,14 @@ document.getElementById('clearCartBtn')
       </h4>
 
       <!-- SIZE -->
-        <p
-            id="sizeLabel"
-            class="text-secondary mb-2 small">
-            SELECT SIZE
-        </p>
+      <p
+        id="sizeLabel"
+        class="text-secondary mb-2 small">
+        SELECT SIZE
+      </p>
 
       <div id="sizeOptions"
-           class="d-flex flex-wrap gap-2">
+           class="d-flex flex-wrap gap-2 mb-2">
       </div>
 
       <!-- VARIANT -->
@@ -3531,7 +3569,7 @@ document.getElementById('clearCartBtn')
         id="variantLabel"
         class="text-secondary mb-2 small">
         SELECT VARIANT
-    </p>
+      </p>
 
       <div id="variantOptions"
            class="d-flex flex-wrap gap-2 mb-3">
