@@ -1610,6 +1610,59 @@ footer h3:active{
     color:#888;
 }
 
+/* =========================================
+ABOUT US
+========================================= */
+.about-section{
+    background:#0b0b0b;
+}
+
+.about-box{
+    background:#111;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:50px;
+    text-align:center;
+    transition:0.4s;
+}
+
+.about-box:hover{
+    border-color:rgba(0,210,255,0.35);
+    box-shadow:
+    0 0 30px rgba(0,210,255,0.08);
+}
+
+.about-tag{
+    display:inline-block;
+    color:var(--accent);
+    font-size:0.85rem;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.about-title{
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.about-text{
+    max-width:800px;
+    margin:auto;
+    color:#b8b8b8;
+    line-height:1.8;
+}
+
+@media(max-width:768px){
+    .about-box{
+        padding:30px;
+    }
+
+    .about-title{
+        font-size:1.8rem;
+    }
+}
+
 </style>
 </head>
 
@@ -1732,6 +1785,14 @@ footer h3:active{
                     class="menu-link nav-close">
                     HOME
                     <i class="bi bi-house"></i>
+                </a>
+            </li>
+
+            <li class="nav-item mb-2">
+                <a href="#about"
+                    class="menu-link nav-close">
+                    ABOUT US
+                    <i class="bi bi-info-circle"></i>
                 </a>
             </li>
 
@@ -2110,6 +2171,33 @@ footer h3:active{
 
     </div>
 
+</section>
+
+<!-- =========================================
+ABOUT US
+========================================= -->
+<section id="about" class="about-section py-5">
+    <div class="container">
+
+        <div class="about-box">
+
+            <span class="about-tag">
+                ABOUT KICKSOUL
+            </span>
+
+            <h2 class="about-title">
+                Your Trusted Local Sneakers Destination
+            </h2>
+
+            <p class="about-text">
+                KICKSOUL Official Store offers a curated collection of sneakers and apparel from Indonesia's finest local brands. 
+                We believe local products can stand alongside international names through quality, creativity, and innovation.
+                Our mission is to support local craftsmanship and inspire more people to take pride in wearing products made by the nation's best creators.            
+            </p>
+
+        </div>
+
+    </div>
 </section>
 
 <!-- =========================================
